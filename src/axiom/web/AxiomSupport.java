@@ -92,9 +92,6 @@ public abstract class AxiomSupport extends ActionSupport
 	        String serverName = req.getServerName();     // hostname.com
 	        int serverPort = req.getServerPort();        // 80
 	        String contextPath = req.getContextPath();   // /mywebapp
-	        //String servletPath = req.getServletPath();   // /servlet/MyServlet
-	        String pathInfo = req.getPathInfo();         // /a/b;c=123
-	        //String queryString = req.getQueryString();          // d=789
 		
 		return scheme+"://"+serverName+":"+serverPort+contextPath;
 	}

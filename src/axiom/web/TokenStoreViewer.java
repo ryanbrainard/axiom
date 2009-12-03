@@ -8,7 +8,8 @@ import java.util.List;
 
 public class TokenStoreViewer extends AxiomSupport {
 	
-	DemoTokenStore demoTokenStore = new TokenStorePojo();
+	private static final long serialVersionUID = 1L;
+	private transient DemoTokenStore demoTokenStore = new TokenStorePojo();
 	
 	@Override
 	public Breadcrumbable getParentPage() {
