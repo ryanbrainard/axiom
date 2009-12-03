@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+ <globalConfiguration>
+  <parameter name="sendMultiRefs" value="true"/>
+  <parameter name="disablePrettyXML" value="true"/>
+  <parameter name="adminPassword" value="admin"/>
+  <parameter name="attachments.Directory" value="/Library/Java/apache-tomcat-6.0.18/webapps/ssoTokenGen/WEB-INF/attachments"/>
+  <parameter name="dotNetSoapEncFix" value="true"/>
+  <parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <parameter name="sendXMLDeclaration" value="true"/>
+  <parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <parameter name="sendXsiTypes" value="true"/>
+  <requestFlow>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="session"/>
+   </handler>
+   <handler type="java:org.apache.axis.handlers.JWSHandler">
+    <parameter name="scope" value="request"/>
+    <parameter name="extension" value=".jwr"/>
+   </handler>
+  </requestFlow>
+ </globalConfiguration>
+ <handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <service name="samlIdp" provider="java:RPC" style="wrapped" use="literal">
+  <parameter name="allowedMethods" value="*"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="wsdlPortType" value="SamlIdp"/>
+  <parameter name="className" value="axiom.soap.SamlIdpSoapBindingSkeleton"/>
+  <parameter name="wsdlServicePort" value="samlIdp"/>
+  <parameter name="schemaQualified" value="urn:axiom.soap"/>
+  <parameter name="wsdlTargetNamespace" value="urn:axiom.soap"/>
+  <parameter name="wsdlServiceElement" value="SamlIdpService"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory" encodingStyle="" qname="ns1:SamlVersion" serializer="org.apache.axis.encoding.ser.EnumSerializerFactory" type="java:axiom.soap.SamlVersion" xmlns:ns1="urn:axiom.soap"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns2:AxiomSamlRequest" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:axiom.soap.AxiomSamlRequest" xmlns:ns2="urn:axiom.soap"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory" encodingStyle="" qname="ns3:SamlUserIdLocation" serializer="org.apache.axis.encoding.ser.EnumSerializerFactory" type="java:axiom.soap.SamlUserIdLocation" xmlns:ns3="urn:axiom.soap"/>
+ </service>
+ <service name="AuthenticationService" provider="java:RPC" style="document" use="literal">
+  <parameter name="sendMultiRefs" value="false"/>
+  <parameter name="wsdlServicePort" value="AuthenticationService"/>
+  <parameter name="schemaQualified" value="urn:authentication.soap.sforce.com"/>
+  <parameter name="className" value="com.sforce.soap.authentication.AuthenticationBindingSkeleton"/>
+  <parameter name="typeMappingVersion" value="1.2"/>
+  <parameter name="allowedMethods" value="*"/>
+  <parameter name="wsdlServiceElement" value="SforceAuthenticationService"/>
+  <parameter name="wsdlTargetNamespace" value="urn:authentication.soap.sforce.com"/>
+  <parameter name="wsdlPortType" value="AuthenticationPortType"/>
+  <parameter name="sendXsiTypes" value="false"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns4:AuthenticateResult" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.sforce.soap.authentication.AuthenticateResult" xmlns:ns4="urn:authentication.soap.sforce.com"/>
+  <typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns5:Authenticate" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:com.sforce.soap.authentication.Authenticate" xmlns:ns5="urn:authentication.soap.sforce.com"/>
+ </service>
+  <service name="DelAuthProxy" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="urn:enterprise.soap.sforce.com"/>
+      <parameter name="wsdlServiceElement" value="SforceService"/>
+      <parameter name="schemaQualified" value="urn:fault.enterprise.soap.sforce.com,urn:enterprise.soap.sforce.com,urn:sobject.enterprise.soap.sforce.com"/>
+      <parameter name="wsdlServicePort" value="Soap"/>
+      <parameter name="className" value="com.sforce.soap.enterprise.SoapBindingSkeleton"/>
+      <parameter name="wsdlPortType" value="Soap"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <parameter name="allowedMethods" value="*"/>
+
+      <typeMapping
+        xmlns:ns="urn:fault.enterprise.soap.sforce.com"
+        qname="ns:MalformedSearchFault"
+        type="java:com.sforce.soap.enterprise.fault.MalformedSearchFault"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:fault.enterprise.soap.sforce.com"
+        qname="ns:InvalidNewPasswordFault"
+        type="java:com.sforce.soap.enterprise.fault.InvalidNewPasswordFault"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:enterprise.soap.sforce.com"
+        qname="ns:ID"
+        type="java:java.lang.String"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:fault.enterprise.soap.sforce.com"
+        qname="ns:InvalidIdFault"
+        type="java:com.sforce.soap.enterprise.fault.InvalidIdFault"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:fault.enterprise.soap.sforce.com"
+        qname="ns:ApiFault"
+        type="java:com.sforce.soap.enterprise.fault.ApiFault"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:fault.enterprise.soap.sforce.com"
+        qname="ns:ApiQueryFault"
+        type="java:com.sforce.soap.enterprise.fault.ApiQueryFault"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:fault.enterprise.soap.sforce.com"
+        qname="ns:ExceptionCode"
+        type="java:com.sforce.soap.enterprise.fault.ExceptionCode"
+        serializer="org.apache.axis.encoding.ser.EnumSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.EnumDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:fault.enterprise.soap.sforce.com"
+        qname="ns:LoginFault"
+        type="java:com.sforce.soap.enterprise.fault.LoginFault"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:enterprise.soap.sforce.com"
+        qname="ns:LoginResult"
+        type="java:com.sforce.soap.enterprise.LoginResult"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:fault.enterprise.soap.sforce.com"
+        qname="ns:MalformedQueryFault"
+        type="java:com.sforce.soap.enterprise.fault.MalformedQueryFault"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:fault.enterprise.soap.sforce.com"
+        qname="ns:InvalidQueryLocatorFault"
+        type="java:com.sforce.soap.enterprise.fault.InvalidQueryLocatorFault"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:enterprise.soap.sforce.com"
+        qname="ns:GetUserInfoResult"
+        type="java:com.sforce.soap.enterprise.GetUserInfoResult"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:fault.enterprise.soap.sforce.com"
+        qname="ns:InvalidFieldFault"
+        type="java:com.sforce.soap.enterprise.fault.InvalidFieldFault"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:fault.enterprise.soap.sforce.com"
+        qname="ns:InvalidSObjectFault"
+        type="java:com.sforce.soap.enterprise.fault.InvalidSObjectFault"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="urn:fault.enterprise.soap.sforce.com"
+        qname="ns:UnexpectedErrorFault"
+        type="java:com.sforce.soap.enterprise.fault.UnexpectedErrorFault"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+ <service name="AdminService" provider="java:MSG">
+  <parameter name="allowedMethods" value="AdminService"/>
+  <parameter name="enableRemoteAdmin" value="false"/>
+  <parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <namespace>http://xml.apache.org/axis/wsdd/</namespace>
+ </service>
+ <service name="Version" provider="java:RPC">
+  <parameter name="allowedMethods" value="getVersion"/>
+  <parameter name="className" value="org.apache.axis.Version"/>
+ </service>
+ <transport name="http">
+  <requestFlow>
+   <handler type="URLMapper"/>
+   <handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </requestFlow>
+  <parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </transport>
+ <transport name="local">
+  <responseFlow>
+   <handler type="LocalResponder"/>
+  </responseFlow>
+ </transport>
+</deployment>

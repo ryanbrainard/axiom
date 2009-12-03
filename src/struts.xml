@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+
+    <package name="default" namespace="/" extends="struts-default">
+        
+        <action name="SelfAuthenticate" class="axiom.web.SelfAuthenticator">
+            <result name="success">SelfAuthenticationResponse.jsp</result>
+            <result name="input">SelfAuthenticationInfo.jsp</result>
+        </action>        
+
+
+        <action name="GenerateToken" class="axiom.web.TokenBasedLogin">
+            <result name="input">TokenGeneratorForm.jsp</result>
+            <result name="displayToken">DisplayTokenResultForm.jsp</result>
+            <result name="autoLogin" type="redirect">${loginUrl}</result>
+        </action> 
+        
+        <action name="DisplayTokenStore" class="axiom.web.TokenStoreViewer">
+            <result>TokenStoreViewer.jsp</result>
+        </action> 
+        
+        <action name="ClearTokenStore" class="axiom.web.TokenStoreViewer" method="clearTokenStore">
+            <result type="redirectAction">
+            	<param name="actionName">DisplayTokenStore</param>
+            	<param name="namespace">/</param>
+            </result>
+        </action> 
+        
+        <action name="DownloadIdpCert" class="axiom.web.DownloadIdpCert">
+			<result name="success" type="stream">
+				<!--  <param name="contentType">application/x-x509-ca-cert</param> -->
+				<param name="inputName">idpCertStream</param>
+				<param name="contentDisposition">filename="Axiom-IdpCert.cer"</param>
+			</result>
+        </action>
+        
+        <action name="RequestSamlResponse" class="axiom.web.SamlIdpResponseRequester">
+            <result>SamlIdpResponseRequestForm.jsp</result>
+        </action>
+        
+       <action name="GenerateSamlResponse" class="axiom.web.SamlIdpResponseGenerator">
+            <result>SamlIdpResponseAndTargetPosterForm.jsp</result>
+        </action>             
+ 
+       <action name="SamlIdpResponseAndTargetPosterForm" class="axiom.web.SamlIdpResponseGenerator" method="skipGeneration">
+            <result>SamlIdpResponseAndTargetPosterForm.jsp</result>
+       </action>
+        
+        <action name="*" class="axiom.web.{1}">
+            <result>{1}.jsp</result>
+        </action>
+   
+    </package>
+
+</struts>
