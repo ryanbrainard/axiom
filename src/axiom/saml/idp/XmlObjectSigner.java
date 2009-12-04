@@ -1,21 +1,34 @@
 package axiom.saml.idp;
 
-import java.io.*;
-import java.security.*;
-import java.security.cert.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateEncodingException;
+import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
 import org.apache.log4j.Logger;
 import org.opensaml.Configuration;
-import org.opensaml.xml.io.*;
+import org.opensaml.xml.io.Marshaller;
+import org.opensaml.xml.io.MarshallerFactory;
+import org.opensaml.xml.io.MarshallingException;
 import org.opensaml.xml.security.SecurityException;
 import org.opensaml.xml.security.credential.BasicCredential;
 import org.opensaml.xml.security.credential.Credential;
 import org.opensaml.xml.security.keyinfo.KeyInfoGeneratorFactory;
 import org.opensaml.xml.security.keyinfo.KeyInfoGeneratorManager;
 import org.opensaml.xml.security.x509.BasicX509Credential;
-import org.opensaml.xml.signature.*;
+import org.opensaml.xml.signature.KeyInfo;
+import org.opensaml.xml.signature.SignableXMLObject;
 import org.opensaml.xml.signature.Signature;
+import org.opensaml.xml.signature.SignatureConstants;
 import org.opensaml.xml.signature.SignatureException;
 import org.opensaml.xml.signature.Signer;
 
@@ -95,7 +108,7 @@ public class XmlObjectSigner {
 		} finally {
 			try {
 				logger.debug("Closing keystore");
-				keystoreStream.close();
+				if(keystoreStream != null) keystoreStream.close();
 			} catch (IOException e) {
 				logger.error(e);
 			}
