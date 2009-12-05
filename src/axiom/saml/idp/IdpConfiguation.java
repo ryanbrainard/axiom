@@ -38,7 +38,7 @@ public class IdpConfiguation {
 	private String startURL;
 	private String logoutURL;
 	
-	private File keystoreFile;
+	private File keystoreFile = new File("WEB-INF/config/AxiomIdpExample.keystore"); //TODO: dont hardcode this
 	private char[] keystorePassword;
 	private String keystoreAlias;
 	private char[] keystoreAliasPassword;
