@@ -1,12 +1,14 @@
 package axiom.web;
 
-import axiom.saml.idp.IdentityProvider;
-import axiom.saml.idp.SamlVersion;
-
 import java.io.UnsupportedEncodingException;
-import java.net.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 
 import org.apache.log4j.Logger;
+
+import axiom.saml.idp.IdentityProvider;
+import axiom.saml.idp.SamlVersion;
 
 
 public class SamlIdpResponseGenerator extends SamlIdpSupport {
@@ -19,7 +21,7 @@ public class SamlIdpResponseGenerator extends SamlIdpSupport {
 	public String execute() throws Exception {
 		IdentityProvider idp = new IdentityProvider(getIdpConfig());
 		
-		setRawSAMLResponse(idp.generateSamlResponse());
+		setRawSAMLResponse(idp.generateSerializedSamlResponse());
 		logger.debug("\nrawSAMLResponse:\n" + getRawSAMLResponse());
 		
 		if(getIdpConfig().getSamlVersion() == SamlVersion._1_1){

@@ -114,7 +114,7 @@ public class XmlObjectSigner {
 			}
 		}
 	}
-
+	
 	public SignableXMLObject sign(SignableXMLObject signableXmlObject) throws SignatureException{
 		logger.debug("Building unsigned Signature");
 		Signature signature = (Signature)Configuration.getBuilderFactory().getBuilder(Signature.DEFAULT_ELEMENT_NAME).buildObject(Signature.DEFAULT_ELEMENT_NAME);
@@ -160,6 +160,10 @@ public class XmlObjectSigner {
 		
 		logger.debug("Returning signed signableXmlObject");		
 		return signableXmlObject;
+	}
+	
+	public Credential getCredential(){
+		return credential;
 	}
 	
 	public File getCertFile(){		

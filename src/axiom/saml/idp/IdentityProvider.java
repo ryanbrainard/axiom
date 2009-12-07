@@ -15,7 +15,16 @@ public class IdentityProvider {
 		this.config = config;
 	}
 	
-	public String generateSamlResponse(){
+	public String generateSerializedSamlResponse(){
+		SignableSAMLObject response = generateSamlResponse();
+				
+		String responseString = XmlObjectSerializer.xmlObjectToString(response);
+		logger.trace("SamlResponse String:\n" + responseString);
+		
+		return responseString;
+	}
+
+	protected SignableSAMLObject generateSamlResponse() {
 		logger.debug("Generating SamlResponse");
 
 		SignableSAMLObject response = null;
@@ -29,12 +38,10 @@ public class IdentityProvider {
 		} catch (SignatureException e) {
 			logger.error(e);
 		}
-				
-		String responseString = XmlObjectSerializer.xmlObjectToString(response);
-
-		logger.debug("Returning SamlResponse");
-		logger.trace("SamlResponse String:\n" + responseString);
-		return responseString;
+		
+		logger.debug("Returning SamlResponse");		
+		return response;
 	}
+
 	
 }

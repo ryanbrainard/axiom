@@ -2,14 +2,20 @@ package axiom.saml.idp;
 
 import java.io.StringWriter;
 
-import javax.xml.transform.*;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.apache.log4j.Logger;
 import org.opensaml.Configuration;
 import org.opensaml.xml.XMLObject;
-import org.opensaml.xml.io.*;
+import org.opensaml.xml.io.Marshaller;
+import org.opensaml.xml.io.MarshallerFactory;
+import org.opensaml.xml.io.MarshallingException;
 import org.w3c.dom.Element;
 
 /**

@@ -7,9 +7,6 @@
 
 package axiom.soap;
 
-import axiom.saml.idp.IdentityProvider;
-import axiom.saml.idp.IdpConfiguation;
-
 import java.io.File;
 
 import javax.servlet.ServletConfig;
@@ -20,6 +17,9 @@ import org.apache.axis.MessageContext;
 import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.log4j.Logger;
 import org.opensaml.xml.util.Base64;
+
+import axiom.saml.idp.IdentityProvider;
+import axiom.saml.idp.IdpConfiguation;
 
 
 
@@ -58,7 +58,7 @@ public class SamlIdpSoapBindingImpl implements axiom.soap.SamlIdp{
     		
   
     	logger.debug("Calling IdP to create SAML response");
-		String rawSamlResponse = new IdentityProvider(idpConfig).generateSamlResponse();
+		String rawSamlResponse = new IdentityProvider(idpConfig).generateSerializedSamlResponse();
 				
 		if(axiomSamlRequest.getBase64EncodeResponse() != null && axiomSamlRequest.getBase64EncodeResponse()==false){
 			logger.debug("Returning plain text SAMLResponse via SOAP");

@@ -13,11 +13,19 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.axis.Message;
 import org.apache.axis.MessageContext;
-import org.apache.axis.message.*;
+import org.apache.axis.message.MessageElement;
+import org.apache.axis.message.SOAPEnvelope;
+import org.apache.axis.message.SOAPHeaderElement;
 import org.apache.log4j.Logger;
 
-import com.sforce.soap.enterprise.*;
-import com.sforce.soap.enterprise.fault.*;
+import com.sforce.soap.enterprise.CallOptions;
+import com.sforce.soap.enterprise.LoginResult;
+import com.sforce.soap.enterprise.SforceServiceLocator;
+import com.sforce.soap.enterprise.SoapBindingStub;
+import com.sforce.soap.enterprise.fault.ExceptionCode;
+import com.sforce.soap.enterprise.fault.InvalidIdFault;
+import com.sforce.soap.enterprise.fault.LoginFault;
+import com.sforce.soap.enterprise.fault.UnexpectedErrorFault;
 
 
 

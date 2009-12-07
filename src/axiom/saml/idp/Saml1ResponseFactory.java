@@ -5,7 +5,10 @@ import javax.xml.namespace.QName;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.opensaml.common.SAMLObjectBuilder;
-import org.opensaml.saml1.core.*;
+import org.opensaml.saml1.core.Assertion;
+import org.opensaml.saml1.core.Response;
+import org.opensaml.saml1.core.Status;
+import org.opensaml.saml1.core.StatusCode;
 
 
 /**

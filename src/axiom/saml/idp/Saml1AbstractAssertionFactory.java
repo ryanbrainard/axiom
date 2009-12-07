@@ -4,7 +4,16 @@ import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.opensaml.common.SAMLObjectBuilder;
 import org.opensaml.common.SAMLVersion;
-import org.opensaml.saml1.core.*;
+import org.opensaml.saml1.core.Assertion;
+import org.opensaml.saml1.core.AttributeStatement;
+import org.opensaml.saml1.core.Audience;
+import org.opensaml.saml1.core.AudienceRestrictionCondition;
+import org.opensaml.saml1.core.AuthenticationStatement;
+import org.opensaml.saml1.core.Conditions;
+import org.opensaml.saml1.core.ConfirmationMethod;
+import org.opensaml.saml1.core.NameIdentifier;
+import org.opensaml.saml1.core.Subject;
+import org.opensaml.saml1.core.SubjectConfirmation;
 
 
 /**

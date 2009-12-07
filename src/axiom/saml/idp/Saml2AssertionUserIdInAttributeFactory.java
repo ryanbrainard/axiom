@@ -6,7 +6,10 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.opensaml.Configuration;
 import org.opensaml.common.SAMLObjectBuilder;
-import org.opensaml.saml2.core.*;
+import org.opensaml.saml2.core.Attribute;
+import org.opensaml.saml2.core.AttributeStatement;
+import org.opensaml.saml2.core.AttributeValue;
+import org.opensaml.saml2.core.Subject;
 import org.opensaml.xml.schema.XSString;
 import org.opensaml.xml.schema.impl.XSStringBuilder;
 

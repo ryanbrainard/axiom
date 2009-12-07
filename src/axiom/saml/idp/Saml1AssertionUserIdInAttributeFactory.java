@@ -3,7 +3,10 @@ package axiom.saml.idp;
 import org.apache.log4j.Logger;
 import org.opensaml.Configuration;
 import org.opensaml.common.SAMLObjectBuilder;
-import org.opensaml.saml1.core.*;
+import org.opensaml.saml1.core.Attribute;
+import org.opensaml.saml1.core.AttributeStatement;
+import org.opensaml.saml1.core.AttributeValue;
+import org.opensaml.saml1.core.Subject;
 import org.opensaml.xml.schema.XSString;
 import org.opensaml.xml.schema.impl.XSStringBuilder;
 

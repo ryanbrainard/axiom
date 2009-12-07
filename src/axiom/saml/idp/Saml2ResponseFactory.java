@@ -3,7 +3,11 @@ package axiom.saml.idp;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.opensaml.common.SAMLObjectBuilder;
-import org.opensaml.saml2.core.*;
+import org.opensaml.saml2.core.Assertion;
+import org.opensaml.saml2.core.Issuer;
+import org.opensaml.saml2.core.Response;
+import org.opensaml.saml2.core.Status;
+import org.opensaml.saml2.core.StatusCode;
 
 
 /**

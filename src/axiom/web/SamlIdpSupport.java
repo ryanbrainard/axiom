@@ -1,12 +1,14 @@
 package axiom.web;
 
-import axiom.saml.idp.*;
-
 import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+
+import axiom.saml.idp.IdpConfiguation;
+import axiom.saml.idp.SamlUserIdLocation;
+import axiom.saml.idp.SamlVersion;
 
 public abstract class SamlIdpSupport extends AxiomSupport{
 	
