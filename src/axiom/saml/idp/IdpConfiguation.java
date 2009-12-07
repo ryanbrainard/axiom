@@ -182,7 +182,7 @@ public class IdpConfiguation {
 		this.saml1subjectConfirmationMethod = saml1subjectConfirmationMethod;
 	}
 
-	public String getSaml2subjectConfirmationMethod() {
+	public String getSaml2SubjectConfirmationMethod() {
 		return saml2subjectConfirmationMethod;
 	}
 
@@ -191,7 +191,7 @@ public class IdpConfiguation {
 		this.saml2subjectConfirmationMethod = saml2subjectConfirmationMethod;
 	}
 
-	public String getSaml2nameIdFormat() {
+	public String getSaml2NameIdFormat() {
 		return saml2nameIdFormat;
 	}
 
@@ -199,7 +199,7 @@ public class IdpConfiguation {
 		this.saml2nameIdFormat = saml2nameIdFormat;
 	}
 
-	public String getSaml2authnContextClassRef() {
+	public String getSaml2AuthnContextClassRef() {
 		return saml2authnContextClassRef;
 	}
 
