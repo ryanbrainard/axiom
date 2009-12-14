@@ -59,22 +59,9 @@
         <pathelement location="WebContent/WEB-INF/lib/xwork-2.1.2.jar"/>
     </path>
     <path id="Apache Tomcat v6.0 [Apache Tomcat v6.0].libraryclasspath">
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/annotations-api.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/catalina-ant.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/catalina-ha.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/catalina-tribes.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/catalina.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/el-api.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/jasper-el.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/jasper-jdt.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/jasper.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/jsp-api.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/servlet-api.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/tomcat-coyote.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/tomcat-dbcp.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/tomcat-i18n-es.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/tomcat-i18n-fr.jar"/>
-        <pathelement location="../../../../../Applications/apache-tomcat-6.0.18/lib/tomcat-i18n-ja.jar"/>
+		<fileset dir="WebContent/WEB-INF/lib/tomcat">
+			<include name="**/*.jar" />
+		</fileset>
     </path>
     <path id="axiom.classpath">
         <pathelement location="build/classes"/>
