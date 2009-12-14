@@ -1,72 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. -->
+<?eclipse.ant.import?>
 <project basedir=".." default="build" name="axiom">
     <property environment="env"/>
-    <property name="axiom-test.location" value="../axiom-test"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
-    <path id="Web App Libraries.libraryclasspath">
-        <pathelement location="WebContent/WEB-INF/lib/2wayfilter-1.2.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/axis-ant.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/axis.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/bcprov-ext-jdk15-1.40.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-codec-1.3.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-collections-3.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-discovery-0.2.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-fileupload-1.2.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-httpclient-3.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-io-1.3.2.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-lang-2.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-logging-1.0.4.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-logging-1.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-logging-api.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-logging.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/freemarker-2.3.13.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jargs-1.0.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jaxrpc.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jcip-annotations-1.0.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jcl-over-slf4j-1.5.5.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/joda-time-1.5.2.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/log4j-1.2.15.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/log4j-over-slf4j-1.5.5.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/not-yet-commons-ssl-0.3.9.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/ognl-2.6.11.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/opensaml-2.2.3.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/openws-1.2.2.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/resolver-2.9.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/saaj.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/serializer-2.9.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/serializer.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/slf4j-api-1.5.5.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/slf4j-log4j12-1.5.5.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-test-2.5.6.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/struts2-core-2.1.6.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/velocity-1.5.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/wsdl4j-1.5.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/xercesImpl-2.9.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/xercesImpl.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/xml-apis-2.9.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/xml-apis.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/xmlsec-1.4.2.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/xmlsecSamples-1.4.2.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/xmlsecTests-1.4.2.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/xmltooling-1.2.0.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/xwork-2.1.2.jar"/>
-    </path>
-    <path id="Apache Tomcat v6.0 [Apache Tomcat v6.0].libraryclasspath">
-		<fileset dir="WebContent/WEB-INF/lib/tomcat">
-			<include name="**/*.jar" />
-		</fileset>
-    </path>
     <path id="axiom.classpath">
         <pathelement location="build/classes"/>
-        <path refid="Web App Libraries.libraryclasspath"/>
-        <path refid="Apache Tomcat v6.0 [Apache Tomcat v6.0].libraryclasspath"/>
+		<fileset dir="WebContent/WEB-INF/lib">
+			<include name="**/*.jar" />
+		</fileset>    
     </path>
     <target name="init">
         <mkdir dir="build/classes"/>
@@ -86,9 +29,5 @@
             <src path="src"/>
             <classpath refid="axiom.classpath"/>
         </javac>
-    </target>
-    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects">
-        <ant antfile="${axiom-test.location}/build/build.xml" inheritAll="false" target="clean"/>
-        <ant antfile="${axiom-test.location}/build/build.xml" inheritAll="false" target="build"/>
     </target>
 </project>
