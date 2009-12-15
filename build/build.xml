@@ -11,6 +11,11 @@
 			<include name="**/*.jar" />
 		</fileset>    
     </path>
+    <path id="container.classpath">
+		<fileset dir="../tools/tomcat/apache-tomcat-6.0.20/lib">
+			<include name="**/*.jar" />
+		</fileset>    
+    </path>
     <target name="init">
         <mkdir dir="build/classes"/>
         <copy includeemptydirs="false" todir="build/classes">
@@ -28,6 +33,7 @@
         <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}">
             <src path="src"/>
             <classpath refid="axiom.classpath"/>
+        	<classpath refid="container.classpath"/>
         </javac>
     </target>
 </project>
