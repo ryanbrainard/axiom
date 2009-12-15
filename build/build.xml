@@ -12,7 +12,7 @@
 		</fileset>    
     </path>
     <path id="container.classpath">
-		<fileset dir="../tools/tomcat/apache-tomcat-6.0.20/lib">
+		<fileset dir="../../tools/tomcat/apache-tomcat-6.0.20/lib">
 			<include name="**/*.jar" />
 		</fileset>    
     </path>
