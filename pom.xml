@@ -18,7 +18,6 @@
 			<email>ryanbrainard@gmail.com</email>
 			<roles>
 				<role>Lead Developer</role>
-				<role></role>
 			</roles>
 			<timezone>-8</timezone>
 		</developer>
@@ -151,14 +150,7 @@
 					<findbugsXmlWithMessages>true</findbugsXmlWithMessages>
 					<xmlOutput>true</xmlOutput>
 				</configuration>
-				<executions>
-					<execution>
-						<phase>test</phase>
-						<goals>
-							<goal>findbugs</goal>
-						</goals>
-					</execution>
-				</executions>
+				<version>2.3.1</version>
 			</plugin>
 			<!-- Jetty -->
 			<plugin>
