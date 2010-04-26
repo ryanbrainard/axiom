@@ -12,10 +12,13 @@ import java.io.File;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 
 import org.apache.axis.MessageContext;
 import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.log4j.Logger;
+import org.opensaml.xml.io.MarshallingException;
 import org.opensaml.xml.util.Base64;
 
 import axiom.saml.idp.IdentityProvider;
@@ -59,7 +62,16 @@ public class SamlIdpSoapBindingImpl implements axiom.soap.SamlIdp{
     		
   
     	logger.debug("Calling IdP to create SAML response");
-		String rawSamlResponse = XmlObjectSerializer.xmlObjectToString(new IdentityProvider(idpConfig).generateSamlResponse());
+		String rawSamlResponse = null;
+		try {
+			rawSamlResponse = XmlObjectSerializer.xmlObjectToString(new IdentityProvider(idpConfig).generateSamlResponse());
+		} catch (MarshallingException e) {
+			throw new RuntimeException(e);
+		} catch (TransformerFactoryConfigurationError e) {
+			throw new RuntimeException(e);
+		} catch (TransformerException e) {
+			throw new RuntimeException(e);
+		}
 				
 		if(axiomSamlRequest.getBase64EncodeResponse() != null && axiomSamlRequest.getBase64EncodeResponse()==false){
 			logger.debug("Returning plain text SAMLResponse via SOAP");
