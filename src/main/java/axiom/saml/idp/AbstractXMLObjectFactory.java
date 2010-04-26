@@ -26,7 +26,7 @@ public abstract class AbstractXMLObjectFactory {
 			logger.debug("Loading OpenSAML2 library");
 			DefaultBootstrap.bootstrap();
 		} catch (ConfigurationException e) {
-			logger.error("Error configuring OpenSAML2 library",e);
+			throw new RuntimeException("Error configuring OpenSAML2 library",e);
 		} 
 		
 		logger.debug("Loading OpenSAML BuilderFactory from Configuration");

@@ -20,6 +20,7 @@ import org.opensaml.xml.util.Base64;
 
 import axiom.saml.idp.IdentityProvider;
 import axiom.saml.idp.IdpConfiguation;
+import axiom.saml.idp.XmlObjectSerializer;
 
 
 
@@ -58,7 +59,7 @@ public class SamlIdpSoapBindingImpl implements axiom.soap.SamlIdp{
     		
   
     	logger.debug("Calling IdP to create SAML response");
-		String rawSamlResponse = new IdentityProvider(idpConfig).generateSerializedSamlResponse();
+		String rawSamlResponse = XmlObjectSerializer.xmlObjectToString(new IdentityProvider(idpConfig).generateSamlResponse());
 				
 		if(axiomSamlRequest.getBase64EncodeResponse() != null && axiomSamlRequest.getBase64EncodeResponse()==false){
 			logger.debug("Returning plain text SAMLResponse via SOAP");

@@ -2,7 +2,6 @@ package axiom.saml.idp;
 
 import org.apache.log4j.Logger;
 import org.opensaml.common.SignableSAMLObject;
-import org.opensaml.xml.signature.SignatureException;
 
 
 public class IdentityProvider {
@@ -15,16 +14,7 @@ public class IdentityProvider {
 		this.config = config;
 	}
 	
-	public String generateSerializedSamlResponse(){
-		SignableSAMLObject response = generateSamlResponse();
-				
-		String responseString = XmlObjectSerializer.xmlObjectToString(response);
-		logger.trace("SamlResponse String:\n" + responseString);
-		
-		return responseString;
-	}
-
-	protected SignableSAMLObject generateSamlResponse() {
+	public SignableSAMLObject generateSamlResponse(){
 		logger.debug("Generating SamlResponse");
 
 		SignableSAMLObject response = null;
@@ -32,15 +22,8 @@ public class IdentityProvider {
 		logger.debug("Building unsigned SamlResponse");
 		response = config.getResponseFactory().buildResponse();
 		
-		logger.debug("Signing SamlResponse");
-		try {
-			response = (SignableSAMLObject) config.getXmlObjectSigner().sign(response);
-		} catch (SignatureException e) {
-			logger.error(e);
-		}
-		
-		logger.debug("Returning SamlResponse");		
-		return response;
+		logger.debug("Signing and returning SamlResponse");		
+		return (SignableSAMLObject) config.getXmlObjectSigner().sign(response);
 	}
 
 	

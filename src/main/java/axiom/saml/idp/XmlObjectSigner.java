@@ -92,30 +92,30 @@ public class XmlObjectSigner {
 			}
 			
 		} catch (UnrecoverableKeyException e) {
-			logger.error(e);
+			throw new RuntimeException(e);
 		} catch (KeyStoreException e) {
-			logger.error(e);
+			throw new RuntimeException(e);
 		} catch (FileNotFoundException e) {
-			logger.error(e);
+			throw new RuntimeException(e);
 		} catch (NoSuchAlgorithmException e) {
-			logger.error(e);
+			throw new RuntimeException(e);
 		} catch (CertificateException e) {
-			logger.error(e);
+			throw new RuntimeException(e);
 		} catch (IOException e) {
-			logger.error(e);
+			throw new RuntimeException(e);
 		} catch (NullPointerException e) {
-			logger.error("Could not load keystore. Check alias names." + e);
+			throw new RuntimeException("Could not load keystore. Check alias names.", e);
 		} finally {
 			try {
 				logger.debug("Closing keystore");
 				if(keystoreStream != null) keystoreStream.close();
 			} catch (IOException e) {
-				logger.error(e);
+				throw new RuntimeException(e);
 			}
 		}
 	}
 	
-	public SignableXMLObject sign(SignableXMLObject signableXmlObject) throws SignatureException{
+	public SignableXMLObject sign(SignableXMLObject signableXmlObject) {
 		logger.debug("Building unsigned Signature");
 		Signature signature = (Signature)Configuration.getBuilderFactory().getBuilder(Signature.DEFAULT_ELEMENT_NAME).buildObject(Signature.DEFAULT_ELEMENT_NAME);
 			signature.setSigningCredential(credential);
@@ -128,8 +128,8 @@ public class XmlObjectSigner {
 					KeyInfo keyInfo = null;
 					try {
 						keyInfo = keyInfoGeneratorFactory.newInstance().generate(credential);
-					} catch (SecurityException e1) {
-						logger.error(e1);
+					} catch (SecurityException e) {
+						throw new RuntimeException(e);
 					}
 				signature.setKeyInfo(keyInfo);
 			}
@@ -140,7 +140,7 @@ public class XmlObjectSigner {
 			} else if (credential.getPublicKey().getAlgorithm().equalsIgnoreCase("RSA")){
 				signature.setSignatureAlgorithm(SignatureConstants.ALGO_ID_SIGNATURE_RSA);
 			} else {
-				throw new SignatureException("Unknown public key algorithm. Signature algorithm not set.");
+				throw new RuntimeException(new SignatureException("Unknown public key algorithm. Signature algorithm not set."));
 			}
 			//TODO: add more algos
 			
@@ -152,11 +152,15 @@ public class XmlObjectSigner {
 		try {
 			marshaller.marshall(signableXmlObject);
 		} catch (MarshallingException e) {
-			logger.error(e);
+			throw new RuntimeException(e);
 		}
 
 		logger.debug("Signing signableXmlObject");		
-		Signer.signObject(signature);
+		try {
+			Signer.signObject(signature);
+		} catch (SignatureException e) {
+			throw new RuntimeException(e);
+		}
 		
 		logger.debug("Returning signed signableXmlObject");		
 		return signableXmlObject;

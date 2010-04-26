@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 
 import axiom.saml.idp.IdentityProvider;
 import axiom.saml.idp.SamlVersion;
+import axiom.saml.idp.XmlObjectSerializer;
 
 
 public class SamlIdpResponseGenerator extends SamlIdpSupport {
@@ -21,7 +22,7 @@ public class SamlIdpResponseGenerator extends SamlIdpSupport {
 	public String execute() throws Exception {
 		IdentityProvider idp = new IdentityProvider(getIdpConfig());
 		
-		setRawSAMLResponse(idp.generateSerializedSamlResponse());
+		setRawSAMLResponse(XmlObjectSerializer.xmlObjectToString(idp.generateSamlResponse()));
 		logger.debug("\nrawSAMLResponse:\n" + getRawSAMLResponse());
 		
 		if(getIdpConfig().getSamlVersion() == SamlVersion._1_1){
