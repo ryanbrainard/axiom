@@ -3,7 +3,6 @@ package axiom.saml.idp;
 import java.io.StringWriter;
 
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
@@ -32,34 +31,24 @@ public class XmlObjectSerializer {
 	/**
 	 * Serializes XML Objects into XML Strings
 	 * @param xmlObject
+	 * @throws MarshallingException 
+	 * @throws TransformerFactoryConfigurationError 
+	 * @throws TransformerException 
 	 */
-	public static String xmlObjectToString(XMLObject xmlObject){
+	public static String xmlObjectToString(XMLObject xmlObject) throws MarshallingException, TransformerFactoryConfigurationError, TransformerException{
 		logger.debug("Marshalling XMLObject into Element");
 		MarshallerFactory marshallerFactory = Configuration.getMarshallerFactory();
 		Marshaller marshaller = marshallerFactory.getMarshaller(xmlObject);
 		Element samlObjectElement = null;
-		try {
-			samlObjectElement = marshaller.marshall(xmlObject);
-		} catch (MarshallingException e) {
-			logger.error(e);
-		}
-		
+		samlObjectElement = marshaller.marshall(xmlObject);
+
 		logger.debug("Transforming Element into String");
 		Transformer transformer = null;
-		try {
-			transformer = TransformerFactory.newInstance().newTransformer();
-		} catch (TransformerConfigurationException e) {
-			logger.error(e);
-		} catch (TransformerFactoryConfigurationError e) {
-			logger.error(e);
-		}
+		transformer = TransformerFactory.newInstance().newTransformer();
+
 		StreamResult result = new StreamResult(new StringWriter());
 		DOMSource source = new DOMSource(samlObjectElement);
-		try {
-			transformer.transform(source, result);
-		} catch (TransformerException e) {
-			logger.error(e);
-		}
+		transformer.transform(source, result);
 
 		logger.trace("Completed XML String:\n" + result.getWriter().toString());
 		logger.debug("Returning XML String");
