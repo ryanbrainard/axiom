@@ -305,11 +305,11 @@ public class IdpConfiguation {
 	}
 
 	public void setKeystorePassword(char[] keystorePassword) {
-		this.keystorePassword = keystorePassword;
+		this.keystorePassword = Arrays.copyOf(keystorePassword, keystorePassword.length);
 	}
 
 	public void setKeystoreAliasPassword(char[] keystoreAliasPassword) {
-		this.keystoreAliasPassword = keystoreAliasPassword;
+		this.keystoreAliasPassword = Arrays.copyOf(keystoreAliasPassword, keystoreAliasPassword.length);
 	}
 
 	public CredentialType getCredentialType() {

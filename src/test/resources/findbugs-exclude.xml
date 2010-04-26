@@ -1,0 +1,5 @@
+<FindBugsFilter>
+     <Match>
+       <Package name="~.*\.soap.*" />
+     </Match>
+</FindBugsFilter>
