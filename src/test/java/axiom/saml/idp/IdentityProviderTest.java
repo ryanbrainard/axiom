@@ -54,9 +54,39 @@ public class IdentityProviderTest extends TestCase {
 		config.setSamlUserIdLocation(SamlUserIdLocation.ATTRIBUTE);
 		config.setAttributeName("testName");
 		config.setAttributeUri("testUri");
-		config.setRecipient("https://login-blitz03.soma.salesforce.com/?saml=02HKiPoin4IMxEBzAk2_F4dhH8hdqXG99mphisns1p1JlhrOilbDjFOck2vrkSTjharCU.d0czKy4g4g==");;
+		config.setRecipient("https://login-blitz03.soma.salesforce.com/?saml=02HKiPoin4IMxEBzAk2_F4dhH8hdqXG99mphisns1p1JlhrOilbDjFOck2vrkSTjharCU.d0czKy4g4g==");
 		
 		assertValidSamlResponse(config, generateSamlResponse(config));
+	}	
+
+	public void testSsoStartPage() throws Exception {
+		final String ssoStartPage = "http://the/start/page";
+		
+		final IdpConfiguation config = getDefaultIdpConfiguation();
+		
+		config.setSamlVersion(SamlVersion._2_0);
+		config.setSamlUserIdLocation(SamlUserIdLocation.SUBJECT);
+		config.setSsoStartPage(ssoStartPage);
+		
+		assertEquals(ssoStartPage, getFirstAttributeValuesValue((org.opensaml.saml2.core.Response) generateSamlResponse(config)));
+	}
+
+	public void testLogoutUrl() throws Exception {
+		final String logoutUrl = "http://the/logout/url";
+
+		final IdpConfiguation config = getDefaultIdpConfiguation();
+		
+		config.setSamlVersion(SamlVersion._2_0);
+		config.setSamlUserIdLocation(SamlUserIdLocation.SUBJECT);
+		config.setLogoutURL(logoutUrl);
+	
+		assertEquals(logoutUrl, getFirstAttributeValuesValue((org.opensaml.saml2.core.Response) generateSamlResponse(config)));
+	}	
+
+	private String getFirstAttributeValuesValue(final org.opensaml.saml2.core.Response response) {
+		return ((XSString) response.getAssertions().get(0)
+				.getAttributeStatements().get(0).getAttributes().get(0)
+				.getAttributeValues().get(0)).getValue();
 	}	
 	
 	private IdpConfiguation getDefaultIdpConfiguation(){
@@ -82,6 +112,8 @@ public class IdentityProviderTest extends TestCase {
 	}
 	
 	private void assertValidSamlResponse(final IdpConfiguation config, final SignableSAMLObject response) throws Exception{
+		Thread.sleep(1); //stop beforeNow comparison flappers
+		
 		final Signature signature;
 		
 		//Parse and assert differently based on SAML version.
