@@ -1,6 +1,7 @@
 package axiom.saml.idp;
 
 import java.io.File;
+import java.util.Arrays;
 
 import org.apache.log4j.Logger;
 import org.opensaml.xml.signature.SignatureConstants;
@@ -208,11 +209,11 @@ public class IdpConfiguation {
 	}
 
 	public char[] getKeystorePassword() {
-		return keystorePassword;
+		return Arrays.copyOf(keystorePassword, keystorePassword.length);
 	}
 
 	public char[] getKeystoreAliasPassword() {
-		return keystoreAliasPassword;
+		return Arrays.copyOf(keystoreAliasPassword, keystoreAliasPassword.length);
 	}
 
 	public SamlVersion getSamlVersion() {

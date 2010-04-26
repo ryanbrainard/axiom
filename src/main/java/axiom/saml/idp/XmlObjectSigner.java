@@ -166,29 +166,23 @@ public class XmlObjectSigner {
 		return credential;
 	}
 	
-	public File getCertFile(){		
+	public File getCertFile() throws CertificateEncodingException, IOException{		
 		byte[] certBytes = null; 
 		File certFile = null;
 		
-		try {
-			logger.debug("Exporting certificate");
-			certBytes = x509cert.getEncoded();
-		} catch (CertificateEncodingException e) {
-			logger.error(e);
-		}
-		
+		logger.debug("Exporting certificate");
+		certBytes = x509cert.getEncoded();
+	
+		FileOutputStream fos = null;
 		try {
 			certFile = File.createTempFile("samlIdpCert-",".cer");
-			FileOutputStream fos = new FileOutputStream(certFile);
+			fos = new FileOutputStream(certFile);
 			fos.write(certBytes);
-			fos.close();
 			logger.info("Certificate written to " + certFile.getCanonicalPath());
-		} catch (FileNotFoundException e) {
-			logger.error(e);
-		} catch (IOException e) {
-			logger.error(e);
+		} finally {
+			if(fos != null) fos.close();
 		}
-		
+
 		return certFile;
 	}
 
