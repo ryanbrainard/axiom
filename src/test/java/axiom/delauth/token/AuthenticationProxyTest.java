@@ -1,20 +1,19 @@
 package axiom.delauth.token;
 
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import junit.framework.TestCase;
 
 import org.apache.axis.AxisFault;
 import org.apache.axis.Message;
 import org.apache.axis.MessageContext;
 import org.apache.axis.message.SOAPEnvelope;
-import org.apache.axis.message.SOAPHeaderElement;
 import org.apache.log4j.Logger;
 import org.junit.Test;
-import static org.mockito.Mockito.*;
 
 import axiom.delauth.token.AuthenticationProxy.MessageContextProvider;
 
-import com.sforce.soap.enterprise.SforceServiceLocator;
 import com.sforce.soap.enterprise.fault.LoginFault;
 
 public class AuthenticationProxyTest extends TestCase {

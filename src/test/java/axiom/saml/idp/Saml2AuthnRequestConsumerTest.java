@@ -1,10 +1,8 @@
 package axiom.saml.idp;
 
-import java.util.Arrays;
+import junit.framework.TestCase;
 
 import org.apache.axis.encoding.Base64;
-
-import junit.framework.TestCase;
 
 public class Saml2AuthnRequestConsumerTest extends TestCase {
 		

@@ -1,7 +1,5 @@
 package axiom.web;
 
-import java.util.Arrays;
-
 import org.apache.axis.encoding.Base64;
 
 import axiom.saml.idp.Saml2AuthnRequestConsumer;

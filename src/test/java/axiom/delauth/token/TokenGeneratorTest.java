@@ -1,7 +1,7 @@
 package axiom.delauth.token;
 
-import org.apache.log4j.Logger;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 

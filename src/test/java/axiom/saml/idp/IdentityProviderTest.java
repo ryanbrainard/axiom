@@ -15,8 +15,6 @@ import org.opensaml.xml.XMLObject;
 import org.opensaml.xml.schema.XSString;
 import org.opensaml.xml.signature.Signature;
 import org.opensaml.xml.signature.SignatureValidator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class IdentityProviderTest extends TestCase {
 		
