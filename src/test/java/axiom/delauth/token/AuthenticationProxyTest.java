@@ -1,10 +1,12 @@
 package axiom.delauth.token;
 
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import axiom.delauth.token.AuthenticationProxy.MessageContextProvider;
+import com.sforce.soap.enterprise.LoginResult;
+import com.sforce.soap.enterprise.SforceServiceLocator;
+import com.sforce.soap.enterprise.SoapBindingStub;
+import com.sforce.soap.enterprise.fault.LoginFault;
 import junit.framework.TestCase;
-
 import org.apache.axis.AxisFault;
 import org.apache.axis.Message;
 import org.apache.axis.MessageContext;
@@ -12,9 +14,7 @@ import org.apache.axis.message.SOAPEnvelope;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import axiom.delauth.token.AuthenticationProxy.MessageContextProvider;
-
-import com.sforce.soap.enterprise.fault.LoginFault;
+import static org.mockito.Mockito.*;
 
 public class AuthenticationProxyTest extends TestCase {
 
@@ -28,8 +28,10 @@ public class AuthenticationProxyTest extends TestCase {
 				return false;
 			}
 		};
-		AuthenticationProxy proxy = new AuthenticationProxy(badAuthenticator, null);
-		try {
+
+		AuthenticationProxy proxy = new AuthenticationProxy(badAuthenticator, null, new SforceServiceLocator());
+
+        try {
 			proxy.login("username", "password");
 			fail();
 		} catch (LoginFault expectedException) {
@@ -56,21 +58,23 @@ public class AuthenticationProxyTest extends TestCase {
 					when(messageContext.getRequestMessage()).thenReturn(message);
 					SOAPEnvelope envelope = mock(SOAPEnvelope.class);
 					when(message.getSOAPEnvelope()).thenReturn(envelope);
-					//SOAPHeaderElement callOptionsElement = mock(SOAPHeaderElement.class);
-					//when(envelope.getHeaderByName(new SforceServiceLocator().getServiceName().getNamespaceURI(), "CallOptions")).thenReturn(callOptionsElement);
 				} catch (AxisFault e) {
-					//ignore. we're mocking!
+					//ignore. we're mocking, but can't throw anything else.
 				}
 				return messageContext;
 			}
 		};
-		
-		AuthenticationProxy proxy = new AuthenticationProxy(authenticator, messageContextProvider);
-		try {
-			proxy.login("username", "password");
-			fail();
-		} catch (LoginFault expectedException) {
-			// expected.
-		}
+
+        final SoapBindingStub soapBindingStub = mock(SoapBindingStub.class);
+        final LoginResult loginResult = new LoginResult();
+        loginResult.setSessionId("something unique");
+        when(soapBindingStub.login(anyString(), anyString())).thenReturn(loginResult);
+        
+        final SforceServiceLocator sforceServiceLocator = spy(new SforceServiceLocator());
+        when(sforceServiceLocator.getSoap()).thenReturn(soapBindingStub);
+
+        AuthenticationProxy proxy = new AuthenticationProxy(authenticator, messageContextProvider, sforceServiceLocator);
+
+        assertEquals(loginResult, proxy.login("username", "password"));
 	}
 }

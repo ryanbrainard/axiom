@@ -7,10 +7,13 @@
 
 package axiom.delauth.token;
 
-import java.util.Iterator;
-
-import javax.xml.rpc.ServiceException;
-
+import com.sforce.soap.enterprise.CallOptions;
+import com.sforce.soap.enterprise.LoginResult;
+import com.sforce.soap.enterprise.SforceServiceLocator;
+import com.sforce.soap.enterprise.SoapBindingStub;
+import com.sforce.soap.enterprise.fault.ExceptionCode;
+import com.sforce.soap.enterprise.fault.LoginFault;
+import com.sforce.soap.enterprise.fault.UnexpectedErrorFault;
 import org.apache.axis.Message;
 import org.apache.axis.MessageContext;
 import org.apache.axis.message.MessageElement;
@@ -18,14 +21,8 @@ import org.apache.axis.message.SOAPEnvelope;
 import org.apache.axis.message.SOAPHeaderElement;
 import org.apache.log4j.Logger;
 
-import com.sforce.soap.enterprise.CallOptions;
-import com.sforce.soap.enterprise.LoginResult;
-import com.sforce.soap.enterprise.SforceServiceLocator;
-import com.sforce.soap.enterprise.SoapBindingStub;
-import com.sforce.soap.enterprise.fault.ExceptionCode;
-import com.sforce.soap.enterprise.fault.InvalidIdFault;
-import com.sforce.soap.enterprise.fault.LoginFault;
-import com.sforce.soap.enterprise.fault.UnexpectedErrorFault;
+import javax.xml.rpc.ServiceException;
+import java.util.Iterator;
 
 
 
@@ -33,8 +30,9 @@ import com.sforce.soap.enterprise.fault.UnexpectedErrorFault;
 public class AuthenticationProxy implements com.sforce.soap.enterprise.Soap{
     
 	private static Logger logger = Logger.getLogger(AuthenticationProxy.class);
+    private final SforceServiceLocator sforceServiceLocator;
 
-	static interface MessageContextProvider{
+    static interface MessageContextProvider{
 		public MessageContext getMessageContext();
 	}
 	
@@ -49,14 +47,16 @@ public class AuthenticationProxy implements com.sforce.soap.enterprise.Soap{
 				return MessageContext.getCurrentContext();
 			}
 		};
-	}
+        sforceServiceLocator = new SforceServiceLocator();
+    }
 	
-	public AuthenticationProxy(Authenticator authenticator, MessageContextProvider messageContextProvider){
+	public AuthenticationProxy(Authenticator authenticator, MessageContextProvider messageContextProvider, SforceServiceLocator sforceServiceLocator){
 		this.authenticator = authenticator;
 		this.messageContextProvider = messageContextProvider;
-	}
+        this.sforceServiceLocator = sforceServiceLocator;
+    }
 
-	public LoginResult login(String username, String password)  throws java.rmi.RemoteException, InvalidIdFault, UnexpectedErrorFault, LoginFault{
+	public LoginResult login(String username, String password)  throws java.rmi.RemoteException {
 		
 		if(!authenticator.authenticate(username, password)){
 			logger.debug("not authenticated by proxy");
@@ -70,8 +70,7 @@ public class AuthenticationProxy implements com.sforce.soap.enterprise.Soap{
 		
     	try {
     		logger.debug("creating client binding stub");
-    		SforceServiceLocator sforceServiceLocator = new SforceServiceLocator();
-    		SoapBindingStub soapBindingStub = (SoapBindingStub)sforceServiceLocator.getSoap();
+            SoapBindingStub soapBindingStub = (SoapBindingStub) sforceServiceLocator.getSoap();
 
     		logger.debug("Extracting CallOptions header values");	
 			MessageContext context = messageContextProvider.getMessageContext();
