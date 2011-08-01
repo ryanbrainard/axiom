@@ -1,7 +1,6 @@
 package axiom.saml.idp;
 
 import java.io.File;
-import java.util.Arrays;
 
 import org.apache.log4j.Logger;
 import org.opensaml.xml.signature.SignatureConstants;
@@ -28,6 +27,8 @@ public class IdpConfiguation {
 	
 	private SamlVersion samlVersion;
 	private SamlUserIdLocation samlUserIdLocation;
+	private String portalUser;
+	
 	
 	private String issuer;
 	private String recipient;
@@ -38,7 +39,11 @@ public class IdpConfiguation {
 	private String ssoStartPage;
 	private String startURL;
 	private String logoutURL;
-	
+	private String orgId;
+	private String portalId;
+	private String siteURL;
+	private String userType;
+		
 	private File keystoreFile;
 	private char[] keystorePassword;
 	private String keystoreAlias;
@@ -107,6 +112,20 @@ public class IdpConfiguation {
 				((Saml2AbstractAssertionFactory)assertionFactory).setRecipient(recipient);
 				((Saml2AbstractAssertionFactory)assertionFactory).setSsoStartPage(ssoStartPage);
 				((Saml2AbstractAssertionFactory)assertionFactory).setLogoutURL(logoutURL);
+				((Saml2AbstractAssertionFactory)assertionFactory).setUserType(userType);
+				
+					
+				if(userType.equalsIgnoreCase("PORTAL")){
+					((Saml2AbstractAssertionFactory)assertionFactory).setOrgId(orgId);
+					((Saml2AbstractAssertionFactory)assertionFactory).setPortalId(portalId);
+				}
+				if(userType.equalsIgnoreCase("SITE")){
+					((Saml2AbstractAssertionFactory)assertionFactory).setOrgId(orgId);
+					((Saml2AbstractAssertionFactory)assertionFactory).setPortalId(portalId);
+					((Saml2AbstractAssertionFactory)assertionFactory).setSiteURL(siteURL);
+					
+				}
+				
 				break;
 				
 			default:
@@ -209,11 +228,11 @@ public class IdpConfiguation {
 	}
 
 	public char[] getKeystorePassword() {
-		return Arrays.copyOf(keystorePassword, keystorePassword.length);
+		return keystorePassword;
 	}
 
 	public char[] getKeystoreAliasPassword() {
-		return Arrays.copyOf(keystoreAliasPassword, keystoreAliasPassword.length);
+		return keystoreAliasPassword;
 	}
 
 	public SamlVersion getSamlVersion() {
@@ -231,6 +250,15 @@ public class IdpConfiguation {
 	public void setSamlUserIdLocation(SamlUserIdLocation samlUserIdLocation) {
 		this.samlUserIdLocation = samlUserIdLocation;
 	}
+	
+	public String getPortalUser() {
+		return portalUser;
+	}
+
+	public void setPortalUser(String portalUser) {
+		this.portalUser = portalUser;
+	}
+
 
 	public String getIssuer() {
 		return issuer;
@@ -288,6 +316,23 @@ public class IdpConfiguation {
 		this.logoutURL = logoutURL;
 	}	
 	
+	public String getOrgId() {
+		return orgId;
+	}
+
+	public void setOrgId(String orgId) {
+		this.orgId = orgId;
+	}
+
+	public String getPortalId() {
+		return portalId;
+	}
+
+	public void setPortalId(String portalId) {
+		this.portalId = portalId;
+	}
+
+	
 	public File getKeystoreFile() {
 		return keystoreFile;
 	}
@@ -305,11 +350,11 @@ public class IdpConfiguation {
 	}
 
 	public void setKeystorePassword(char[] keystorePassword) {
-		this.keystorePassword = Arrays.copyOf(keystorePassword, keystorePassword.length);
+		this.keystorePassword = keystorePassword;
 	}
 
 	public void setKeystoreAliasPassword(char[] keystoreAliasPassword) {
-		this.keystoreAliasPassword = Arrays.copyOf(keystoreAliasPassword, keystoreAliasPassword.length);
+		this.keystoreAliasPassword = keystoreAliasPassword;
 	}
 
 	public CredentialType getCredentialType() {
@@ -343,4 +388,21 @@ public class IdpConfiguation {
 	public void setStartURL(String startURL) {
 		this.startURL = startURL;
 	}
+		public String getSiteURL() {
+		return siteURL;
+	}
+
+	public void setSiteURL(String siteURL) {
+		this.siteURL = siteURL;
+	}
+	
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
 }

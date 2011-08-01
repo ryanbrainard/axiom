@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import axiom.saml.idp.IdpConfiguation;
 import axiom.saml.idp.SamlUserIdLocation;
 import axiom.saml.idp.SamlVersion;
+import axiom.saml.idp.UserTypes;
 
 public abstract class SamlIdpSupport extends AxiomSupport{
 	
@@ -79,6 +80,16 @@ public abstract class SamlIdpSupport extends AxiomSupport{
 			locations.put(SamlUserIdLocation.ATTRIBUTE, getText("label.saml.idp.samlUserIdLocation.values.attribute"));
 		return locations;
 	}
+	
+	public LinkedHashMap<UserTypes, String> getuserType(){
+		LinkedHashMap<UserTypes, String> locations = new LinkedHashMap<UserTypes, String>();
+		locations.put(UserTypes.STANDARD, "Standard");
+		locations.put(UserTypes.PORTAL,"Portal");
+		locations.put(UserTypes.SITE,"Site");
+			
+		return locations;
+	}
+	
 	
 	//properties for RelayState that are stored in startUrl
 	public String getRelayState() {
