@@ -1,6 +1,12 @@
 package axiom.saml.idp;
 
-public enum SamlUserIdLocation {
+import axiom.web.LabelKeyed;
+
+public enum SamlUserIdLocation implements LabelKeyed {
 	SUBJECT,
-	ATTRIBUTE
+	ATTRIBUTE;
+
+    public String getLabelKey() {
+        return "label.saml.idp.samlUserIdLocation.values." + name().toLowerCase();
+    }
 }

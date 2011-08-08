@@ -1,20 +1,19 @@
 package axiom.saml.idp;
 
-import java.io.File;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicReference;
-
 import junit.framework.TestCase;
-
 import org.opensaml.common.SignableSAMLObject;
 import org.opensaml.saml1.core.AuthenticationStatement;
 import org.opensaml.xml.XMLObject;
 import org.opensaml.xml.schema.XSString;
 import org.opensaml.xml.signature.Signature;
 import org.opensaml.xml.signature.SignatureValidator;
+
+import java.io.File;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class IdentityProviderTest extends TestCase {
 
@@ -88,7 +87,7 @@ public class IdentityProviderTest extends TestCase {
 	}
 
 	public void testPortalUser() throws Exception {
-		final String userType = "PORTAL";
+		final UserType userType = UserType.PORTAL;
 
 		final String portalId = "060C000000022IF";
 		final String orgId = "00DC0000000Pd8W";
@@ -131,7 +130,7 @@ public class IdentityProviderTest extends TestCase {
 	}
 
 	public void testSiteUser() throws Exception {
-		final String userType = "SITE";
+		final UserType userType = UserType.SITE;
 
 		final String portalId = "060C000000022IF";
 		final String orgId = "00DC0000000Pd8W";
@@ -205,7 +204,7 @@ public class IdentityProviderTest extends TestCase {
 
 		config.setRecipient("https://login-blitz03.soma.salesforce.com");
 		config.setUserId("admin.na1-blitz03.rbrainard@salesforce.com");
-		config.setUserType("STANDARD");
+		config.setUserType(UserType.STANDARD);
 
 		return config;
 	}

@@ -1,9 +1,9 @@
 package axiom.saml.idp;
 
-import java.io.File;
-
 import org.apache.log4j.Logger;
 import org.opensaml.xml.signature.SignatureConstants;
+
+import java.io.File;
 
 
 /**
@@ -42,7 +42,7 @@ public class IdpConfiguation {
 	private String orgId;
 	private String portalId;
 	private String siteURL;
-	private String userType;
+	private UserType userType;
 		
 	private File keystoreFile;
 	private char[] keystorePassword;
@@ -113,21 +113,21 @@ public class IdpConfiguation {
 				((Saml2AbstractAssertionFactory)assertionFactory).setSsoStartPage(ssoStartPage);
 				((Saml2AbstractAssertionFactory)assertionFactory).setLogoutURL(logoutURL);
 				((Saml2AbstractAssertionFactory)assertionFactory).setUserType(userType);
-				
-					
-				if(userType.equalsIgnoreCase("PORTAL")){
-					((Saml2AbstractAssertionFactory)assertionFactory).setOrgId(orgId);
-					((Saml2AbstractAssertionFactory)assertionFactory).setPortalId(portalId);
-				}
-				if(userType.equalsIgnoreCase("SITE")){
-					((Saml2AbstractAssertionFactory)assertionFactory).setOrgId(orgId);
-					((Saml2AbstractAssertionFactory)assertionFactory).setPortalId(portalId);
-					((Saml2AbstractAssertionFactory)assertionFactory).setSiteURL(siteURL);
-					
-				}
-				
+
+                switch (userType) {
+                    case SITE:
+                        ((Saml2AbstractAssertionFactory)assertionFactory).setSiteURL(siteURL);
+                        // fall through to portal
+                    case PORTAL:
+                        ((Saml2AbstractAssertionFactory)assertionFactory).setOrgId(orgId);
+                        ((Saml2AbstractAssertionFactory)assertionFactory).setPortalId(portalId);
+                        break;
+                    default:
+                        break;
+                }
+
 				break;
-				
+
 			default:
 				throw new IllegalStateException("Invalid samlVersion");
 		}
@@ -395,14 +395,13 @@ public class IdpConfiguation {
 	public void setSiteURL(String siteURL) {
 		this.siteURL = siteURL;
 	}
-	
 
-	public String getUserType() {
+	public UserType getUserType() {
 		return userType;
 	}
 
-	public void setUserType(String userType) {
+
+	public void setUserType(UserType userType) {
 		this.userType = userType;
 	}
-
 }

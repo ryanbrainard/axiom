@@ -18,15 +18,15 @@
 		}
 
 		function setPortalValues(){
-			if(document.getElementById('GenerateSamlResponse_action_idpConfig_userTypePORTAL').checked){
+			if (document.getElementById('GenerateSamlResponse_action_idpConfig_userTypePORTAL').checked) {
 				document.getElementById('GenerateSamlResponse_action_idpConfig_orgId').disabled=false;
 				document.getElementById('GenerateSamlResponse_action_idpConfig_portalId').disabled=false;
 				document.getElementById('GenerateSamlResponse_action_idpConfig_siteURL').disabled=true;
-			} else if(document.getElementById('GenerateSamlResponse_action_idpConfig_userTypeSITE').checked){
+			} else if(document.getElementById('GenerateSamlResponse_action_idpConfig_userTypeSITE').checked) {
 				document.getElementById('GenerateSamlResponse_action_idpConfig_orgId').disabled=false;
 				document.getElementById('GenerateSamlResponse_action_idpConfig_portalId').disabled=false;
 				document.getElementById('GenerateSamlResponse_action_idpConfig_siteURL').disabled=false;
-			} else{
+			} else {
 				document.getElementById('GenerateSamlResponse_action_idpConfig_userTypeSTANDARD').checked=true;
 				document.getElementById('GenerateSamlResponse_action_idpConfig_orgId').disabled=true;
 				document.getElementById('GenerateSamlResponse_action_idpConfig_portalId').disabled=true;
@@ -64,7 +64,7 @@
 		
 		<s:textfield label="%{getText('label.logoutURL')}" key="idpConfig.logoutURL" size="60"/>
 		
-		<s:radio label="%{getText('label.saml.idp.userType')}" key="idpConfig.userType" list="userType" value="%{getText('default.saml.idp.userType')}" onclick="setPortalValues();" />
+		<s:radio label="%{getText('label.saml.idp.userType')}" key="idpConfig.userType" list="userTypes" value="%{getText('default.saml.idp.userType')}" onclick="setPortalValues();" />
 	
 		<s:textfield label="%{getText('label.orgId')}" key="idpConfig.orgId" size="60"/>
 		

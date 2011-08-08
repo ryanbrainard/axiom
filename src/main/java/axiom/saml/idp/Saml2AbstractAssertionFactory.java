@@ -1,29 +1,16 @@
 package axiom.saml.idp;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.opensaml.Configuration;
 import org.opensaml.common.SAMLObjectBuilder;
 import org.opensaml.common.SAMLVersion;
-import org.opensaml.saml2.core.Assertion;
-import org.opensaml.saml2.core.Attribute;
-import org.opensaml.saml2.core.AttributeStatement;
-import org.opensaml.saml2.core.AttributeValue;
-import org.opensaml.saml2.core.Audience;
-import org.opensaml.saml2.core.AudienceRestriction;
-import org.opensaml.saml2.core.AuthnContext;
-import org.opensaml.saml2.core.AuthnContextClassRef;
-import org.opensaml.saml2.core.AuthnStatement;
-import org.opensaml.saml2.core.Conditions;
-import org.opensaml.saml2.core.Issuer;
-import org.opensaml.saml2.core.NameID;
-import org.opensaml.saml2.core.Subject;
-import org.opensaml.saml2.core.SubjectConfirmation;
-import org.opensaml.saml2.core.SubjectConfirmationData;
+import org.opensaml.saml2.core.*;
 import org.opensaml.xml.schema.XSString;
 import org.opensaml.xml.schema.impl.XSStringBuilder;
+
+import java.util.EnumSet;
+import java.util.List;
 
 /**
  * Subclasses extend this class to build SAML 2.0 Assertions.
@@ -45,7 +32,7 @@ public abstract class Saml2AbstractAssertionFactory extends
 	private String orgId;
 	private String portalId;
 	private String siteURL;
-	private String userType;
+	private UserType userType;
 
 	/**
 	 * No-arg constructor. Should only be created from IdpConfiguration or
@@ -224,9 +211,7 @@ public abstract class Saml2AbstractAssertionFactory extends
 			attributeStatement.getAttributes().add(logoutUrlAttribute);
 		}
 
-		if (userType.equalsIgnoreCase("PORTAL")
-				|| userType.equalsIgnoreCase("SITE")) {
-
+		if (EnumSet.of(UserType.PORTAL, UserType.SITE).contains(userType)) {
 			XSString orgIdAttributeValue = ((XSStringBuilder) Configuration
 					.getBuilderFactory().getBuilder(XSString.TYPE_NAME))
 					.buildObject(AttributeValue.DEFAULT_ELEMENT_NAME,
@@ -258,7 +243,7 @@ public abstract class Saml2AbstractAssertionFactory extends
 			attributeStatement.getAttributes().add(portalIdAttribute);
 		}
 
-		if (userType.equalsIgnoreCase("SITE")) {
+		if (userType == UserType.SITE) {
 
 			XSString siteURLAttributeValue = ((XSStringBuilder) Configuration
 					.getBuilderFactory().getBuilder(XSString.TYPE_NAME))
@@ -355,11 +340,11 @@ public abstract class Saml2AbstractAssertionFactory extends
 		this.siteURL = siteURL;
 	}
 
-	public String getUserType() {
+	public UserType getUserType() {
 		return userType;
 	}
 
-	public void setUserType(String userType) {
+	public void setUserType(UserType userType) {
 		this.userType = userType;
 	}
 
