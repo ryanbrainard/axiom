@@ -96,11 +96,11 @@
 		<dependency>
 			<groupId>org.opensaml</groupId>
 			<artifactId>xmltooling</artifactId>
-			<version>1.2.0</version>
+			<version>1.3.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.xerces</groupId>
-			<artifactId>xml-apis</artifactId>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
 			<version>2.9.1</version>
 			<scope>runtime</scope>
 		</dependency>
@@ -112,7 +112,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>log4j-over-slf4j</artifactId>
-			<version>1.5.5</version>
+			<version>1.6.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.opensymphony</groupId>
@@ -122,10 +122,10 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
-			<version>1.5.5</version>
+			<version>1.6.1</version>
 			<scope>compile</scope>
 		</dependency>
-		<dependency>
+        <dependency>
 			<groupId>axis</groupId>
 			<artifactId>axis-wsdl4j</artifactId>
 			<version>1.5.1</version>
@@ -152,7 +152,7 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<configuration>
-					<findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+					<!--<findbugsXmlWithMessages>true</findbugsXmlWithMessages>-->
 					<xmlOutput>true</xmlOutput>
 					<includeFilterFile>src/test/resources/findbugs-include.xml</includeFilterFile>
 					<excludeFilterFile>src/test/resources/findbugs-exclude.xml</excludeFilterFile>
