@@ -57,7 +57,7 @@
 
   <context-param>
     <param-name>version</param-name>
-    <param-value>0.8</param-value>
+    <param-value>1.0-SNAPSHOT</param-value> <!-- TODO: make this dynamic from pom.xml !  -->
   </context-param>
   
   <context-param>
