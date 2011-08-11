@@ -1,6 +1,6 @@
 package axiom.web;
 
-import axiom.saml.idp.IdpConfiguation;
+import axiom.saml.idp.IdpConfiguration;
 import axiom.saml.idp.SamlUserIdLocation;
 import axiom.saml.idp.SamlVersion;
 import axiom.saml.idp.UserType;
@@ -16,13 +16,13 @@ public abstract class SamlIdpSupport extends AxiomSupport {
     @SuppressWarnings("unused")
 	private static Logger logger = Logger.getLogger(SamlIdpSupport.class);
 	
-	private IdpConfiguation idpConfig = new IdpConfiguation();
+	private IdpConfiguration idpConfig = new IdpConfiguration();
 	private String rawSAMLResponse = null;
 	private String target;
 	private boolean autoLogin = false;
 		
 		
-	public IdpConfiguation getIdpConfig() {
+	public IdpConfiguration getIdpConfig() {
 		String keystoreFile = getServletContext().getRealPath("/") + getServletContext().getInitParameter("keystoreFile");
 		if(keystoreFile != null && !keystoreFile.equals("")){
 			idpConfig.setKeystoreFile(new File(keystoreFile));
@@ -33,7 +33,7 @@ public abstract class SamlIdpSupport extends AxiomSupport {
 		
 		return idpConfig;
 	}
-	public void setIdpConfig(IdpConfiguation idpConfig) {
+	public void setIdpConfig(IdpConfiguration idpConfig) {
 		this.idpConfig = idpConfig;
 	}
 	

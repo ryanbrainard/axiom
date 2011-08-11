@@ -15,16 +15,14 @@ import javax.servlet.http.HttpServlet;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
 
+import axiom.saml.idp.*;
 import org.apache.axis.MessageContext;
 import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.log4j.Logger;
 import org.opensaml.xml.io.MarshallingException;
 import org.opensaml.xml.util.Base64;
 
-import axiom.saml.idp.IdentityProvider;
-import axiom.saml.idp.IdpConfiguation;
-import axiom.saml.idp.XmlObjectSerializer;
-
+import axiom.saml.idp.IdpConfiguration;
 
 
 public class SamlIdpSoapBindingImpl implements axiom.soap.SamlIdp{
@@ -35,7 +33,7 @@ public class SamlIdpSoapBindingImpl implements axiom.soap.SamlIdp{
 		
     	logger.debug("entering SOAP-based generateSamlResponse implementation");
     	
-    	IdpConfiguation idpConfig = new IdpConfiguation();
+    	IdpConfiguration idpConfig = new IdpConfiguration();
 			
     		logger.debug("Getting servlet context");
     		HttpServlet servlet = (HttpServlet)MessageContext.getCurrentContext().getProperty(HTTPConstants.MC_HTTP_SERVLET);

@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class IdentityProviderTest extends TestCase {
 
 	public void testConfigSaml1NameIdInSubject() throws Exception {
-		final IdpConfiguation config = getDefaultIdpConfiguation();
+		final IdpConfiguration config = getDefaultIdpConfiguation();
 
 		config.setSamlVersion(SamlVersion._1_1);
 		config.setSamlUserIdLocation(SamlUserIdLocation.SUBJECT);
@@ -27,7 +27,7 @@ public class IdentityProviderTest extends TestCase {
 	}
 
 	public void testConfigSaml1NameIdInAttribute() throws Exception {
-		final IdpConfiguation config = getDefaultIdpConfiguation();
+		final IdpConfiguration config = getDefaultIdpConfiguation();
 
 		config.setSamlVersion(SamlVersion._1_1);
 		config.setSamlUserIdLocation(SamlUserIdLocation.ATTRIBUTE);
@@ -38,7 +38,7 @@ public class IdentityProviderTest extends TestCase {
 	}
 
 	public void testConfigSaml2NameIdInSubject() throws Exception {
-		final IdpConfiguation config = getDefaultIdpConfiguation();
+		final IdpConfiguration config = getDefaultIdpConfiguation();
 
 		config.setSamlVersion(SamlVersion._2_0);
 		config.setSamlUserIdLocation(SamlUserIdLocation.SUBJECT);
@@ -47,7 +47,7 @@ public class IdentityProviderTest extends TestCase {
 	}
 
 	public void testConfigSaml2NameIdInAttribute() throws Exception {
-		final IdpConfiguation config = getDefaultIdpConfiguation();
+		final IdpConfiguration config = getDefaultIdpConfiguation();
 
 		config.setSamlVersion(SamlVersion._2_0);
 		config.setSamlUserIdLocation(SamlUserIdLocation.ATTRIBUTE);
@@ -61,7 +61,7 @@ public class IdentityProviderTest extends TestCase {
 	public void testSsoStartPage() throws Exception {
 		final String ssoStartPage = "http://the/start/page";
 
-		final IdpConfiguation config = getDefaultIdpConfiguation();
+		final IdpConfiguration config = getDefaultIdpConfiguation();
 
 		config.setSamlVersion(SamlVersion._2_0);
 		config.setSamlUserIdLocation(SamlUserIdLocation.SUBJECT);
@@ -75,7 +75,7 @@ public class IdentityProviderTest extends TestCase {
 	public void testLogoutUrl() throws Exception {
 		final String logoutUrl = "http://the/logout/url";
 
-		final IdpConfiguation config = getDefaultIdpConfiguation();
+		final IdpConfiguration config = getDefaultIdpConfiguation();
 
 		config.setSamlVersion(SamlVersion._2_0);
 		config.setSamlUserIdLocation(SamlUserIdLocation.SUBJECT);
@@ -91,7 +91,7 @@ public class IdentityProviderTest extends TestCase {
 
 		final String portalId = "060C000000022IF";
 		final String orgId = "00DC0000000Pd8W";
-		final IdpConfiguation config = getDefaultIdpConfiguation();
+		final IdpConfiguration config = getDefaultIdpConfiguation();
 
 		config.setSamlVersion(SamlVersion._2_0);
 		config.setSamlUserIdLocation(SamlUserIdLocation.SUBJECT);
@@ -136,7 +136,7 @@ public class IdentityProviderTest extends TestCase {
 		final String orgId = "00DC0000000Pd8W";
 		final String siteURL = "https://test.com/testurl";
 
-		final IdpConfiguation config = getDefaultIdpConfiguation();
+		final IdpConfiguration config = getDefaultIdpConfiguation();
 
 		config.setSamlVersion(SamlVersion._2_0);
 		config.setSamlUserIdLocation(SamlUserIdLocation.SUBJECT);
@@ -190,8 +190,8 @@ public class IdentityProviderTest extends TestCase {
 				.getAttributeValues().get(0)).getValue();
 	}
 
-	private IdpConfiguation getDefaultIdpConfiguation() {
-		IdpConfiguation config = new IdpConfiguation();
+	private IdpConfiguration getDefaultIdpConfiguation() {
+		IdpConfiguration config = new IdpConfiguration();
 
 		config.setKeystoreFile(new File(this.getClass()
 				.getResource("AxiomIdpExample.keystore").getFile()));
@@ -209,12 +209,12 @@ public class IdentityProviderTest extends TestCase {
 		return config;
 	}
 
-	private SignableSAMLObject generateSamlResponse(IdpConfiguation config) {
+	private SignableSAMLObject generateSamlResponse(IdpConfiguration config) {
 		IdentityProvider idp = new IdentityProvider(config);
 		return idp.generateSamlResponse();
 	}
 
-	private void assertValidSamlResponse(final IdpConfiguation config,
+	private void assertValidSamlResponse(final IdpConfiguration config,
 			final SignableSAMLObject response) throws Exception {
 		Thread.sleep(1); // stop beforeNow comparison flappers
 
