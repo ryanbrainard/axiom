@@ -7,7 +7,7 @@
 
 	<script type="text/javascript">
 	     
-		function evalAttribInputsVisibility(){
+		function evalAttribInputsVisibility() {
 			if(document.getElementById('GenerateSamlResponse_action_idpConfig_samlUserIdLocationATTRIBUTE').checked){
 				document.getElementById('GenerateSamlResponse_action_idpConfig_attributeName').disabled=false;
 				document.getElementById('GenerateSamlResponse_action_idpConfig_attributeUri').disabled=false;
@@ -17,7 +17,16 @@
 			}
 		}
 
-		function setPortalValues(){
+		function setPortalValues() {
+            if (document.getElementById('GenerateSamlResponse_action_idpConfig_samlVersion').value == "_1_1") {
+                document.getElementById('GenerateSamlResponse_action_idpConfig_userTypePORTAL').disabled = true;
+                document.getElementById('GenerateSamlResponse_action_idpConfig_userTypeSITE').disabled = true;
+                document.getElementById('GenerateSamlResponse_action_idpConfig_userTypeSTANDARD').checked=true;
+            } else {
+                document.getElementById('GenerateSamlResponse_action_idpConfig_userTypePORTAL').disabled = false;
+                document.getElementById('GenerateSamlResponse_action_idpConfig_userTypeSITE').disabled = false;
+            }
+            
 			if (document.getElementById('GenerateSamlResponse_action_idpConfig_userTypePORTAL').checked) {
 				document.getElementById('GenerateSamlResponse_action_idpConfig_orgId').disabled=false;
 				document.getElementById('GenerateSamlResponse_action_idpConfig_portalId').disabled=false;
@@ -42,7 +51,7 @@
 	<s:include value="%{getText('app.includes.body_header')}" />
 
 	<s:form method="POST" action="GenerateSamlResponse.action">
-		<s:select label="%{getText('label.saml.idp.samlVersion')}" key="idpConfig.samlVersion" list="samlVersions"/>
+		<s:select label="%{getText('label.saml.idp.samlVersion')}" key="idpConfig.samlVersion" list="samlVersions" onchange="setPortalValues();"/>
 		
 		<s:textfield label="%{getText('label.saml.idp.userId')}" key="idpConfig.userId" size="60"/>
 		
