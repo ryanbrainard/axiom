@@ -61,6 +61,10 @@
             <result>OAuth2WebFlowTester.jsp</result>
        </action>
 
+       <action name="OAuth2RequestAccessToken" class="axiom.web.OAuth2WebFlowTester" method="requestAccessToken">
+            <result>OAuth2WebFlowTester.jsp</result>
+       </action>
+
         <action name="*" class="axiom.web.{1}">
             <result>{1}.jsp</result>
         </action>

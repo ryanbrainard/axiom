@@ -11,6 +11,7 @@ import java.net.URLEncoder;
 public class OAuth2WebFlowTester extends OAuthSupport {
 
     private String authUrl;
+    private String authCode;
 
     @Override
     public Breadcrumbable getParentPage() {
@@ -40,6 +41,10 @@ public class OAuth2WebFlowTester extends OAuthSupport {
         return authUrl;
     }
 
+    public String getAuthCode() {
+        return authCode;
+    }
+
     public String redirectForAuthorization() throws UnsupportedEncodingException {
         authUrl = "https://" +
                 getRequestParamWithSessionStorage("host") +
@@ -52,7 +57,13 @@ public class OAuth2WebFlowTester extends OAuthSupport {
     }
 
     public String handleAuthorizationCode() {
-        System.out.println(getServletRequest().getParameter("code"));
+        authCode = getServletRequest().getParameter("code");
+        return SUCCESS;
+    }
+
+    public String requestAccessToken() {
+        System.out.println(getRequestParamWithSessionStorage("consumerSecret"));
+        // todo: actually handle it
         return SUCCESS;
     }
 
