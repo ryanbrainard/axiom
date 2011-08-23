@@ -12,11 +12,11 @@
     <div style="float: left;">
         <s:if test="%{authCode != null}">
              <s:form method="POST" action="OAuth2RequestAccessToken.action">
-                <s:textfield key="host" label="%{getText('label.oauth.2_0.host')}" labelposition="top" size="60" readonly="true" disabled="true"/>
-                <s:textfield key="consumerKey" label="%{getText('label.oauth.2_0.consumerKey')}" labelposition="top" size="60" readonly="true" disabled="true"/>
-                <s:textfield key="redirectUri" label="%{getText('label.oauth.2_0.redirectUri')}" labelposition="top" size="60" readonly="true" disabled="true" cssStyle="margin-bottom: 3em;"/>
+                <s:textfield key="host" label="%{getText('label.oauth.2_0.host')}" labelposition="top" size="60" readonly="true"/>
+                <s:textfield key="consumerKey" label="%{getText('label.oauth.2_0.consumerKey')}" labelposition="top" size="60" readonly="true"/>
+                <s:textfield key="redirectUri" label="%{getText('label.oauth.2_0.redirectUri')}" labelposition="top" size="60" readonly="true" cssStyle="margin-bottom: 3em;"/>
 
-                <s:textfield key="authCode" label="%{getText('label.oauth.2_0.authCode')}" labelposition="top" size="60" readonly="true" disabled="true" />
+                <s:textfield key="authCode" label="%{getText('label.oauth.2_0.authCode')}" labelposition="top" size="60" readonly="true" />
                 <s:textfield key="consumerSecret" label="%{getText('label.oauth.2_0.consumerSecret')}" labelposition="top" size="60"/>
 
                 <s:submit value="%{getText('label.oauth.2_0.requestAccessToken')}"/>

@@ -1,5 +1,7 @@
 package axiom.web;
 
+import axiom.oauth.OauthRequester;
+
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URLEncoder;
@@ -61,9 +63,19 @@ public class OAuth2WebFlowTester extends OAuthSupport {
         return SUCCESS;
     }
 
-    public String requestAccessToken() {
-        System.out.println(getRequestParamWithSessionStorage("consumerSecret"));
-        // todo: actually handle it
+    public String requestAccessToken() throws Exception {
+        final OauthRequester oReq = new OauthRequester();
+        // todo: this is not a "host" ...
+		oReq.setHost("https://" + getFromSession("host") + "/services/oauth2/authorize");
+		oReq.setResponseType("code");
+		oReq.setClientKey(getFromSession("consumerKey"));
+		oReq.setCallbackUri(getFromSession("redirectUri"));
+		oReq.setState("state"); //todo: do we ever need this??
+		oReq.setClientSecret(getRequestParamWithSessionStorage("consumerSecret"));
+		oReq.setAuthorizationCode(getServletRequest().getParameter("authCode"));
+
+        oReq.generateAccessToken();
+
         return SUCCESS;
     }
 
@@ -72,6 +84,15 @@ public class OAuth2WebFlowTester extends OAuthSupport {
         final String parameter = getServletRequest().getParameter(key);
         session.put(key, parameter);
         return parameter;
+    }
+
+    // todo: i'm sure struts has some better way to do this
+    private String getFromSession(String key) {
+        if (!session.containsKey(key)) {
+            throw new IllegalStateException(key + " not in session");
+        }
+
+        return session.get(key).toString();
     }
 
     // todo: i'm sure struts has some better way to do this
