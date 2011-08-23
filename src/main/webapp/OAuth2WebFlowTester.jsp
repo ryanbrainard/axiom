@@ -38,7 +38,7 @@
             <s:textfield key="consumerKey" label="%{getText('label.oauth.2_0.consumerKey')}" labelposition="top" size="60" onkeyup="buildAuthorizationUrl();" onchange="buildAuthorizationUrl();"/>
             <s:textfield key="redirectUri" label="%{getText('label.oauth.2_0.redirectUri')}" labelposition="top" size="60" onkeyup="buildAuthorizationUrl();" onchange="buildAuthorizationUrl();" cssStyle="margin-bottom: 2em;"/>
 
-            <s:textarea key="authUrl" label="%{getText('label.oauth.2_0.authUrl')}" cols="63" rows="5" labelposition="top"/>
+            <s:textarea key="authUrl" label="%{getText('label.oauth.2_0.authUrl')}" cols="63" rows="6" labelposition="top"/>
 
             <s:submit value="%{getText('label.oauth.2_0.requestAuthCode')}"/>
         </s:form>

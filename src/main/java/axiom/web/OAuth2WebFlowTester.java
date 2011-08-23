@@ -70,15 +70,15 @@ public class OAuth2WebFlowTester extends OAuthSupport {
     public String requestAccessToken() throws Exception {
         final OauthRequester oReq = new OauthRequester();
         // todo: this is not a "host" ...
-		oReq.setHost("https://" + getFromSession("host"));
-		oReq.setResponseType("code");
-		oReq.setClientKey(getFromSession("consumerKey"));
-		oReq.setCallbackUri(getFromSession("redirectUri"));
-		oReq.setState("state"); //todo: do we ever need this??
-		oReq.setClientSecret(getRequestParamWithSessionStorage("consumerSecret"));
-		oReq.setAuthorizationCode(getServletRequest().getParameter("authCode"));
+//		oReq.setHost("https://" + getFromSession("host"));
+//		oReq.setResponseType("code");
+//		oReq.setClientKey(getFromSession("consumerKey"));
+//		oReq.setCallbackUri(getFromSession("redirectUri"));
+//		oReq.setState("state"); //todo: do we ever need this??
+//		oReq.setClientSecret(getRequestParamWithSessionStorage("consumerSecret"));
+//		oReq.setAuthorizationCode(getServletRequest().getParameter("authCode"));
 
-        oReq.generateAccessToken();
+        oReq.generateAccessToken(getServletRequest().getParameter("accessTokenUrl"));
 
         result = new OauthJSonParser(oReq.getjSonResponse());
 

@@ -1,8 +1,8 @@
 package axiom.oauth;
 
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.PostMethod;
 
 import java.io.IOException;
@@ -61,11 +61,12 @@ public class OauthRequester {
 		return hostString;
 	}
 
-	public void generateAccessToken() throws Exception {
+	public void generateAccessToken(String url) throws Exception {
 
 		HttpClient client = new HttpClient();
-		System.out.println(generateAccessHostString());
-		PostMethod method = new PostMethod(generateAccessHostString());
+//		System.out.println(generateAccessHostString());
+		PostMethod method = new PostMethod(url);
+//		PostMethod method = new PostMethod(generateAccessHostString());
 	//	String header = "OAuth " + getAccessToken();
 	//	method.setRequestHeader("Authorization", header);
 
@@ -73,8 +74,8 @@ public class OauthRequester {
 			int statusCode = client.executeMethod(method);
 
 			if (statusCode != HttpStatus.SC_OK) {
-				System.err.println("Method failed: " + method.getStatusLine());
-				throw new Exception("Method failed: " + method.getStatusLine());
+				System.err.println("Method failed: " + method.getStatusLine() + new String(method.getResponseBody()));
+				throw new Exception("Method failed: " + method.getStatusLine() + new String(method.getResponseBody()));
 			}
 			byte[] responseBody = method.getResponseBody();
 			
@@ -94,40 +95,6 @@ public class OauthRequester {
 
 	}
 	
-	
-	public String generateJSonResponse() throws Exception {
-		generateAccessToken();
-		return getjSonResponse();
-	}
-	
-	
-	
-
-	public static void main(String[] args) throws Exception{
-		OauthRequester oReq = new OauthRequester();
-
-		oReq.setHost("https://login.salesforce.com");
-		oReq.setResponseType("code");
-		oReq.setClientKey("3MVG9yZ.WNe6byQDPNlouJ_iU_a.qAhlAXbgNFEI1iz6XekYCF2zN0_tUk9Ze_cODroFkDlEakiyifyiC1UY6");
-		oReq.setCallbackUri("http%3a%2f%2flocalhost%3a8080%2faxiom%2foAuth");
-		oReq.setState("state");
-		oReq.setClientSecret("4219407934265749743");
-		
-		System.out.println(oReq.generateAuthorizationHostString());
-		
-
-		oReq.setAuthorizationCode("aPrxZibfVBKPF9vRx87yTPW8qoLH50X6iFgh2KUmIrABvORgd4yXZV7lGUkzgWdGzWph.5hDUQ==");
-		
-			oReq.generateAccessToken();
-			System.out.println(oReq.getjSonResponse());
-			OauthJSonParser jp = new OauthJSonParser(oReq.getjSonResponse());
-			
-			//System.out.println(jp.getId()+"-"+ jp.getAccessToken()+"-" + jp.getInstanceUrl()+"-"+jp.getRefreshToken()+"-"+jp.getIssuedAt());
-			
-		
-
-	}
-
 	public String getHost() {
 		return host;
 	}
