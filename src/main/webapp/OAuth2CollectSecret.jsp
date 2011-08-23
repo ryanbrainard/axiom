@@ -24,7 +24,7 @@
 
 
     <div style="float: right;">
-        <img src="<s:url value="%{getText('img.oauth.2_0.webapp.flow')}"/>" border="0"/>
+        <img src="<s:url value="%{getText('img.oauth.2_0.webapp.flow3')}"/>" border="0"/>
     </div>
 
     <div style="clear: both;">
