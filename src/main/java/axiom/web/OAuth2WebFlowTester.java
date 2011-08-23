@@ -1,6 +1,7 @@
 package axiom.web;
 
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.net.URLEncoder;
 
 /**
@@ -29,8 +30,10 @@ public class OAuth2WebFlowTester extends OAuthSupport {
         return getFromSession("consumerSecret", null);
     }
 
-    public String getRedirectUri() {
-        return getFromSession("redirectUri",  getServletRequest().getRequestURL().toString());
+    public String getRedirectUri() throws MalformedURLException {
+        final String requestURL = getServletRequest().getRequestURL().toString();
+        final String defaultHandlerUrl = requestURL.replaceFirst(this.getClass().getSimpleName() + ".jsp", "OAuth2HandleAuthCode.action");
+        return getFromSession("redirectUri",  defaultHandlerUrl);
     }
 
     public String getAuthUrl() {
@@ -45,6 +48,11 @@ public class OAuth2WebFlowTester extends OAuthSupport {
                 "&redirect_uri=" +
                 URLEncoder.encode(getRequestParamWithSessionStorage("redirectUri"), "UTF-8");
 
+        return SUCCESS;
+    }
+
+    public String handleAuthorizationCode() {
+        System.out.println(getServletRequest().getParameter("code"));
         return SUCCESS;
     }
 
