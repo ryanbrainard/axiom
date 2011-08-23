@@ -13,8 +13,8 @@ public class OauthJSonParser {
     
     public OauthJSonParser(String jsonTxt) throws Exception {
     	
-    	if(jsonTxt == null || jsonTxt.length() ==0 )
-    			throw new Exception("Invalid JSON String");
+   	if(jsonTxt == null || jsonTxt.length() ==0 )
+    			throw new Exception("Not a Valid JSON Input");
     	
     	JSONObject json = (JSONObject) JSONSerializer.toJSON( jsonTxt );  
     	
@@ -26,6 +26,21 @@ public class OauthJSonParser {
     	       
     }
     
+    public static void main(String orgs[]) throws Exception{
+    	
+    	String Jtext = "{'id':'https://login.salesforce.com/id/00DA0000000L02pMAC/005A0000000OFZNIA4','issued_at':'1314073536241','refresh_token':'5Aep861Yij7AXt5Ce4hwFBGV6hJVDM3Et5kYhpGuaSq0GucqKfEFu83QvXQPmdsXQ.sln5uG5femw==','instance_url':'https://voore-developer-edition.my.salesforce.com','signature':'iTs6hCmojBviv4wJ/1MSFhRCs1xLuiuEaLWHU/Qc3qI=','access_token':'00DA0000000L02p!ARwAQOjpFxPdmS1QpJxyZvx7sgl.1pigfWn9HZbwhh80r4TfLhOBDL20RWDNXyQZmlUzZWRAkjl.SL_EeZQnDq6.6jwbAqqt'}";
+    	
+    	OauthJSonParser oj = new OauthJSonParser(Jtext);
+    	
+    	System.out.println(oj.getId());
+    	System.out.println(oj.getAccessToken());
+    	System.out.println(oj.getRefreshToken());
+    	System.out.println(oj.getInstanceUrl());
+    	System.out.println(oj.getIssuedAt());
+    	
+    	
+    }
+  
     public String getId() {
 		return id;
 	}

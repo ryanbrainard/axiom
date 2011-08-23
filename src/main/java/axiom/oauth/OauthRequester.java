@@ -93,37 +93,38 @@ public class OauthRequester {
 		}
 
 	}
+	
+	
+	public String generateJSonResponse() throws Exception {
+		generateAccessToken();
+		return getjSonResponse();
+	}
+	
+	
+	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 		OauthRequester oReq = new OauthRequester();
 
 		oReq.setHost("https://login.salesforce.com");
-		// oReq.setHost(null);
 		oReq.setResponseType("code");
 		oReq.setClientKey("3MVG9yZ.WNe6byQDPNlouJ_iU_a.qAhlAXbgNFEI1iz6XekYCF2zN0_tUk9Ze_cODroFkDlEakiyifyiC1UY6");
 		oReq.setCallbackUri("http%3a%2f%2flocalhost%3a8080%2faxiom%2foAuth");
 		oReq.setState("state");
 		oReq.setClientSecret("4219407934265749743");
-		try {
-			System.out.println(oReq.generateAuthorizationHostString());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+		System.out.println(oReq.generateAuthorizationHostString());
+		
 
 		oReq.setAuthorizationCode("aPrxZibfVBKPF9vRx87yTPW8qoLH50X6iFgh2KUmIrABvORgd4yXZV7lGUkzgWdGzWph.5hDUQ==");
 		
-		
-		try {
-			
 			oReq.generateAccessToken();
 			System.out.println(oReq.getjSonResponse());
 			OauthJSonParser jp = new OauthJSonParser(oReq.getjSonResponse());
 			
 			//System.out.println(jp.getId()+"-"+ jp.getAccessToken()+"-" + jp.getInstanceUrl()+"-"+jp.getRefreshToken()+"-"+jp.getIssuedAt());
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 
 	}
 
