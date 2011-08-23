@@ -33,6 +33,7 @@
 	<s:include value="%{getText('app.includes.body_header')}" />
 
     <div style="float: left;">
+        <s:actionerror cssStyle="color: red;"/>
         <s:form method="POST" action="OAuth2RequestAuthCode.action">
             <s:textfield key="host" label="%{getText('label.oauth.2_0.host')}" labelposition="top" size="60" onkeyup="buildAuthorizationUrl();" onchange="buildAuthorizationUrl();"/>
             <s:textfield key="consumerKey" label="%{getText('label.oauth.2_0.consumerKey')}" labelposition="top" size="60" onkeyup="buildAuthorizationUrl();" onchange="buildAuthorizationUrl();"/>

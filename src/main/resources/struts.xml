@@ -60,6 +60,7 @@
 
         <action name="OAuth2HandleAuthCode" class="axiom.web.OAuth2WebFlowTester" method="handleAuthorizationCode">
             <result>OAuth2CollectSecret.jsp</result>
+            <result name="error">OAuth2WebFlowTester.jsp</result>
        </action>
 
        <action name="OAuth2RequestAccessToken" class="axiom.web.OAuth2WebFlowTester" method="requestAccessToken">

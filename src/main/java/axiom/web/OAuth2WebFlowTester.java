@@ -2,11 +2,9 @@ package axiom.web;
 
 import axiom.oauth.OauthJSonParser;
 import axiom.oauth.OauthRequester;
-import com.sun.tools.javac.code.Scope;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
-import java.util.Collection;
 
 /**
  * @author Ryan Brainard
@@ -70,6 +68,12 @@ public class OAuth2WebFlowTester extends OAuthSupport {
     }
 
     public String handleAuthorizationCode() {
+        if (getServletRequest().getParameter("error") != null) {
+            addActionError(getServletRequest().getParameter("error") + ": " + getServletRequest().getParameter("error_description"));
+
+            return ERROR;
+        }
+
         authCode = getServletRequest().getParameter("code");
         return SUCCESS;
     }

@@ -75,7 +75,7 @@ public class OauthRequester {
 
 			if (statusCode != HttpStatus.SC_OK) {
 				System.err.println("Method failed: " + method.getStatusLine() + new String(method.getResponseBody()));
-				throw new Exception("Method failed: " + method.getStatusLine() + new String(method.getResponseBody()));
+				throw new Exception("Method failed: " + method.getStatusLine() + "\n" + new String(method.getResponseBody()));
 			}
 			byte[] responseBody = method.getResponseBody();
 			
