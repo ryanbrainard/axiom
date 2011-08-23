@@ -9,7 +9,7 @@
 <body>
 	<s:include value="%{getText('app.includes.body_header')}" />
 
-    <div style="width: 400px; float: left;">
+    <div style="width: 500px; float: left;">
         <p style="word-wrap: break-word;"><strong>Id:</strong><br/>             <s:text name="result.id"/></p>
         <p style="word-wrap: break-word;"><strong>Access Token:</strong><br/>   <s:text name="result.accessToken"/></p>
         <p style="word-wrap: break-word;"><strong>Refresh Token:</strong><br/>  <s:text name="result.refreshToken"/></p>
