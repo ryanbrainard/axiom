@@ -9,49 +9,56 @@ import java.net.URLEncoder;
  */
 public class OAuth2WebFlowTester extends OAuthSupport {
 
+    private String authUrl;
+
     @Override
     public Breadcrumbable getParentPage() {
         return new OAuthHome();
     }
 
+    //TODO: move these all to a bean ?
     public String getHost() {
-        return session.containsKey("host")
-                ? session.get("host").toString()
-                : "login.salesforce.com";
+        return getFromSession("host", "login.salesforce.com");
     }
 
     public String getConsumerKey() {
-        return session.containsKey("consumerKey")
-                ? session.get("consumerKey").toString()
-                : null;
+        return getFromSession("consumerKey", null);
     }
 
     public String getConsumerSecret() {
-        return session.containsKey("consumerSecret")
-                ? session.get("consumerSecret").toString()
-                : null;
+        return getFromSession("consumerSecret", null);
     }
 
     public String getRedirectUri() {
-        return session.containsKey("redirectUri")
-                ? session.get("redirectUri").toString()
-                : getServletRequest().getRequestURL().toString();
+        return getFromSession("redirectUri",  getServletRequest().getRequestURL().toString());
     }
 
-    public String getAuthUrl() throws UnsupportedEncodingException {
-        return "https://" +
-                getServletRequest().getParameter("host") +
+    public String getAuthUrl() {
+        return authUrl;
+    }
+
+    public String redirectForAuthorization() throws UnsupportedEncodingException {
+        authUrl = "https://" +
+                getRequestParamWithSessionStorage("host") +
                 "/services/oauth2/authorize?response_type=code&display=popup&client_id=" +
-                getServletRequest().getParameter("consumerKey") +
+                getRequestParamWithSessionStorage("consumerKey") +
                 "&redirect_uri=" +
-                URLEncoder.encode(getServletRequest().getParameter("redirectUri"), "UTF-8");
-    }
-
-    public String redirectForAuthorization() {
-        session.put("host", getServletRequest().getParameter("host"));
-        session.put("consumerKey", getServletRequest().getParameter("consumerKey"));
-        session.put("consumerSecret", getServletRequest().getParameter("consumerSecret"));
+                URLEncoder.encode(getRequestParamWithSessionStorage("redirectUri"), "UTF-8");
 
         return SUCCESS;
+    }
+
+    // todo: i'm sure struts has some better way to do this
+    private String getRequestParamWithSessionStorage(String key) {
+        final String parameter = getServletRequest().getParameter(key);
+        session.put(key, parameter);
+        return parameter;
+    }
+
+    // todo: i'm sure struts has some better way to do this
+    private String getFromSession(String key, String defaultValue) {
+        return session.containsKey(key)
+                ? session.get(key).toString()
+                : defaultValue;
     }
 }

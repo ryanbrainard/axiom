@@ -14,7 +14,7 @@
 
             <s:textfield key="host" label="%{getText('label.oauth.2_0.host')}" labelposition="top" size="50"/>
             <s:textfield key="consumerKey" label="%{getText('label.oauth.2_0.consumerKey')}" labelposition="top" size="50"/>
-            <s:textfield key="consumerSecret" label="%{getText('label.oauth.2_0.consumerSecret')}" labelposition="top" size="50"/>
+            <!-- <s:textfield key="consumerSecret" label="%{getText('label.oauth.2_0.consumerSecret')}" labelposition="top" size="50"/> -->
             <s:textfield key="redirectUri" label="%{getText('label.oauth.2_0.redirectUri')}" labelposition="top" size="50"/>
 
 
