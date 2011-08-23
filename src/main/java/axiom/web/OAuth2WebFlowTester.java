@@ -1,5 +1,6 @@
 package axiom.web;
 
+import axiom.oauth.OauthJSonParser;
 import axiom.oauth.OauthRequester;
 
 import java.io.UnsupportedEncodingException;
@@ -13,6 +14,7 @@ public class OAuth2WebFlowTester extends OAuthSupport {
 
     private String authUrl;
     private String authCode;
+    private OauthJSonParser result;
 
     @Override
     public Breadcrumbable getParentPage() {
@@ -68,7 +70,7 @@ public class OAuth2WebFlowTester extends OAuthSupport {
     public String requestAccessToken() throws Exception {
         final OauthRequester oReq = new OauthRequester();
         // todo: this is not a "host" ...
-		oReq.setHost("https://" + getFromSession("host") + "/services/oauth2/authorize");
+		oReq.setHost("https://" + getFromSession("host"));
 		oReq.setResponseType("code");
 		oReq.setClientKey(getFromSession("consumerKey"));
 		oReq.setCallbackUri(getFromSession("redirectUri"));
@@ -78,7 +80,13 @@ public class OAuth2WebFlowTester extends OAuthSupport {
 
         oReq.generateAccessToken();
 
+        result = new OauthJSonParser(oReq.getjSonResponse());
+
         return SUCCESS;
+    }
+
+    public OauthJSonParser getResult() {
+        return result;
     }
 
     // todo: i'm sure struts has some better way to do this
