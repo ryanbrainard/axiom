@@ -35,10 +35,10 @@ public class OAuth2WebFlowTester extends OAuthSupport {
     }
 
     public String getRedirectUri() throws MalformedURLException {
-        final String requestURL = getServletRequest().getRequestURL().toString();
+        String requestURL = getServletRequest().getRequestURL().toString();
 
         if (!requestURL.contains("localhost")) {
-            requestURL.replaceFirst("http", "https");
+            requestURL = requestURL.replaceFirst("http", "https");
         }
 
         final String defaultHandlerUrl = requestURL.replaceFirst(this.getClass().getSimpleName() + ".jsp", "OAuth2HandleAuthCode.action");
