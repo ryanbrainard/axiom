@@ -15,6 +15,16 @@
         <p style="word-wrap: break-word;"><strong>Refresh Token:</strong><br/>  <s:text name="result.refreshToken"/></p>
         <p><strong>Issued At:</strong><br/>      <s:text name="result.issuedAt"/></p>
         <p><strong>Instance URL:</strong><br/>   <s:text name="result.instanceUrl"/></p>
+
+        <hr/>
+
+        <p>
+            <strong>Examples Accessing Salesforce as User</strong><br/>
+            <ul>
+                <li><a target="_blank" href="<s:text name="result.id"/>?oauth_token=<s:text name="result.accessToken"/>">Identity</a></li>
+                <li><a target="_blank" href="http://ryanbrainard.com/workbench/login.php?sid=<s:text name="result.accessToken"/>&serverUrlPrefix=<s:text name="result.instanceUrl"/>">Workbench</a></li>
+            </ul>
+        </p>
     </div>
 
     <div style="float: right;">

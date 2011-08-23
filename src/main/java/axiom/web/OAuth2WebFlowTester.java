@@ -68,6 +68,8 @@ public class OAuth2WebFlowTester extends OAuthSupport {
     }
 
     public String requestAccessToken() throws Exception {
+        getRequestParamWithSessionStorage("consumerSecret");
+
         final OauthRequester oReq = new OauthRequester();
         // todo: this is not a "host" ...
 //		oReq.setHost("https://" + getFromSession("host"));
