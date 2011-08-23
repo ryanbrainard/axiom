@@ -9,14 +9,25 @@
 <body>
 	<s:include value="%{getText('app.includes.body_header')}" />
 
-    <div style="float: left;">
+    <div style="float: left; width:400;">
+        <p>
+            <strong><s:text name="label.oauth.2_0.host"/></strong><br/>
+            <s:text name="host"/>
+        </p>
+        <p style="word-wrap: break-word;">
+            <strong><s:text name="label.oauth.2_0.consumerKey"/></strong><br/>
+            <s:text name="consumerKey"/>
+        </p>
+        <p>
+            <strong><s:text name="label.oauth.2_0.redirectUri"/></strong><br/>
+            <s:text name="redirectUri"/>
+        </p>
+         <br/>
          <s:form method="POST" action="OAuth2RequestAccessToken.action">
-            <s:textfield key="host" label="%{getText('label.oauth.2_0.host')}" labelposition="top" size="60" readonly="true"/>
-            <s:textfield key="consumerKey" label="%{getText('label.oauth.2_0.consumerKey')}" labelposition="top" size="60" readonly="true"/>
-            <s:textfield key="redirectUri" label="%{getText('label.oauth.2_0.redirectUri')}" labelposition="top" size="60" readonly="true" cssStyle="margin-bottom: 3em;"/>
-
             <s:textfield key="authCode" label="%{getText('label.oauth.2_0.authCode')}" labelposition="top" size="60" readonly="true" />
             <s:textfield key="consumerSecret" label="%{getText('label.oauth.2_0.consumerSecret')}" labelposition="top" size="60"/>
+
+             <s:textarea key="authUrl" label="%{getText('label.oauth.2_0.authUrl')}" cols="63" rows="5" labelposition="top"/>
 
             <s:submit value="%{getText('label.oauth.2_0.requestAccessToken')}"/>
         </s:form>
