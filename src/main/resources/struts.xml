@@ -52,6 +52,10 @@
        <action name="SamlIdpResponseAndTargetPosterForm" class="axiom.web.SamlIdpResponseGenerator" method="skipGeneration">
             <result>SamlIdpResponseAndTargetPosterForm.jsp</result>
        </action>
+
+       <action name="OAuth2RequestAuthCode" class="axiom.web.OAuth2WebFlowTester" method="redirectForAuthorization">
+            <result type="redirect">${authUrl}</result>
+       </action>
         
         <action name="*" class="axiom.web.{1}">
             <result>{1}.jsp</result>

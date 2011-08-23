@@ -8,7 +8,7 @@
 
 <body>
 	<s:include value="%{getText('app.includes.body_header')}" />
-
+        <img src="<s:url value="%{getText('img.oauth.1_0a.flow')}"/>" border="0"/>
 	<s:include value="%{getText('app.includes.body_footer')}" />
 </body>
 
