@@ -64,6 +64,7 @@
 
        <action name="OAuth2RequestAccessToken" class="axiom.web.OAuth2WebFlowTester" method="requestAccessToken">
             <result>OAuth2DisplayAccessToken.jsp</result>
+            <result name="error">OAuth2CollectSecret.jsp</result>
        </action>
 
         <action name="*" class="axiom.web.{1}">

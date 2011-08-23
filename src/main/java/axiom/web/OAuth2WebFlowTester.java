@@ -2,9 +2,11 @@ package axiom.web;
 
 import axiom.oauth.OauthJSonParser;
 import axiom.oauth.OauthRequester;
+import com.sun.tools.javac.code.Scope;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.util.Collection;
 
 /**
  * @author Ryan Brainard
@@ -73,23 +75,17 @@ public class OAuth2WebFlowTester extends OAuthSupport {
     }
 
     public String requestAccessToken() throws Exception {
-        getRequestParamWithSessionStorage("consumerSecret");
-
-        final OauthRequester oReq = new OauthRequester();
-        // todo: this is not a "host" ...
-//		oReq.setHost("https://" + getFromSession("host"));
-//		oReq.setResponseType("code");
-//		oReq.setClientKey(getFromSession("consumerKey"));
-//		oReq.setCallbackUri(getFromSession("redirectUri"));
-//		oReq.setState("state"); //todo: do we ever need this??
-//		oReq.setClientSecret(getRequestParamWithSessionStorage("consumerSecret"));
-//		oReq.setAuthorizationCode(getServletRequest().getParameter("authCode"));
-
-        oReq.generateAccessToken(getServletRequest().getParameter("accessTokenUrl"));
-
-        result = new OauthJSonParser(oReq.getjSonResponse());
-
-        return SUCCESS;
+        try {
+            getRequestParamWithSessionStorage("consumerSecret");
+            final OauthRequester oReq = new OauthRequester();
+            oReq.generateAccessToken(getServletRequest().getParameter("accessTokenUrl"));
+            result = new OauthJSonParser(oReq.getjSonResponse());
+            return SUCCESS;
+        } catch (Exception e) {
+            addActionError(e.getMessage());
+            authCode = getServletRequest().getParameter("authCode");
+            return ERROR;
+        }
     }
 
     public OauthJSonParser getResult() {

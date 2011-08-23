@@ -38,6 +38,8 @@
 	<s:include value="%{getText('app.includes.body_header')}" />
 
     <div style="float: left; width:400;">
+        <s:actionerror cssStyle="color: red;"/>
+        
         <p>
             <strong><s:text name="label.oauth.2_0.host"/></strong><br/>
             <s:text name="host"/>
