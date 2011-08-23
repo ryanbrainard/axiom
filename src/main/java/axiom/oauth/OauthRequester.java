@@ -14,10 +14,13 @@ public class OauthRequester {
 	private String clientKey;
 	private String callbackUri;
 	private String state;
-	private String tokenUri;
 	private String clientSecret;
 	private String authorizationCode;
 	private String accessToken;
+	
+	private String jSonResponse;
+
+	
 
 	public String generateAuthorizationHostString() throws Exception {
 		String hostString = "";
@@ -29,7 +32,7 @@ public class OauthRequester {
 		if (getCallbackUri() == null || getCallbackUri().length() == 0)
 			throw new Exception("Invalid Callback URI");
 
-		hostString += getHost();
+		hostString += getHost() +"/services/oauth2/authorize";
 		hostString += "?client_id=" + getClientKey();
 		hostString += "&redirect_uri=" + getCallbackUri();
 		hostString += "&response_type=" +getResponseType();
@@ -40,11 +43,17 @@ public class OauthRequester {
 
 	public String generateAccessHostString() throws Exception {
 		String hostString = "";
+		if (getHost() == null || getHost().length() == 0)
+			throw new Exception("Invalid Host Name");
+		if (getClientKey() == null || getClientKey().length() == 0)
+			throw new Exception("Invalid Client Key");
+		if (getCallbackUri() == null || getCallbackUri().length() == 0)
+			throw new Exception("Invalid Callback URI");
 		if (getAuthorizationCode() == null
 				|| getAuthorizationCode().length() == 0)
 			throw new Exception("Invalid Authorization Code");
 
-		hostString = "https://login.salesforce.com/services/oauth2/token?&grant_type=authorization_code";
+		hostString =  getHost()+"/services/oauth2/token?&grant_type=authorization_code";
 		hostString += "&client_id=" + getClientKey();
 		hostString += "&redirect_uri=" + getCallbackUri();
 		hostString += "&code=" + getAuthorizationCode();
@@ -57,17 +66,20 @@ public class OauthRequester {
 		HttpClient client = new HttpClient();
 		System.out.println(generateAccessHostString());
 		PostMethod method = new PostMethod(generateAccessHostString());
-		String header = "OAuth " + getAccessToken();
-		method.setRequestHeader("Authorization", header);
+	//	String header = "OAuth " + getAccessToken();
+	//	method.setRequestHeader("Authorization", header);
 
 		try {
 			int statusCode = client.executeMethod(method);
 
 			if (statusCode != HttpStatus.SC_OK) {
 				System.err.println("Method failed: " + method.getStatusLine());
+				throw new Exception("Method failed: " + method.getStatusLine());
 			}
 			byte[] responseBody = method.getResponseBody();
-			System.out.println(new String(responseBody));
+			
+			setjSonResponse(new String(responseBody));
+		
 
 		} catch (HttpException e) {
 			e.printStackTrace();
@@ -85,7 +97,7 @@ public class OauthRequester {
 	public static void main(String[] args) {
 		OauthRequester oReq = new OauthRequester();
 
-		oReq.setHost("https://login.salesforce.com/services/oauth2/authorize");
+		oReq.setHost("https://login.salesforce.com");
 		// oReq.setHost(null);
 		oReq.setResponseType("code");
 		oReq.setClientKey("3MVG9yZ.WNe6byQDPNlouJ_iU_a.qAhlAXbgNFEI1iz6XekYCF2zN0_tUk9Ze_cODroFkDlEakiyifyiC1UY6");
@@ -98,12 +110,17 @@ public class OauthRequester {
 			e.printStackTrace();
 		}
 
-		oReq.setAuthorizationCode("aPrxZibfVBKPF9vRx87yTPW8qpHS2Z0lE_MgfVacDSrlIZ098Pa4_.rQNxfD5y8nnVHwzBnbZQ==");
+		oReq.setAuthorizationCode("aPrxZibfVBKPF9vRx87yTPW8qoLH50X6iFgh2KUmIrABvORgd4yXZV7lGUkzgWdGzWph.5hDUQ==");
 		
 		
 		try {
 			
 			oReq.generateAccessToken();
+			System.out.println(oReq.getjSonResponse());
+			OauthJSonParser jp = new OauthJSonParser(oReq.getjSonResponse());
+			
+			//System.out.println(jp.getId()+"-"+ jp.getAccessToken()+"-" + jp.getInstanceUrl()+"-"+jp.getRefreshToken()+"-"+jp.getIssuedAt());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -173,13 +190,15 @@ public class OauthRequester {
 	public void setAccessToken(String accessToken) {
 		this.accessToken = accessToken;
 	}
-
-	public String getTokenUri() {
-		return tokenUri;
+	
+	
+	public String getjSonResponse() {
+		return jSonResponse;
 	}
 
-	public void setTokenUri(String tokenUri) {
-		this.tokenUri = tokenUri;
+	public void setjSonResponse(String jSonResponse) {
+		this.jSonResponse = jSonResponse;
 	}
+	
 
 }
