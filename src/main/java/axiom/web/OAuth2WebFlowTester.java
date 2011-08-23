@@ -4,7 +4,6 @@ import axiom.oauth.OauthRequester;
 
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
-import java.net.URLEncoder;
 
 /**
  * @author Ryan Brainard
@@ -48,12 +47,15 @@ public class OAuth2WebFlowTester extends OAuthSupport {
     }
 
     public String redirectForAuthorization() throws UnsupportedEncodingException {
-        authUrl = "https://" +
-                getRequestParamWithSessionStorage("host") +
-                "/services/oauth2/authorize?response_type=code&display=popup&client_id=" +
-                getRequestParamWithSessionStorage("consumerKey") +
-                "&redirect_uri=" +
-                URLEncoder.encode(getRequestParamWithSessionStorage("redirectUri"), "UTF-8");
+        getRequestParamWithSessionStorage("host");
+        getRequestParamWithSessionStorage("consumerKey");
+        getRequestParamWithSessionStorage("redirectUri");
+
+        authUrl = getServletRequest().getParameter("authUrl");
+
+        if (authUrl == null) {
+            return INPUT;
+        }
 
         return SUCCESS;
     }

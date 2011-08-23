@@ -54,6 +54,7 @@
        </action>
 
        <action name="OAuth2RequestAuthCode" class="axiom.web.OAuth2WebFlowTester" method="redirectForAuthorization">
+            <result name="input">OAuth2WebFlowTester.jsp</result>
             <result type="redirect">${authUrl}</result>
        </action>
 
