@@ -19,24 +19,7 @@ import java.util.Map;
  */
 public class OAuth2WebFlowTester extends OAuthSupport {
 
-    private OauthContext oauthContext;
-
-    public OAuth2WebFlowTester() {
-//        final String host = "login.salesforce.com";
-//
-//        String requestURL = getServletRequest()
-//                                .getRequestURL()
-//                                .toString()
-//                                .replaceFirst(".jsp", ".action");
-//
-//        if (!requestURL.contains("localhost")) {
-//            requestURL = requestURL.replaceFirst("http", "https");
-//        }
-
-//        this.oauthContext = new OauthContext(host, requestURL);
-
-        this.oauthContext = new OauthContext("login.salesforce.com", "xxx");
-    }
+    private static final String OAUTH_CONTEXT = "oauthContext";
 
     @Override
     public Breadcrumbable getParentPage() {
@@ -44,7 +27,7 @@ public class OAuth2WebFlowTester extends OAuthSupport {
     }
 
     public String redirectForAuthorization() throws UnsupportedEncodingException {
-        if (oauthContext.getAuthRequestUrl() == null) {
+        if (getOauthContext().getAuthRequestUrl() == null) {
             addActionError("Must provide an Authorization URL");
             return INPUT; //TODO: should be error?
         }
@@ -53,15 +36,15 @@ public class OAuth2WebFlowTester extends OAuthSupport {
     }
 
     public String handleAuthorizationCode() throws URISyntaxException {
-        oauthContext.setFieldsFrom(sanitizeParameterArrays(ActionContext.getContext().getParameters()));
+        getOauthContext().setFieldsFrom(sanitizeParameterArrays(ActionContext.getContext().getParameters()));
 
-        if (oauthContext.getError() != null) {
-            addActionError(oauthContext.getError() + ": " + oauthContext.getError_description());
+        if (getOauthContext().getError() != null) {
+            addActionError(getOauthContext().getError() + ": " + getOauthContext().getError_description());
             return ERROR;
         }
 
-        if (oauthContext.getCode() == null || "".equals(oauthContext.getCode())) {
-            addActionError(oauthContext.getError() + ": " + oauthContext.getError_description());
+        if (getOauthContext().getCode() == null || "".equals(getOauthContext().getCode())) {
+            addActionError("Code not set");
             return ERROR;
         }
 
@@ -70,7 +53,7 @@ public class OAuth2WebFlowTester extends OAuthSupport {
 
     public String requestAccessToken() {
         final HttpClient client = new HttpClient();
-        final PostMethod tokenRequest = new PostMethod(oauthContext.getTokenRequestUrl());
+        final PostMethod tokenRequest = new PostMethod(getOauthContext().getTokenRequestUrl());
         try {
             int statusCode = client.executeMethod(tokenRequest);
 
@@ -79,7 +62,7 @@ public class OAuth2WebFlowTester extends OAuthSupport {
             }
 
             //noinspection unchecked
-            oauthContext.setFieldsFrom((JSONObject) JSONSerializer.toJSON(new String(tokenRequest.getResponseBody())));
+            getOauthContext().setFieldsFrom((JSONObject) JSONSerializer.toJSON(new String(tokenRequest.getResponseBody())));
 
             return SUCCESS;
         } catch (Exception e) {
@@ -92,7 +75,23 @@ public class OAuth2WebFlowTester extends OAuthSupport {
     }
 
     public OauthContext getOauthContext() {
-        return oauthContext;
+        if (!session.containsKey(OAUTH_CONTEXT)) {
+            final String host = "login.salesforce.com";
+
+            String requestURL = getServletRequest()
+                    .getRequestURL()
+                    .toString()
+                    .replaceFirst(ActionContext.getContext().getName(), "OAuth2HandleAuthCode")
+                    .replaceFirst(".jsp", ".action");
+
+            if (!requestURL.contains("localhost")) {
+                requestURL = requestURL.replaceFirst("http://", "https://");
+            }
+
+            session.put(OAUTH_CONTEXT, new OauthContext(host, requestURL));
+        }
+
+        return (OauthContext) session.get(OAUTH_CONTEXT);
     }
 
     private static Map<String, String> sanitizeParameterArrays(Map<String, Object> params) {
