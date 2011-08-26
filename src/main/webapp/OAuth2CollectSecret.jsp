@@ -16,20 +16,20 @@
 
 	    function buildAccessUrl() {
 	        var form = document.forms.OAuth2RequestAccessToken_action;
-	        var host = trim('<s:text name="host"/>');
-	        var consumerKey = trim('<s:text name="consumerKey"/>');
-	        var redirectUri = trim('<s:text name="redirectUri"/>');
-	        var consumerSecret = trim(form.OAuth2RequestAccessToken_action_consumerSecret.value);
-	        var authCode = trim(form.OAuth2RequestAccessToken_action_authCode.value);
+	        var host = trim('<s:text name="oauthContext.host"/>');
+	        var client_id = trim('<s:text name="oauthContext.client_id"/>');
+	        var redirect_uri = trim('<s:text name="oauthContext.redirect_uri"/>');
+	        var client_secret = trim(form.OAuth2RequestAccessToken_action_oauthContext_client_secret.value);
+	        var code = trim(form.OAuth2RequestAccessToken_action_oauthContext_code.value);
 
             var hostString = "https://" +
                              host + "/services/oauth2/token?&grant_type=authorization_code" +
-                             "&client_id=" + consumerKey +
-                             "&code=" + authCode +
-                             "&client_secret=" + consumerSecret +
-                             "&redirect_uri=" + escape(redirectUri);
+                             "&client_id=" + client_id +
+                             "&code=" + code +
+                             "&client_secret=" + client_secret +
+                             "&redirect_uri=" + escape(redirect_uri);
 
-            form.OAuth2RequestAccessToken_action_accessTokenUrl.value = hostString;
+            form.OAuth2RequestAccessToken_action_oauthContext_tokenRequestUrl.value = hostString;
 	    }
 	</script>
 </head>
@@ -42,22 +42,22 @@
         
         <p>
             <strong><s:text name="label.oauth.2_0.host"/></strong><br/>
-            <s:text name="host"/>
+            <s:text name="oauthContext.host"/>
         </p>
         <p style="word-wrap: break-word;">
             <strong><s:text name="label.oauth.2_0.consumerKey"/></strong><br/>
-            <s:text name="consumerKey"/>
+            <s:text name="oauthContext.client_id"/>
         </p>
         <p>
             <strong><s:text name="label.oauth.2_0.redirectUri"/></strong><br/>
-            <s:text name="redirectUri"/>
+            <s:text name="oauthContext.redirect_uri"/>
         </p>
          <br/>
          <s:form method="POST" action="OAuth2RequestAccessToken.action">
-            <s:textfield key="authCode" label="%{getText('label.oauth.2_0.authCode')}" labelposition="top" size="60" onkeyup="buildAccessUrl();" onchange="buildAccessUrl();" />
-            <s:textfield key="consumerSecret" label="%{getText('label.oauth.2_0.consumerSecret')}" labelposition="top" size="60" onkeyup="buildAccessUrl();" onchange="buildAccessUrl();" />
+            <s:textfield key="oauthContext.code" label="%{getText('label.oauth.2_0.authCode')}" labelposition="top" size="60" onkeyup="buildAccessUrl();" onchange="buildAccessUrl();" />
+            <s:textfield key="oauthContext.client_secret" label="%{getText('label.oauth.2_0.consumerSecret')}" labelposition="top" size="60" onkeyup="buildAccessUrl();" onchange="buildAccessUrl();" />
 
-            <s:textarea key="accessTokenUrl" label="Access Token URL" cols="63" rows="8" labelposition="top"/>
+            <s:textarea key="oauthContext.tokenRequestUrl" label="Access Token URL" cols="63" rows="8" labelposition="top"/>
 
             <s:submit value="%{getText('label.oauth.2_0.requestAccessToken')}"/>
         </s:form>
