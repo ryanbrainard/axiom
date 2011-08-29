@@ -81,6 +81,7 @@ public class OAuth1FlowTester extends OAuthSupport {
             final String defaultCallbackUrl = getServletRequest()
                     .getRequestURL()
                     .toString()
+                    .replaceFirst("http://", "https://")
                     .replaceFirst(ActionContext.getContext().getName(), "OAuth1HandleCallback")
                     .replaceFirst(".jsp", ".action");
 
