@@ -1,4 +1,4 @@
-package axiom.oauth2;
+package axiom.oauth.oauth2;
 
 import junit.framework.TestCase;
 import net.sf.json.JSONObject;
@@ -10,7 +10,7 @@ import java.net.URI;
 public class OAuthContextTest extends TestCase {
 
     public void testFlow() throws Exception {
-        final OauthContext context = new OauthContext("HOST", "REDIRECT_URI");
+        final Oauth2Context context = new Oauth2Context("HOST", "REDIRECT_URI");
         assertEquals("HOST", context.getHost());
         assertEquals("REDIRECT_URI", context.getRedirect_uri());
 

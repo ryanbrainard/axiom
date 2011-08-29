@@ -18,63 +18,63 @@ import static org.mockito.Mockito.*;
 
 public class AuthenticationProxyTest extends TestCase {
 
-	private static Logger logger = Logger.getLogger(AuthenticationProxyTest.class);
+    private static Logger logger = Logger.getLogger(AuthenticationProxyTest.class);
 
-	@Test
-	public void testBadLoginThrowsLoginFault() throws Exception {
-		Authenticator badAuthenticator = new Authenticator() {
-			@Override
-			public boolean authenticate(String username, String password) {
-				return false;
-			}
-		};
+    @Test
+    public void testBadLoginThrowsLoginFault() throws Exception {
+        Authenticator badAuthenticator = new Authenticator() {
+            @Override
+            public boolean authenticate(String username, String password) {
+                return false;
+            }
+        };
 
-		AuthenticationProxy proxy = new AuthenticationProxy(badAuthenticator, null, new SforceServiceLocator());
+        AuthenticationProxy proxy = new AuthenticationProxy(badAuthenticator, null, new SforceServiceLocator());
 
         try {
-			proxy.login("username", "password");
-			fail();
-		} catch (LoginFault expectedException) {
-			// expected.
-		}
-	}
-	
-	
-	@Test
-	public void testLogin() throws Exception {
-		Authenticator authenticator = new Authenticator() {
-			@Override
-			public boolean authenticate(String username, String password) {
-				return true;
-			}
-		};
-		
-		MessageContextProvider messageContextProvider = new MessageContextProvider(){
-			@Override
-			public MessageContext getMessageContext() {
-				MessageContext messageContext = mock(MessageContext.class);
-				try{
-					Message message = mock(Message.class);
-					when(messageContext.getRequestMessage()).thenReturn(message);
-					SOAPEnvelope envelope = mock(SOAPEnvelope.class);
-					when(message.getSOAPEnvelope()).thenReturn(envelope);
-				} catch (AxisFault e) {
-					//ignore. we're mocking, but can't throw anything else.
-				}
-				return messageContext;
-			}
-		};
+            proxy.login("username", "password");
+            fail();
+        } catch (LoginFault expectedException) {
+            // expected.
+        }
+    }
+
+
+    @Test
+    public void testLogin() throws Exception {
+        Authenticator authenticator = new Authenticator() {
+            @Override
+            public boolean authenticate(String username, String password) {
+                return true;
+            }
+        };
+
+        MessageContextProvider messageContextProvider = new MessageContextProvider() {
+            @Override
+            public MessageContext getMessageContext() {
+                MessageContext messageContext = mock(MessageContext.class);
+                try {
+                    Message message = mock(Message.class);
+                    when(messageContext.getRequestMessage()).thenReturn(message);
+                    SOAPEnvelope envelope = mock(SOAPEnvelope.class);
+                    when(message.getSOAPEnvelope()).thenReturn(envelope);
+                } catch (AxisFault e) {
+                    //ignore. we're mocking, but can't throw anything else.
+                }
+                return messageContext;
+            }
+        };
 
         final SoapBindingStub soapBindingStub = mock(SoapBindingStub.class);
         final LoginResult loginResult = new LoginResult();
         loginResult.setSessionId("something unique");
         when(soapBindingStub.login(anyString(), anyString())).thenReturn(loginResult);
-        
+
         final SforceServiceLocator sforceServiceLocator = spy(new SforceServiceLocator());
         when(sforceServiceLocator.getSoap()).thenReturn(soapBindingStub);
 
         AuthenticationProxy proxy = new AuthenticationProxy(authenticator, messageContextProvider, sforceServiceLocator);
 
         assertEquals(loginResult, proxy.login("username", "password"));
-	}
+    }
 }

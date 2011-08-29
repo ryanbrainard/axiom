@@ -1,22 +1,13 @@
-package axiom.oauth2;
+package axiom.oauth.oauth2;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
+import axiom.oauth.AbstractOAuthContext;
 
-import java.lang.reflect.Field;
-import java.net.URI;
-import java.util.Map;
+public class Oauth2Context extends AbstractOAuthContext {
 
-public class OauthContext {
-
-    private String host;
     private String authRequestUrl;
     private String tokenRequestUrl;
-
     private String client_id;
-    private String client_secret;
     private String response_type;
-    private String redirect_uri;
     private String display;
     private String code;
     private String grant_type;
@@ -28,44 +19,12 @@ public class OauthContext {
     private String id;
     private String error;
     private String error_description;
+    private String redirect_uri;
+    protected String client_secret;
 
-    public OauthContext(String host, String redirect_uri) {
-        this.host = host;
+    public Oauth2Context(String host, String redirect_uri) {
+        super(host);
         this.redirect_uri = redirect_uri;
-    }
-
-    public void setFieldsFrom(URI uri) {
-        for (NameValuePair param : URLEncodedUtils.parse(uri, "UTF-8")) {
-            for (Field field : this.getClass().getDeclaredFields()) {
-                if (field.getName().equals(param.getName())) {
-                    try {
-                        field.set(this, param.getValue());
-                    } catch (IllegalAccessException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-        }
-    }
-
-    public void setFieldsFrom(Map<String, String> map) {
-        for (Field field : this.getClass().getDeclaredFields()) {
-            if (map.containsKey(field.getName())) {
-                try {
-                    field.set(this, map.get(field.getName()));
-                } catch (IllegalAccessException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-    }
-
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
     }
 
     public String getAuthRequestUrl() {
@@ -92,28 +51,12 @@ public class OauthContext {
         this.client_id = client_id;
     }
 
-    public String getClient_secret() {
-        return client_secret;
-    }
-
-    public void setClient_secret(String client_secret) {
-        this.client_secret = client_secret;
-    }
-
     public String getResponse_type() {
         return response_type;
     }
 
     public void setResponse_type(String response_type) {
         this.response_type = response_type;
-    }
-
-    public String getRedirect_uri() {
-        return redirect_uri;
-    }
-
-    public void setRedirect_uri(String redirect_uri) {
-        this.redirect_uri = redirect_uri;
     }
 
     public String getDisplay() {
@@ -202,5 +145,21 @@ public class OauthContext {
 
     public void setError_description(String error_description) {
         this.error_description = error_description;
+    }
+
+    public String getRedirect_uri() {
+        return redirect_uri;
+    }
+
+    public void setRedirect_uri(String redirect_uri) {
+        this.redirect_uri = redirect_uri;
+    }
+
+    public String getClient_secret() {
+        return client_secret;
+    }
+
+    public void setClient_secret(String client_secret) {
+        this.client_secret = client_secret;
     }
 }

@@ -1,6 +1,6 @@
 package axiom.web;
 
-import axiom.oauth2.OauthContext;
+import axiom.oauth.oauth2.Oauth2Context;
 import com.opensymphony.xwork2.ActionContext;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
@@ -74,7 +74,7 @@ public class OAuth2WebFlowTester extends OAuthSupport {
         }
     }
 
-    public OauthContext getOauthContext() {
+    public Oauth2Context getOauthContext() {
         if (!session.containsKey(OAUTH_CONTEXT)) {
             final String host = "login.salesforce.com";
 
@@ -88,10 +88,10 @@ public class OAuth2WebFlowTester extends OAuthSupport {
                 requestURL = requestURL.replaceFirst("http://", "https://");
             }
 
-            session.put(OAUTH_CONTEXT, new OauthContext(host, requestURL));
+            session.put(OAUTH_CONTEXT, new Oauth2Context(host, requestURL));
         }
 
-        return (OauthContext) session.get(OAUTH_CONTEXT);
+        return (Oauth2Context) session.get(OAUTH_CONTEXT);
     }
 
     private static Map<String, String> sanitizeParameterArrays(Map<String, Object> params) {

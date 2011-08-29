@@ -54,6 +54,37 @@
             <result>SamlIdpResponseAndTargetPosterForm.jsp</result>
         </action>
 
+
+        <!-- OAUTH 1.0a -->
+
+        <action name="OAuth1RequestRequestToken" class="axiom.web.OAuth1FlowTester" method="requestRequestToken">
+            <result name="input">OAuth1FlowTester.jsp</result>
+            <result name="error">OAuth1FlowTester.jsp</result>
+            <result>OAuth1RequestTokenResult.jsp</result>
+        </action>
+
+        <action name="OAuth1RedirectToAuthUrl" class="axiom.web.OAuth1FlowTester" method="redirectForAuthorization">
+            <result name="input">OAuth1RequestTokenResult.jsp</result>
+            <result type="redirect">${oauthContext.authUrlWithToken}</result>
+        </action>
+
+        <action name="OAuth1HandleCallback" class="axiom.web.OAuth1FlowTester" method="handleCallback">
+            <result>OAuth1AccessTokenRequestForm.jsp</result>
+        </action>
+
+        <action name="OAuth1RequestAccessToken" class="axiom.web.OAuth1FlowTester" method="requestAccessToken">
+            <result>OAuth1DisplayAccessToken.jsp</result>
+            <result name="error">OAuth1AccessTokenRequestForm.jsp</result>
+        </action>
+
+        <action name="OAuth1RequestSfdcSessionId" class="axiom.web.OAuth1FlowTester" method="loginToSfdc">
+            <result>OAuth1DisplaySfdcLoginResult.jsp</result>
+            <result name="error">OAuth1DisplayAccessToken.jsp</result>
+        </action>
+
+
+        <!-- OAUTH 2 -->
+
         <action name="OAuth2RequestAuthCode" class="axiom.web.OAuth2WebFlowTester" method="redirectForAuthorization">
             <result name="input">OAuth2WebFlowTester.jsp</result>
             <result type="redirect">${oauthContext.authRequestUrl}</result>
