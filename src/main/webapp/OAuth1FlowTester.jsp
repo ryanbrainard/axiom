@@ -38,14 +38,14 @@
     <div style="float: left;">
         <s:actionerror cssStyle="color: red;"/>
         <s:form method="POST" action="OAuth1RequestRequestToken.action">
-            <s:textfield key="oauthContext.host" label="%{getText('label.oauth.1_0a.host')}" labelposition="top" size="60" onkeyup="buildUrls();" onchange="buildUrls();"/>
-            <s:textfield key="oauthContext.oauth_consumer_key" label="%{getText('label.oauth.1_0a.oauth_consumer_key')}" labelposition="top" size="60" onkeyup="buildUrls();" onchange="buildUrls();"/>
-            <s:textfield key="oauthContext.oauth_consumer_secret" label="%{getText('label.oauth.1_0a.oauth_consumer_secret')}" labelposition="top" size="60" onkeyup="buildUrls();" onchange="buildUrls();"/>
-            <s:textfield key="oauthContext.oauth_callback" label="%{getText('label.oauth.1_0a.oauth_callback')}" labelposition="top" size="60" onkeyup="buildUrls();" onchange="buildUrls();" cssStyle="margin-bottom: 2em;"/>
+            <s:textfield key="oauthContext.host" label="%{getText('label.oauth.1_0a.host')}" labelposition="top" size="50" onkeyup="buildUrls();" onchange="buildUrls();"/>
+            <s:textfield key="oauthContext.oauth_consumer_key" label="%{getText('label.oauth.1_0a.oauth_consumer_key')}" labelposition="top" size="50" onkeyup="buildUrls();" onchange="buildUrls();"/>
+            <s:textfield key="oauthContext.oauth_consumer_secret" label="%{getText('label.oauth.1_0a.oauth_consumer_secret')}" labelposition="top" size="50" onkeyup="buildUrls();" onchange="buildUrls();"/>
+            <s:textfield key="oauthContext.oauth_callback" label="%{getText('label.oauth.1_0a.oauth_callback')}" labelposition="top" size="50" onkeyup="buildUrls();" onchange="buildUrls();" cssStyle="margin-bottom: 2em;"/>
 
-            <s:textarea key="oauthContext.requestTokenUrl" label="%{getText('label.oauth.1_0a.requestTokenUrl')}" labelposition="top"  cols="63" rows="2" onkeyup="buildUrls();" onchange="buildUrls();"/>
-            <s:textarea key="oauthContext.accessTokenUrl" label="%{getText('label.oauth.1_0a.accessTokenUrl')}" labelposition="top"  cols="63" rows="2" onkeyup="buildUrls();" onchange="buildUrls();"/>
-            <s:textarea key="oauthContext.authUrl" label="%{getText('label.oauth.1_0a.authUrl')}" labelposition="top"  cols="63" rows="4" onkeyup="buildUrls();" onchange="buildUrls();"/>
+            <s:textarea key="oauthContext.requestTokenUrl" label="%{getText('label.oauth.1_0a.requestTokenUrl')}" labelposition="top"  cols="53" rows="2" onkeyup="buildUrls();" onchange="buildUrls();"/>
+            <s:textarea key="oauthContext.accessTokenUrl" label="%{getText('label.oauth.1_0a.accessTokenUrl')}" labelposition="top"  cols="53" rows="2" onkeyup="buildUrls();" onchange="buildUrls();"/>
+            <s:textarea key="oauthContext.authUrl" label="%{getText('label.oauth.1_0a.authUrl')}" labelposition="top"  cols="53" rows="4" onkeyup="buildUrls();" onchange="buildUrls();"/>
 
             <s:submit value="%{getText('label.oauth.1_0a.requestRequestToken')}"/>
         </s:form>

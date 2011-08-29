@@ -12,7 +12,7 @@
     <div style="float: left;">
         <s:actionerror cssStyle="color: red;"/>
         <s:form method="POST" action="OAuth1RedirectToAuthUrl.action">
-            <s:textarea key="oauthContext.authUrlWithToken" label="%{getText('label.oauth.1_0a.authUrlWithToken')}" labelposition="top"  cols="63" rows="6" />
+            <s:textarea key="oauthContext.authUrlWithToken" label="%{getText('label.oauth.1_0a.authUrlWithToken')}" labelposition="top"  cols="53" rows="6" />
 
             <s:submit value="%{getText('label.oauth.1_0a.redirectToAuthUrlWithToken')}"/>
         </s:form>
