@@ -1,14 +1,12 @@
 package axiom.oauth.oauth1;
 
+import junit.framework.TestCase;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
 import oauth.signpost.basic.DefaultOAuthConsumer;
 import oauth.signpost.basic.DefaultOAuthProvider;
 
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
+import javax.net.ssl.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -23,7 +21,7 @@ import java.util.regex.Pattern;
  * @author Ryan Brainard
  * @since 2011-08-28
  */
-public class OAuth1ManualTest {
+public class OAuth1ManualTest extends TestCase {
 
     // Replace with your own values. Obtain by going to Salesforce: Setup | Develop | Remote Access
     private static final String CONSUMER_KEY = "3MVG9ytVT1SanXDmWxKyYiK4y8JtF4X53CiymWifBtChG1h4IbpND.ejyEzD44MSeE9P1D0Ll11TAj9be1Ge.";
@@ -39,7 +37,9 @@ public class OAuth1ManualTest {
     private static final String AUTHORIZATION_WEBSITE_URL = "https://" + SFDC_HOST + "/setup/secur/RemoteAccessAuthorizationPage.apexp?oauth_consumer_key=" + CONSUMER_KEY;
     private static final String SFDC_LOGIN_URL = "https://" + SFDC_HOST + "/services/OAuth/" + API_TYPE.code + "/22.0";
 
-    public static void main(String[] args) throws Exception {
+    public void testDummy() {}
+
+    public void _testFlow() throws Exception {
         enableProxy();
 
         final OAuthConsumer consumer = new DefaultOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
