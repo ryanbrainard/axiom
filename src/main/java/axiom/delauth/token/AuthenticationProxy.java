@@ -25,13 +25,13 @@ public class AuthenticationProxy implements com.sforce.soap.enterprise.Soap {
 
     public AuthenticationProxy() {
         this(new DemoAuthenticator(),
-                new MessageContextProvider() {
+             new MessageContextProvider() {
                     @Override
                     public MessageContext getMessageContext() {
                         return MessageContext.getCurrentContext();
                     }
-                },
-                new SforceServiceLocator());
+             },
+             new SforceServiceLocator());
     }
 
     public AuthenticationProxy(Authenticator authenticator, MessageContextProvider messageContextProvider, SforceServiceLocator sforceServiceLocator) {
