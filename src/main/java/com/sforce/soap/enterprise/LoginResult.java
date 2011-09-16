@@ -7,7 +7,7 @@
 
 package com.sforce.soap.enterprise;
 
-public class LoginResult  implements java.io.Serializable {
+public class LoginResult implements java.io.Serializable {
     private java.lang.String metadataServerUrl;
 
     private boolean passwordExpired;
@@ -24,24 +24,24 @@ public class LoginResult  implements java.io.Serializable {
     }
 
     public LoginResult(
-           java.lang.String metadataServerUrl,
-           boolean passwordExpired,
-           java.lang.String serverUrl,
-           java.lang.String sessionId,
-           java.lang.String userId,
-           com.sforce.soap.enterprise.GetUserInfoResult userInfo) {
-           this.metadataServerUrl = metadataServerUrl;
-           this.passwordExpired = passwordExpired;
-           this.serverUrl = serverUrl;
-           this.sessionId = sessionId;
-           this.userId = userId;
-           this.userInfo = userInfo;
+            java.lang.String metadataServerUrl,
+            boolean passwordExpired,
+            java.lang.String serverUrl,
+            java.lang.String sessionId,
+            java.lang.String userId,
+            com.sforce.soap.enterprise.GetUserInfoResult userInfo) {
+        this.metadataServerUrl = metadataServerUrl;
+        this.passwordExpired = passwordExpired;
+        this.serverUrl = serverUrl;
+        this.sessionId = sessionId;
+        this.userId = userId;
+        this.userInfo = userInfo;
     }
 
 
     /**
      * Gets the metadataServerUrl value for this LoginResult.
-     * 
+     *
      * @return metadataServerUrl
      */
     public java.lang.String getMetadataServerUrl() {
@@ -51,7 +51,7 @@ public class LoginResult  implements java.io.Serializable {
 
     /**
      * Sets the metadataServerUrl value for this LoginResult.
-     * 
+     *
      * @param metadataServerUrl
      */
     public void setMetadataServerUrl(java.lang.String metadataServerUrl) {
@@ -61,7 +61,7 @@ public class LoginResult  implements java.io.Serializable {
 
     /**
      * Gets the passwordExpired value for this LoginResult.
-     * 
+     *
      * @return passwordExpired
      */
     public boolean isPasswordExpired() {
@@ -71,7 +71,7 @@ public class LoginResult  implements java.io.Serializable {
 
     /**
      * Sets the passwordExpired value for this LoginResult.
-     * 
+     *
      * @param passwordExpired
      */
     public void setPasswordExpired(boolean passwordExpired) {
@@ -81,7 +81,7 @@ public class LoginResult  implements java.io.Serializable {
 
     /**
      * Gets the serverUrl value for this LoginResult.
-     * 
+     *
      * @return serverUrl
      */
     public java.lang.String getServerUrl() {
@@ -91,7 +91,7 @@ public class LoginResult  implements java.io.Serializable {
 
     /**
      * Sets the serverUrl value for this LoginResult.
-     * 
+     *
      * @param serverUrl
      */
     public void setServerUrl(java.lang.String serverUrl) {
@@ -101,7 +101,7 @@ public class LoginResult  implements java.io.Serializable {
 
     /**
      * Gets the sessionId value for this LoginResult.
-     * 
+     *
      * @return sessionId
      */
     public java.lang.String getSessionId() {
@@ -111,7 +111,7 @@ public class LoginResult  implements java.io.Serializable {
 
     /**
      * Sets the sessionId value for this LoginResult.
-     * 
+     *
      * @param sessionId
      */
     public void setSessionId(java.lang.String sessionId) {
@@ -121,7 +121,7 @@ public class LoginResult  implements java.io.Serializable {
 
     /**
      * Gets the userId value for this LoginResult.
-     * 
+     *
      * @return userId
      */
     public java.lang.String getUserId() {
@@ -131,7 +131,7 @@ public class LoginResult  implements java.io.Serializable {
 
     /**
      * Sets the userId value for this LoginResult.
-     * 
+     *
      * @param userId
      */
     public void setUserId(java.lang.String userId) {
@@ -141,7 +141,7 @@ public class LoginResult  implements java.io.Serializable {
 
     /**
      * Gets the userInfo value for this LoginResult.
-     * 
+     *
      * @return userInfo
      */
     public com.sforce.soap.enterprise.GetUserInfoResult getUserInfo() {
@@ -151,7 +151,7 @@ public class LoginResult  implements java.io.Serializable {
 
     /**
      * Sets the userInfo value for this LoginResult.
-     * 
+     *
      * @param userInfo
      */
     public void setUserInfo(com.sforce.soap.enterprise.GetUserInfoResult userInfo) {
@@ -159,6 +159,7 @@ public class LoginResult  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     @Override
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof LoginResult)) return false;
@@ -170,28 +171,29 @@ public class LoginResult  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.metadataServerUrl==null && other.getMetadataServerUrl()==null) || 
-             (this.metadataServerUrl!=null &&
-              this.metadataServerUrl.equals(other.getMetadataServerUrl()))) &&
-            this.passwordExpired == other.isPasswordExpired() &&
-            ((this.serverUrl==null && other.getServerUrl()==null) || 
-             (this.serverUrl!=null &&
-              this.serverUrl.equals(other.getServerUrl()))) &&
-            ((this.sessionId==null && other.getSessionId()==null) || 
-             (this.sessionId!=null &&
-              this.sessionId.equals(other.getSessionId()))) &&
-            ((this.userId==null && other.getUserId()==null) || 
-             (this.userId!=null &&
-              this.userId.equals(other.getUserId()))) &&
-            ((this.userInfo==null && other.getUserInfo()==null) || 
-             (this.userInfo!=null &&
-              this.userInfo.equals(other.getUserInfo())));
+        _equals = true &&
+                ((this.metadataServerUrl == null && other.getMetadataServerUrl() == null) ||
+                        (this.metadataServerUrl != null &&
+                                this.metadataServerUrl.equals(other.getMetadataServerUrl()))) &&
+                this.passwordExpired == other.isPasswordExpired() &&
+                ((this.serverUrl == null && other.getServerUrl() == null) ||
+                        (this.serverUrl != null &&
+                                this.serverUrl.equals(other.getServerUrl()))) &&
+                ((this.sessionId == null && other.getSessionId() == null) ||
+                        (this.sessionId != null &&
+                                this.sessionId.equals(other.getSessionId()))) &&
+                ((this.userId == null && other.getUserId() == null) ||
+                        (this.userId != null &&
+                                this.userId.equals(other.getUserId()))) &&
+                ((this.userInfo == null && other.getUserInfo() == null) ||
+                        (this.userInfo != null &&
+                                this.userInfo.equals(other.getUserInfo())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     @Override
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
@@ -221,7 +223,7 @@ public class LoginResult  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(LoginResult.class, true);
+            new org.apache.axis.description.TypeDesc(LoginResult.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "LoginResult"));
@@ -275,24 +277,24 @@ public class LoginResult  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanSerializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanDeserializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
 }

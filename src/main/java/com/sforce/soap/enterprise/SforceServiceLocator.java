@@ -9,9 +9,9 @@ package com.sforce.soap.enterprise;
 
 public class SforceServiceLocator extends org.apache.axis.client.Service implements com.sforce.soap.enterprise.SforceService {
 
-/**
- * Sforce SOAP API
- */
+    /**
+     * Sforce SOAP API
+     */
 
     public SforceServiceLocator() {
     }
@@ -44,11 +44,10 @@ public class SforceServiceLocator extends org.apache.axis.client.Service impleme
     }
 
     public com.sforce.soap.enterprise.Soap getSoap() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(Soap_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getSoap(endpoint);
@@ -59,8 +58,7 @@ public class SforceServiceLocator extends org.apache.axis.client.Service impleme
             com.sforce.soap.enterprise.SoapBindingStub _stub = new com.sforce.soap.enterprise.SoapBindingStub(portAddress, this);
             _stub.setPortName(getSoapWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -82,8 +80,7 @@ public class SforceServiceLocator extends org.apache.axis.client.Service impleme
                 _stub.setPortName(getSoapWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -102,8 +99,7 @@ public class SforceServiceLocator extends org.apache.axis.client.Service impleme
         java.lang.String inputPortName = portName.getLocalPart();
         if ("Soap".equals(inputPortName)) {
             return getSoap();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -127,22 +123,20 @@ public class SforceServiceLocator extends org.apache.axis.client.Service impleme
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("Soap".equals(portName)) {
+
+        if ("Soap".equals(portName)) {
             setSoapEndpointAddress(address);
-        }
-        else 
-{ // Unknown Port Name
+        } else { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

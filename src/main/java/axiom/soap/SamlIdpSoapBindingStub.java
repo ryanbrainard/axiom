@@ -13,14 +13,14 @@ public class SamlIdpSoapBindingStub extends org.apache.axis.client.Stub implemen
     private java.util.Vector cachedSerFactories = new java.util.Vector();
     private java.util.Vector cachedDeserFactories = new java.util.Vector();
 
-    static org.apache.axis.description.OperationDesc [] _operations;
+    static org.apache.axis.description.OperationDesc[] _operations;
 
     static {
         _operations = new org.apache.axis.description.OperationDesc[1];
         _initOperationDesc1();
     }
 
-    private static void _initOperationDesc1(){
+    private static void _initOperationDesc1() {
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
@@ -37,12 +37,12 @@ public class SamlIdpSoapBindingStub extends org.apache.axis.client.Stub implemen
     }
 
     public SamlIdpSoapBindingStub() throws org.apache.axis.AxisFault {
-         this(null);
+        this(null);
     }
 
     public SamlIdpSoapBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
-         this(service);
-         super.cachedEndpoint = endpointURL;
+        this(service);
+        super.cachedEndpoint = endpointURL;
     }
 
     public SamlIdpSoapBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
@@ -51,40 +51,40 @@ public class SamlIdpSoapBindingStub extends org.apache.axis.client.Stub implemen
         } else {
             super.service = service;
         }
-        ((org.apache.axis.client.Service)super.service).setTypeMappingVersion("1.2");
-            java.lang.Class cls;
-            javax.xml.namespace.QName qName;
-            javax.xml.namespace.QName qName2;
-            java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
-            java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-            java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
-            java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
-            java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
-            java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
-            java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
-            java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
-            java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
-            java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("urn:axiom.soap", "AxiomSamlRequest");
-            cachedSerQNames.add(qName);
-            cls = axiom.soap.AxiomSamlRequest.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        ((org.apache.axis.client.Service) super.service).setTypeMappingVersion("1.2");
+        java.lang.Class cls;
+        javax.xml.namespace.QName qName;
+        javax.xml.namespace.QName qName2;
+        java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
+        java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
+        java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
+        java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
+        java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
+        java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
+        java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
+        java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
+        java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
+        java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
+        qName = new javax.xml.namespace.QName("urn:axiom.soap", "AxiomSamlRequest");
+        cachedSerQNames.add(qName);
+        cls = axiom.soap.AxiomSamlRequest.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:axiom.soap", "SamlUserIdLocation");
-            cachedSerQNames.add(qName);
-            cls = axiom.soap.SamlUserIdLocation.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(enumsf);
-            cachedDeserFactories.add(enumdf);
+        qName = new javax.xml.namespace.QName("urn:axiom.soap", "SamlUserIdLocation");
+        cachedSerQNames.add(qName);
+        cls = axiom.soap.SamlUserIdLocation.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(enumsf);
+        cachedDeserFactories.add(enumdf);
 
-            qName = new javax.xml.namespace.QName("urn:axiom.soap", "SamlVersion");
-            cachedSerQNames.add(qName);
-            cls = axiom.soap.SamlVersion.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(enumsf);
-            cachedDeserFactories.add(enumdf);
+        qName = new javax.xml.namespace.QName("urn:axiom.soap", "SamlVersion");
+        cachedSerQNames.add(qName);
+        cls = axiom.soap.SamlVersion.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(enumsf);
+        cachedDeserFactories.add(enumdf);
 
     }
 
@@ -130,24 +130,22 @@ public class SamlIdpSoapBindingStub extends org.apache.axis.client.Stub implemen
                         java.lang.Object x = cachedSerFactories.get(i);
                         if (x instanceof Class) {
                             java.lang.Class sf = (java.lang.Class)
-                                 cachedSerFactories.get(i);
+                                    cachedSerFactories.get(i);
                             java.lang.Class df = (java.lang.Class)
-                                 cachedDeserFactories.get(i);
+                                    cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
-                        }
-                        else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
+                        } else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
                             org.apache.axis.encoding.SerializerFactory sf = (org.apache.axis.encoding.SerializerFactory)
-                                 cachedSerFactories.get(i);
+                                    cachedSerFactories.get(i);
                             org.apache.axis.encoding.DeserializerFactory df = (org.apache.axis.encoding.DeserializerFactory)
-                                 cachedDeserFactories.get(i);
+                                    cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
                         }
                     }
                 }
             }
             return _call;
-        }
-        catch (java.lang.Throwable _t) {
+        } catch (java.lang.Throwable _t) {
             throw new org.apache.axis.AxisFault("Failure trying to get the Call object", _t);
         }
     }
@@ -168,22 +166,22 @@ public class SamlIdpSoapBindingStub extends org.apache.axis.client.Stub implemen
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {axiomSamlRequest});
+        try {
+            java.lang.Object _resp = _call.invoke(new java.lang.Object[]{axiomSamlRequest});
 
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (java.lang.String) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
+            if (_resp instanceof java.rmi.RemoteException) {
+                throw (java.rmi.RemoteException) _resp;
+            } else {
+                extractAttachments(_call);
+                try {
+                    return (java.lang.String) _resp;
+                } catch (java.lang.Exception _exception) {
+                    return (java.lang.String) org.apache.axis.utils.JavaUtils.convert(_resp, java.lang.String.class);
+                }
             }
+        } catch (org.apache.axis.AxisFault axisFaultException) {
+            throw axisFaultException;
         }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
     }
 
 }

@@ -1,33 +1,33 @@
 package com.sforce.soap.authentication;
 
 
-public class Authenticate  implements java.io.Serializable, org.apache.axis.encoding.AnyContentType {
+public class Authenticate implements java.io.Serializable, org.apache.axis.encoding.AnyContentType {
     private java.lang.String username;
 
     private java.lang.String password;
 
     private java.lang.String sourceIp;
 
-    private org.apache.axis.message.MessageElement [] _any;
+    private org.apache.axis.message.MessageElement[] _any;
 
     public Authenticate() {
     }
 
     public Authenticate(
-           java.lang.String username,
-           java.lang.String password,
-           java.lang.String sourceIp,
-           org.apache.axis.message.MessageElement [] _any) {
-           this.username = username;
-           this.password = password;
-           this.sourceIp = sourceIp;
-           this._any = _any;
+            java.lang.String username,
+            java.lang.String password,
+            java.lang.String sourceIp,
+            org.apache.axis.message.MessageElement[] _any) {
+        this.username = username;
+        this.password = password;
+        this.sourceIp = sourceIp;
+        this._any = _any;
     }
 
 
     /**
      * Gets the username value for this Authenticate.
-     * 
+     *
      * @return username
      */
     public java.lang.String getUsername() {
@@ -37,7 +37,7 @@ public class Authenticate  implements java.io.Serializable, org.apache.axis.enco
 
     /**
      * Sets the username value for this Authenticate.
-     * 
+     *
      * @param username
      */
     public void setUsername(java.lang.String username) {
@@ -47,7 +47,7 @@ public class Authenticate  implements java.io.Serializable, org.apache.axis.enco
 
     /**
      * Gets the password value for this Authenticate.
-     * 
+     *
      * @return password
      */
     public java.lang.String getPassword() {
@@ -57,7 +57,7 @@ public class Authenticate  implements java.io.Serializable, org.apache.axis.enco
 
     /**
      * Sets the password value for this Authenticate.
-     * 
+     *
      * @param password
      */
     public void setPassword(java.lang.String password) {
@@ -67,7 +67,7 @@ public class Authenticate  implements java.io.Serializable, org.apache.axis.enco
 
     /**
      * Gets the sourceIp value for this Authenticate.
-     * 
+     *
      * @return sourceIp
      */
     public java.lang.String getSourceIp() {
@@ -77,7 +77,7 @@ public class Authenticate  implements java.io.Serializable, org.apache.axis.enco
 
     /**
      * Sets the sourceIp value for this Authenticate.
-     * 
+     *
      * @param sourceIp
      */
     public void setSourceIp(java.lang.String sourceIp) {
@@ -87,24 +87,25 @@ public class Authenticate  implements java.io.Serializable, org.apache.axis.enco
 
     /**
      * Gets the _any value for this Authenticate.
-     * 
+     *
      * @return _any
      */
-    public org.apache.axis.message.MessageElement [] get_any() {
+    public org.apache.axis.message.MessageElement[] get_any() {
         return _any;
     }
 
 
     /**
      * Sets the _any value for this Authenticate.
-     * 
+     *
      * @param _any
      */
-    public void set_any(org.apache.axis.message.MessageElement [] _any) {
+    public void set_any(org.apache.axis.message.MessageElement[] _any) {
         this._any = _any;
     }
 
     private java.lang.Object __equalsCalc = null;
+
     @Override
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof Authenticate)) return false;
@@ -116,24 +117,25 @@ public class Authenticate  implements java.io.Serializable, org.apache.axis.enco
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.username==null && other.getUsername()==null) || 
-             (this.username!=null &&
-              this.username.equals(other.getUsername()))) &&
-            ((this.password==null && other.getPassword()==null) || 
-             (this.password!=null &&
-              this.password.equals(other.getPassword()))) &&
-            ((this.sourceIp==null && other.getSourceIp()==null) || 
-             (this.sourceIp!=null &&
-              this.sourceIp.equals(other.getSourceIp()))) &&
-            ((this._any==null && other.get_any()==null) || 
-             (this._any!=null &&
-              java.util.Arrays.equals(this._any, other.get_any())));
+        _equals = true &&
+                ((this.username == null && other.getUsername() == null) ||
+                        (this.username != null &&
+                                this.username.equals(other.getUsername()))) &&
+                ((this.password == null && other.getPassword() == null) ||
+                        (this.password != null &&
+                                this.password.equals(other.getPassword()))) &&
+                ((this.sourceIp == null && other.getSourceIp() == null) ||
+                        (this.sourceIp != null &&
+                                this.sourceIp.equals(other.getSourceIp()))) &&
+                ((this._any == null && other.get_any() == null) ||
+                        (this._any != null &&
+                                java.util.Arrays.equals(this._any, other.get_any())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     @Override
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
@@ -151,12 +153,12 @@ public class Authenticate  implements java.io.Serializable, org.apache.axis.enco
             _hashCode += getSourceIp().hashCode();
         }
         if (get_any() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(get_any());
+            for (int i = 0;
+                 i < java.lang.reflect.Array.getLength(get_any());
                  i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(get_any(), i);
                 if (obj != null &&
-                    !obj.getClass().isArray()) {
+                        !obj.getClass().isArray()) {
                     _hashCode += obj.hashCode();
                 }
             }
@@ -167,7 +169,7 @@ public class Authenticate  implements java.io.Serializable, org.apache.axis.enco
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(Authenticate.class, true);
+            new org.apache.axis.description.TypeDesc(Authenticate.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("urn:authentication.soap.sforce.com", "Authenticate"));
@@ -202,24 +204,24 @@ public class Authenticate  implements java.io.Serializable, org.apache.axis.enco
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanSerializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanDeserializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
 }

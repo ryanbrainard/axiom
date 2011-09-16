@@ -13,15 +13,15 @@ public class SoapBindingSkeleton implements com.sforce.soap.enterprise.Soap, org
     private static java.util.Collection _myOperationsList = new java.util.ArrayList();
 
     /**
-    * Returns List of OperationDesc objects with this name
-    */
+     * Returns List of OperationDesc objects with this name
+     */
     public static java.util.List getOperationDescByName(java.lang.String methodName) {
-        return (java.util.List)_myOperations.get(methodName);
+        return (java.util.List) _myOperations.get(methodName);
     }
 
     /**
-    * Returns Collection of OperationDescs
-    */
+     * Returns Collection of OperationDescs
+     */
     public static java.util.Collection getOperationDescs() {
         return _myOperationsList;
     }
@@ -29,10 +29,10 @@ public class SoapBindingSkeleton implements com.sforce.soap.enterprise.Soap, org
     static {
         org.apache.axis.description.OperationDesc _oper;
         org.apache.axis.description.FaultDesc _fault;
-        org.apache.axis.description.ParameterDesc [] _params;
-        _params = new org.apache.axis.description.ParameterDesc [] {
-            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "username"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false), 
-            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "password"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false), 
+        org.apache.axis.description.ParameterDesc[] _params;
+        _params = new org.apache.axis.description.ParameterDesc[]{
+                new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "username"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false),
+                new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "password"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false),
         };
         _oper = new org.apache.axis.description.OperationDesc("login", _params, new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "result"));
         _oper.setReturnType(new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "LoginResult"));
@@ -42,7 +42,7 @@ public class SoapBindingSkeleton implements com.sforce.soap.enterprise.Soap, org
         if (_myOperations.get("login") == null) {
             _myOperations.put("login", new java.util.ArrayList());
         }
-        ((java.util.List)_myOperations.get("login")).add(_oper);
+        ((java.util.List) _myOperations.get("login")).add(_oper);
         _fault = new org.apache.axis.description.FaultDesc();
         _fault.setName("InvalidIdFault");
         _fault.setQName(new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidIdFault"));
@@ -70,8 +70,8 @@ public class SoapBindingSkeleton implements com.sforce.soap.enterprise.Soap, org
     public SoapBindingSkeleton(com.sforce.soap.enterprise.Soap impl) {
         this.impl = impl;
     }
-    public com.sforce.soap.enterprise.LoginResult login(java.lang.String username, java.lang.String password) throws java.rmi.RemoteException, com.sforce.soap.enterprise.fault.InvalidIdFault, com.sforce.soap.enterprise.fault.UnexpectedErrorFault, com.sforce.soap.enterprise.fault.LoginFault
-    {
+
+    public com.sforce.soap.enterprise.LoginResult login(java.lang.String username, java.lang.String password) throws java.rmi.RemoteException, com.sforce.soap.enterprise.fault.InvalidIdFault, com.sforce.soap.enterprise.fault.UnexpectedErrorFault, com.sforce.soap.enterprise.fault.LoginFault {
         com.sforce.soap.enterprise.LoginResult ret = impl.login(username, password);
         return ret;
     }

@@ -1,15 +1,15 @@
 package axiom.web;
 
 
-public class SamlIdpHome extends AxiomSupport implements Breadcrumbable{
+public class SamlIdpHome extends AxiomSupport implements Breadcrumbable {
 
-	@Override
-	public Breadcrumbable getParentPage() {
-		return new Home();
-	}
+    @Override
+    public Breadcrumbable getParentPage() {
+        return new Home();
+    }
 
-	public String getSamlIdpServiceEndpoint(){
-		return getAxiomEndpoint() + "/services/samlIdp";
-	}
+    public String getSamlIdpServiceEndpoint() {
+        return getAxiomEndpoint() + "/services/samlIdp";
+    }
 
 }

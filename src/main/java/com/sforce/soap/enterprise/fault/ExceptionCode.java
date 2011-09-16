@@ -14,7 +14,7 @@ public class ExceptionCode implements java.io.Serializable {
     // Constructor
     protected ExceptionCode(java.lang.String value) {
         _value_ = value;
-        _table_.put(_value_,this);
+        _table_.put(_value_, this);
     }
 
     public static final java.lang.String _API_CURRENTLY_DISABLED = "API_CURRENTLY_DISABLED";
@@ -155,48 +155,69 @@ public class ExceptionCode implements java.io.Serializable {
     public static final ExceptionCode UNKNOWN_EXCEPTION = new ExceptionCode(_UNKNOWN_EXCEPTION);
     public static final ExceptionCode UNSUPPORTED_API_VERSION = new ExceptionCode(_UNSUPPORTED_API_VERSION);
     public static final ExceptionCode UNSUPPORTED_CLIENT = new ExceptionCode(_UNSUPPORTED_CLIENT);
-    public java.lang.String getValue() { return _value_;}
+
+    public java.lang.String getValue() {
+        return _value_;
+    }
+
     public static ExceptionCode fromValue(java.lang.String value)
-          throws java.lang.IllegalArgumentException {
+            throws java.lang.IllegalArgumentException {
         ExceptionCode enumeration = (ExceptionCode)
-            _table_.get(value);
-        if (enumeration==null) throw new java.lang.IllegalArgumentException();
+                _table_.get(value);
+        if (enumeration == null) throw new java.lang.IllegalArgumentException();
         return enumeration;
     }
+
     public static ExceptionCode fromString(java.lang.String value)
-          throws java.lang.IllegalArgumentException {
+            throws java.lang.IllegalArgumentException {
         return fromValue(value);
     }
+
     @Override
-    public boolean equals(java.lang.Object obj) {return (obj == this);}
+    public boolean equals(java.lang.Object obj) {
+        return (obj == this);
+    }
+
     @Override
-    public int hashCode() { return toString().hashCode();}
+    public int hashCode() {
+        return toString().hashCode();
+    }
+
     @Override
-    public java.lang.String toString() { return _value_;}
-    public java.lang.Object readResolve() throws java.io.ObjectStreamException { return fromValue(_value_);}
+    public java.lang.String toString() {
+        return _value_;
+    }
+
+    public java.lang.Object readResolve() throws java.io.ObjectStreamException {
+        return fromValue(_value_);
+    }
+
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new org.apache.axis.encoding.ser.EnumSerializer(
-            _javaType, _xmlType);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.EnumSerializer(
+                        _javaType, _xmlType);
     }
+
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new org.apache.axis.encoding.ser.EnumDeserializer(
-            _javaType, _xmlType);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.EnumDeserializer(
+                        _javaType, _xmlType);
     }
+
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(ExceptionCode.class);
+            new org.apache.axis.description.TypeDesc(ExceptionCode.class);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "ExceptionCode"));
     }
+
     /**
      * Return type metadata object
      */

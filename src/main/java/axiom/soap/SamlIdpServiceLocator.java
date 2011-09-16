@@ -40,11 +40,10 @@ public class SamlIdpServiceLocator extends org.apache.axis.client.Service implem
     }
 
     public axiom.soap.SamlIdp getsamlIdp() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(samlIdp_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getsamlIdp(endpoint);
@@ -55,8 +54,7 @@ public class SamlIdpServiceLocator extends org.apache.axis.client.Service implem
             axiom.soap.SamlIdpSoapBindingStub _stub = new axiom.soap.SamlIdpSoapBindingStub(portAddress, this);
             _stub.setPortName(getsamlIdpWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -78,8 +76,7 @@ public class SamlIdpServiceLocator extends org.apache.axis.client.Service implem
                 _stub.setPortName(getsamlIdpWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -98,8 +95,7 @@ public class SamlIdpServiceLocator extends org.apache.axis.client.Service implem
         java.lang.String inputPortName = portName.getLocalPart();
         if ("samlIdp".equals(inputPortName)) {
             return getsamlIdp();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -123,22 +119,20 @@ public class SamlIdpServiceLocator extends org.apache.axis.client.Service implem
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("samlIdp".equals(portName)) {
+
+        if ("samlIdp".equals(portName)) {
             setsamlIdpEndpointAddress(address);
-        }
-        else 
-{ // Unknown Port Name
+        } else { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

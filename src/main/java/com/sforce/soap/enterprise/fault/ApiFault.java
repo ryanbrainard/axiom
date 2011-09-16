@@ -7,7 +7,7 @@
 
 package com.sforce.soap.enterprise.fault;
 
-public class ApiFault  extends org.apache.axis.AxisFault  implements java.io.Serializable {
+public class ApiFault extends org.apache.axis.AxisFault implements java.io.Serializable {
     private com.sforce.soap.enterprise.fault.ExceptionCode exceptionCode;
 
     private java.lang.String exceptionMessage;
@@ -16,8 +16,8 @@ public class ApiFault  extends org.apache.axis.AxisFault  implements java.io.Ser
     }
 
     public ApiFault(
-           com.sforce.soap.enterprise.fault.ExceptionCode exceptionCode,
-           java.lang.String exceptionMessage) {
+            com.sforce.soap.enterprise.fault.ExceptionCode exceptionCode,
+            java.lang.String exceptionMessage) {
         this.exceptionCode = exceptionCode;
         this.exceptionMessage = exceptionMessage;
     }
@@ -25,7 +25,7 @@ public class ApiFault  extends org.apache.axis.AxisFault  implements java.io.Ser
 
     /**
      * Gets the exceptionCode value for this ApiFault.
-     * 
+     *
      * @return exceptionCode
      */
     public com.sforce.soap.enterprise.fault.ExceptionCode getExceptionCode() {
@@ -35,7 +35,7 @@ public class ApiFault  extends org.apache.axis.AxisFault  implements java.io.Ser
 
     /**
      * Sets the exceptionCode value for this ApiFault.
-     * 
+     *
      * @param exceptionCode
      */
     public void setExceptionCode(com.sforce.soap.enterprise.fault.ExceptionCode exceptionCode) {
@@ -45,7 +45,7 @@ public class ApiFault  extends org.apache.axis.AxisFault  implements java.io.Ser
 
     /**
      * Gets the exceptionMessage value for this ApiFault.
-     * 
+     *
      * @return exceptionMessage
      */
     public java.lang.String getExceptionMessage() {
@@ -55,7 +55,7 @@ public class ApiFault  extends org.apache.axis.AxisFault  implements java.io.Ser
 
     /**
      * Sets the exceptionMessage value for this ApiFault.
-     * 
+     *
      * @param exceptionMessage
      */
     public void setExceptionMessage(java.lang.String exceptionMessage) {
@@ -63,6 +63,7 @@ public class ApiFault  extends org.apache.axis.AxisFault  implements java.io.Ser
     }
 
     private java.lang.Object __equalsCalc = null;
+
     @Override
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof ApiFault)) return false;
@@ -74,18 +75,19 @@ public class ApiFault  extends org.apache.axis.AxisFault  implements java.io.Ser
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.exceptionCode==null && other.getExceptionCode()==null) || 
-             (this.exceptionCode!=null &&
-              this.exceptionCode.equals(other.getExceptionCode()))) &&
-            ((this.exceptionMessage==null && other.getExceptionMessage()==null) || 
-             (this.exceptionMessage!=null &&
-              this.exceptionMessage.equals(other.getExceptionMessage())));
+        _equals = true &&
+                ((this.exceptionCode == null && other.getExceptionCode() == null) ||
+                        (this.exceptionCode != null &&
+                                this.exceptionCode.equals(other.getExceptionCode()))) &&
+                ((this.exceptionMessage == null && other.getExceptionMessage() == null) ||
+                        (this.exceptionMessage != null &&
+                                this.exceptionMessage.equals(other.getExceptionMessage())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     @Override
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
@@ -105,7 +107,7 @@ public class ApiFault  extends org.apache.axis.AxisFault  implements java.io.Ser
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(ApiFault.class, true);
+            new org.apache.axis.description.TypeDesc(ApiFault.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "ApiFault"));
@@ -134,24 +136,24 @@ public class ApiFault  extends org.apache.axis.AxisFault  implements java.io.Ser
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanSerializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanDeserializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
 

@@ -7,9 +7,9 @@
 <!--      from the same directory that the Axis engine runs         -->
 
 <undeployment
-    xmlns="http://xml.apache.org/axis/wsdd/">
+        xmlns="http://xml.apache.org/axis/wsdd/">
 
-  <!-- Services from SforceService WSDL service -->
+    <!-- Services from SforceService WSDL service -->
 
-  <service name="Soap"/>
+    <service name="Soap"/>
 </undeployment>

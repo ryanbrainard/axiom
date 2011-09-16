@@ -7,7 +7,7 @@
 
 package axiom.soap;
 
-public class AxiomSamlRequest  implements java.io.Serializable {
+public class AxiomSamlRequest implements java.io.Serializable {
     private axiom.soap.SamlVersion samlVersion;
 
     private java.lang.String issuer;
@@ -28,28 +28,28 @@ public class AxiomSamlRequest  implements java.io.Serializable {
     }
 
     public AxiomSamlRequest(
-           axiom.soap.SamlVersion samlVersion,
-           java.lang.String issuer,
-           java.lang.String recipient,
-           java.lang.String userId,
-           axiom.soap.SamlUserIdLocation samlUserIdLocation,
-           java.lang.String attributeName,
-           java.lang.String attributeUri,
-           java.lang.Boolean base64EncodeResponse) {
-           this.samlVersion = samlVersion;
-           this.issuer = issuer;
-           this.recipient = recipient;
-           this.userId = userId;
-           this.samlUserIdLocation = samlUserIdLocation;
-           this.attributeName = attributeName;
-           this.attributeUri = attributeUri;
-           this.base64EncodeResponse = base64EncodeResponse;
+            axiom.soap.SamlVersion samlVersion,
+            java.lang.String issuer,
+            java.lang.String recipient,
+            java.lang.String userId,
+            axiom.soap.SamlUserIdLocation samlUserIdLocation,
+            java.lang.String attributeName,
+            java.lang.String attributeUri,
+            java.lang.Boolean base64EncodeResponse) {
+        this.samlVersion = samlVersion;
+        this.issuer = issuer;
+        this.recipient = recipient;
+        this.userId = userId;
+        this.samlUserIdLocation = samlUserIdLocation;
+        this.attributeName = attributeName;
+        this.attributeUri = attributeUri;
+        this.base64EncodeResponse = base64EncodeResponse;
     }
 
 
     /**
      * Gets the samlVersion value for this AxiomSamlRequest.
-     * 
+     *
      * @return samlVersion
      */
     public axiom.soap.SamlVersion getSamlVersion() {
@@ -59,7 +59,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Sets the samlVersion value for this AxiomSamlRequest.
-     * 
+     *
      * @param samlVersion
      */
     public void setSamlVersion(axiom.soap.SamlVersion samlVersion) {
@@ -69,7 +69,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Gets the issuer value for this AxiomSamlRequest.
-     * 
+     *
      * @return issuer
      */
     public java.lang.String getIssuer() {
@@ -79,7 +79,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Sets the issuer value for this AxiomSamlRequest.
-     * 
+     *
      * @param issuer
      */
     public void setIssuer(java.lang.String issuer) {
@@ -89,7 +89,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Gets the recipient value for this AxiomSamlRequest.
-     * 
+     *
      * @return recipient
      */
     public java.lang.String getRecipient() {
@@ -99,7 +99,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Sets the recipient value for this AxiomSamlRequest.
-     * 
+     *
      * @param recipient
      */
     public void setRecipient(java.lang.String recipient) {
@@ -109,7 +109,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Gets the userId value for this AxiomSamlRequest.
-     * 
+     *
      * @return userId
      */
     public java.lang.String getUserId() {
@@ -119,7 +119,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Sets the userId value for this AxiomSamlRequest.
-     * 
+     *
      * @param userId
      */
     public void setUserId(java.lang.String userId) {
@@ -129,7 +129,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Gets the samlUserIdLocation value for this AxiomSamlRequest.
-     * 
+     *
      * @return samlUserIdLocation
      */
     public axiom.soap.SamlUserIdLocation getSamlUserIdLocation() {
@@ -139,7 +139,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Sets the samlUserIdLocation value for this AxiomSamlRequest.
-     * 
+     *
      * @param samlUserIdLocation
      */
     public void setSamlUserIdLocation(axiom.soap.SamlUserIdLocation samlUserIdLocation) {
@@ -149,7 +149,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Gets the attributeName value for this AxiomSamlRequest.
-     * 
+     *
      * @return attributeName
      */
     public java.lang.String getAttributeName() {
@@ -159,7 +159,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Sets the attributeName value for this AxiomSamlRequest.
-     * 
+     *
      * @param attributeName
      */
     public void setAttributeName(java.lang.String attributeName) {
@@ -169,7 +169,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Gets the attributeUri value for this AxiomSamlRequest.
-     * 
+     *
      * @return attributeUri
      */
     public java.lang.String getAttributeUri() {
@@ -179,7 +179,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Sets the attributeUri value for this AxiomSamlRequest.
-     * 
+     *
      * @param attributeUri
      */
     public void setAttributeUri(java.lang.String attributeUri) {
@@ -189,7 +189,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Gets the base64EncodeResponse value for this AxiomSamlRequest.
-     * 
+     *
      * @return base64EncodeResponse
      */
     public java.lang.Boolean getBase64EncodeResponse() {
@@ -199,7 +199,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     /**
      * Sets the base64EncodeResponse value for this AxiomSamlRequest.
-     * 
+     *
      * @param base64EncodeResponse
      */
     public void setBase64EncodeResponse(java.lang.Boolean base64EncodeResponse) {
@@ -207,6 +207,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     @Override
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof AxiomSamlRequest)) return false;
@@ -218,36 +219,37 @@ public class AxiomSamlRequest  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.samlVersion==null && other.getSamlVersion()==null) || 
-             (this.samlVersion!=null &&
-              this.samlVersion.equals(other.getSamlVersion()))) &&
-            ((this.issuer==null && other.getIssuer()==null) || 
-             (this.issuer!=null &&
-              this.issuer.equals(other.getIssuer()))) &&
-            ((this.recipient==null && other.getRecipient()==null) || 
-             (this.recipient!=null &&
-              this.recipient.equals(other.getRecipient()))) &&
-            ((this.userId==null && other.getUserId()==null) || 
-             (this.userId!=null &&
-              this.userId.equals(other.getUserId()))) &&
-            ((this.samlUserIdLocation==null && other.getSamlUserIdLocation()==null) || 
-             (this.samlUserIdLocation!=null &&
-              this.samlUserIdLocation.equals(other.getSamlUserIdLocation()))) &&
-            ((this.attributeName==null && other.getAttributeName()==null) || 
-             (this.attributeName!=null &&
-              this.attributeName.equals(other.getAttributeName()))) &&
-            ((this.attributeUri==null && other.getAttributeUri()==null) || 
-             (this.attributeUri!=null &&
-              this.attributeUri.equals(other.getAttributeUri()))) &&
-            ((this.base64EncodeResponse==null && other.getBase64EncodeResponse()==null) || 
-             (this.base64EncodeResponse!=null &&
-              this.base64EncodeResponse.equals(other.getBase64EncodeResponse())));
+        _equals = true &&
+                ((this.samlVersion == null && other.getSamlVersion() == null) ||
+                        (this.samlVersion != null &&
+                                this.samlVersion.equals(other.getSamlVersion()))) &&
+                ((this.issuer == null && other.getIssuer() == null) ||
+                        (this.issuer != null &&
+                                this.issuer.equals(other.getIssuer()))) &&
+                ((this.recipient == null && other.getRecipient() == null) ||
+                        (this.recipient != null &&
+                                this.recipient.equals(other.getRecipient()))) &&
+                ((this.userId == null && other.getUserId() == null) ||
+                        (this.userId != null &&
+                                this.userId.equals(other.getUserId()))) &&
+                ((this.samlUserIdLocation == null && other.getSamlUserIdLocation() == null) ||
+                        (this.samlUserIdLocation != null &&
+                                this.samlUserIdLocation.equals(other.getSamlUserIdLocation()))) &&
+                ((this.attributeName == null && other.getAttributeName() == null) ||
+                        (this.attributeName != null &&
+                                this.attributeName.equals(other.getAttributeName()))) &&
+                ((this.attributeUri == null && other.getAttributeUri() == null) ||
+                        (this.attributeUri != null &&
+                                this.attributeUri.equals(other.getAttributeUri()))) &&
+                ((this.base64EncodeResponse == null && other.getBase64EncodeResponse() == null) ||
+                        (this.base64EncodeResponse != null &&
+                                this.base64EncodeResponse.equals(other.getBase64EncodeResponse())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     @Override
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
@@ -285,7 +287,7 @@ public class AxiomSamlRequest  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(AxiomSamlRequest.class, true);
+            new org.apache.axis.description.TypeDesc(AxiomSamlRequest.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("urn:axiom.soap", "AxiomSamlRequest"));
@@ -350,24 +352,24 @@ public class AxiomSamlRequest  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanSerializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanDeserializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
 }

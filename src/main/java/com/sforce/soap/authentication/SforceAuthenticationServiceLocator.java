@@ -3,9 +3,9 @@ package com.sforce.soap.authentication;
 
 public class SforceAuthenticationServiceLocator extends org.apache.axis.client.Service implements com.sforce.soap.authentication.SforceAuthenticationService {
 
-/**
- * Sforce Authentication Service
- */
+    /**
+     * Sforce Authentication Service
+     */
 
     public SforceAuthenticationServiceLocator() {
     }
@@ -38,11 +38,10 @@ public class SforceAuthenticationServiceLocator extends org.apache.axis.client.S
     }
 
     public com.sforce.soap.authentication.AuthenticationPortType getAuthenticationService() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(AuthenticationService_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getAuthenticationService(endpoint);
@@ -53,8 +52,7 @@ public class SforceAuthenticationServiceLocator extends org.apache.axis.client.S
             com.sforce.soap.authentication.AuthenticationBindingStub _stub = new com.sforce.soap.authentication.AuthenticationBindingStub(portAddress, this);
             _stub.setPortName(getAuthenticationServiceWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -76,8 +74,7 @@ public class SforceAuthenticationServiceLocator extends org.apache.axis.client.S
                 _stub.setPortName(getAuthenticationServiceWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -96,8 +93,7 @@ public class SforceAuthenticationServiceLocator extends org.apache.axis.client.S
         java.lang.String inputPortName = portName.getLocalPart();
         if ("AuthenticationService".equals(inputPortName)) {
             return getAuthenticationService();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -121,22 +117,20 @@ public class SforceAuthenticationServiceLocator extends org.apache.axis.client.S
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("AuthenticationService".equals(portName)) {
+
+        if ("AuthenticationService".equals(portName)) {
             setAuthenticationServiceEndpointAddress(address);
-        }
-        else 
-{ // Unknown Port Name
+        } else { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

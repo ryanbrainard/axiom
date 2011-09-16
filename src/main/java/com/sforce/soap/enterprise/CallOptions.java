@@ -7,7 +7,7 @@
 
 package com.sforce.soap.enterprise;
 
-public class CallOptions  implements java.io.Serializable {
+public class CallOptions implements java.io.Serializable {
     private java.lang.String client;
 
     private java.lang.String defaultNamespace;
@@ -18,18 +18,18 @@ public class CallOptions  implements java.io.Serializable {
     }
 
     public CallOptions(
-           java.lang.String client,
-           java.lang.String defaultNamespace,
-           java.lang.String remoteApplication) {
-           this.client = client;
-           this.defaultNamespace = defaultNamespace;
-           this.remoteApplication = remoteApplication;
+            java.lang.String client,
+            java.lang.String defaultNamespace,
+            java.lang.String remoteApplication) {
+        this.client = client;
+        this.defaultNamespace = defaultNamespace;
+        this.remoteApplication = remoteApplication;
     }
 
 
     /**
      * Gets the client value for this CallOptions.
-     * 
+     *
      * @return client
      */
     public java.lang.String getClient() {
@@ -39,7 +39,7 @@ public class CallOptions  implements java.io.Serializable {
 
     /**
      * Sets the client value for this CallOptions.
-     * 
+     *
      * @param client
      */
     public void setClient(java.lang.String client) {
@@ -49,7 +49,7 @@ public class CallOptions  implements java.io.Serializable {
 
     /**
      * Gets the defaultNamespace value for this CallOptions.
-     * 
+     *
      * @return defaultNamespace
      */
     public java.lang.String getDefaultNamespace() {
@@ -59,7 +59,7 @@ public class CallOptions  implements java.io.Serializable {
 
     /**
      * Sets the defaultNamespace value for this CallOptions.
-     * 
+     *
      * @param defaultNamespace
      */
     public void setDefaultNamespace(java.lang.String defaultNamespace) {
@@ -69,7 +69,7 @@ public class CallOptions  implements java.io.Serializable {
 
     /**
      * Gets the remoteApplication value for this CallOptions.
-     * 
+     *
      * @return remoteApplication
      */
     public java.lang.String getRemoteApplication() {
@@ -79,7 +79,7 @@ public class CallOptions  implements java.io.Serializable {
 
     /**
      * Sets the remoteApplication value for this CallOptions.
-     * 
+     *
      * @param remoteApplication
      */
     public void setRemoteApplication(java.lang.String remoteApplication) {
@@ -87,6 +87,7 @@ public class CallOptions  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     @Override
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof CallOptions)) return false;
@@ -98,21 +99,22 @@ public class CallOptions  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.client==null && other.getClient()==null) || 
-             (this.client!=null &&
-              this.client.equals(other.getClient()))) &&
-            ((this.defaultNamespace==null && other.getDefaultNamespace()==null) || 
-             (this.defaultNamespace!=null &&
-              this.defaultNamespace.equals(other.getDefaultNamespace()))) &&
-            ((this.remoteApplication==null && other.getRemoteApplication()==null) || 
-             (this.remoteApplication!=null &&
-              this.remoteApplication.equals(other.getRemoteApplication())));
+        _equals = true &&
+                ((this.client == null && other.getClient() == null) ||
+                        (this.client != null &&
+                                this.client.equals(other.getClient()))) &&
+                ((this.defaultNamespace == null && other.getDefaultNamespace() == null) ||
+                        (this.defaultNamespace != null &&
+                                this.defaultNamespace.equals(other.getDefaultNamespace()))) &&
+                ((this.remoteApplication == null && other.getRemoteApplication() == null) ||
+                        (this.remoteApplication != null &&
+                                this.remoteApplication.equals(other.getRemoteApplication())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     @Override
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
@@ -135,7 +137,7 @@ public class CallOptions  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(CallOptions.class, true);
+            new org.apache.axis.description.TypeDesc(CallOptions.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", ">CallOptions"));
@@ -170,24 +172,24 @@ public class CallOptions  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanSerializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanDeserializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
 }

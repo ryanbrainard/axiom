@@ -13,14 +13,14 @@ public class SoapBindingStub extends org.apache.axis.client.Stub implements com.
     private java.util.Vector cachedSerFactories = new java.util.Vector();
     private java.util.Vector cachedDeserFactories = new java.util.Vector();
 
-    static org.apache.axis.description.OperationDesc [] _operations;
+    static org.apache.axis.description.OperationDesc[] _operations;
 
     static {
         _operations = new org.apache.axis.description.OperationDesc[1];
         _initOperationDesc1();
     }
 
-    private static void _initOperationDesc1(){
+    private static void _initOperationDesc1() {
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
@@ -35,34 +35,34 @@ public class SoapBindingStub extends org.apache.axis.client.Stub implements com.
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidIdFault"),
-                      "com.sforce.soap.enterprise.fault.InvalidIdFault",
-                      new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidIdFault"), 
-                      true
-                     ));
+                new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidIdFault"),
+                "com.sforce.soap.enterprise.fault.InvalidIdFault",
+                new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidIdFault"),
+                true
+        ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "UnexpectedErrorFault"),
-                      "com.sforce.soap.enterprise.fault.UnexpectedErrorFault",
-                      new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "UnexpectedErrorFault"), 
-                      true
-                     ));
+                new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "UnexpectedErrorFault"),
+                "com.sforce.soap.enterprise.fault.UnexpectedErrorFault",
+                new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "UnexpectedErrorFault"),
+                true
+        ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "LoginFault"),
-                      "com.sforce.soap.enterprise.fault.LoginFault",
-                      new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "LoginFault"), 
-                      true
-                     ));
+                new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "LoginFault"),
+                "com.sforce.soap.enterprise.fault.LoginFault",
+                new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "LoginFault"),
+                true
+        ));
         _operations[0] = oper;
 
     }
 
     public SoapBindingStub() throws org.apache.axis.AxisFault {
-         this(null);
+        this(null);
     }
 
     public SoapBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
-         this(service);
-         super.cachedEndpoint = endpointURL;
+        this(service);
+        super.cachedEndpoint = endpointURL;
     }
 
     public SoapBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
@@ -71,124 +71,124 @@ public class SoapBindingStub extends org.apache.axis.client.Stub implements com.
         } else {
             super.service = service;
         }
-        ((org.apache.axis.client.Service)super.service).setTypeMappingVersion("1.2");
-            java.lang.Class cls;
-            javax.xml.namespace.QName qName;
-            javax.xml.namespace.QName qName2;
-            java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
-            java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-            java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
-            java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
-            java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
-            java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
-            java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
-            java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
-            java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
-            java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "GetUserInfoResult");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.GetUserInfoResult.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        ((org.apache.axis.client.Service) super.service).setTypeMappingVersion("1.2");
+        java.lang.Class cls;
+        javax.xml.namespace.QName qName;
+        javax.xml.namespace.QName qName2;
+        java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
+        java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
+        java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
+        java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
+        java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
+        java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
+        java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
+        java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
+        java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
+        java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
+        qName = new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "GetUserInfoResult");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.GetUserInfoResult.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "ID");
-            cachedSerQNames.add(qName);
-            cls = java.lang.String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
+        qName = new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "ID");
+        cachedSerQNames.add(qName);
+        cls = java.lang.String.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
+        cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "LoginResult");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.LoginResult.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("urn:enterprise.soap.sforce.com", "LoginResult");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.LoginResult.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "ApiFault");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.fault.ApiFault.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "ApiFault");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.fault.ApiFault.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "ApiQueryFault");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.fault.ApiQueryFault.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "ApiQueryFault");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.fault.ApiQueryFault.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "ExceptionCode");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.fault.ExceptionCode.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(enumsf);
-            cachedDeserFactories.add(enumdf);
+        qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "ExceptionCode");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.fault.ExceptionCode.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(enumsf);
+        cachedDeserFactories.add(enumdf);
 
-            qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidFieldFault");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.fault.InvalidFieldFault.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidFieldFault");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.fault.InvalidFieldFault.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidIdFault");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.fault.InvalidIdFault.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidIdFault");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.fault.InvalidIdFault.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidNewPasswordFault");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.fault.InvalidNewPasswordFault.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidNewPasswordFault");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.fault.InvalidNewPasswordFault.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidQueryLocatorFault");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.fault.InvalidQueryLocatorFault.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidQueryLocatorFault");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.fault.InvalidQueryLocatorFault.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidSObjectFault");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.fault.InvalidSObjectFault.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "InvalidSObjectFault");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.fault.InvalidSObjectFault.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "LoginFault");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.fault.LoginFault.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "LoginFault");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.fault.LoginFault.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "MalformedQueryFault");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.fault.MalformedQueryFault.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "MalformedQueryFault");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.fault.MalformedQueryFault.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "MalformedSearchFault");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.fault.MalformedSearchFault.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "MalformedSearchFault");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.fault.MalformedSearchFault.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "UnexpectedErrorFault");
-            cachedSerQNames.add(qName);
-            cls = com.sforce.soap.enterprise.fault.UnexpectedErrorFault.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("urn:fault.enterprise.soap.sforce.com", "UnexpectedErrorFault");
+        cachedSerQNames.add(qName);
+        cls = com.sforce.soap.enterprise.fault.UnexpectedErrorFault.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
     }
 
@@ -234,24 +234,22 @@ public class SoapBindingStub extends org.apache.axis.client.Stub implements com.
                         java.lang.Object x = cachedSerFactories.get(i);
                         if (x instanceof Class) {
                             java.lang.Class sf = (java.lang.Class)
-                                 cachedSerFactories.get(i);
+                                    cachedSerFactories.get(i);
                             java.lang.Class df = (java.lang.Class)
-                                 cachedDeserFactories.get(i);
+                                    cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
-                        }
-                        else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
+                        } else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
                             org.apache.axis.encoding.SerializerFactory sf = (org.apache.axis.encoding.SerializerFactory)
-                                 cachedSerFactories.get(i);
+                                    cachedSerFactories.get(i);
                             org.apache.axis.encoding.DeserializerFactory df = (org.apache.axis.encoding.DeserializerFactory)
-                                 cachedDeserFactories.get(i);
+                                    cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
                         }
                     }
                 }
             }
             return _call;
-        }
-        catch (java.lang.Throwable _t) {
+        } catch (java.lang.Throwable _t) {
             throw new org.apache.axis.AxisFault("Failure trying to get the Call object", _t);
         }
     }
@@ -272,36 +270,36 @@ public class SoapBindingStub extends org.apache.axis.client.Stub implements com.
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {username, password});
+        try {
+            java.lang.Object _resp = _call.invoke(new java.lang.Object[]{username, password});
 
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.sforce.soap.enterprise.LoginResult) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.sforce.soap.enterprise.LoginResult) org.apache.axis.utils.JavaUtils.convert(_resp, com.sforce.soap.enterprise.LoginResult.class);
+            if (_resp instanceof java.rmi.RemoteException) {
+                throw (java.rmi.RemoteException) _resp;
+            } else {
+                extractAttachments(_call);
+                try {
+                    return (com.sforce.soap.enterprise.LoginResult) _resp;
+                } catch (java.lang.Exception _exception) {
+                    return (com.sforce.soap.enterprise.LoginResult) org.apache.axis.utils.JavaUtils.convert(_resp, com.sforce.soap.enterprise.LoginResult.class);
+                }
             }
+        } catch (org.apache.axis.AxisFault axisFaultException) {
+            if (axisFaultException.detail != null) {
+                if (axisFaultException.detail instanceof java.rmi.RemoteException) {
+                    throw (java.rmi.RemoteException) axisFaultException.detail;
+                }
+                if (axisFaultException.detail instanceof com.sforce.soap.enterprise.fault.InvalidIdFault) {
+                    throw (com.sforce.soap.enterprise.fault.InvalidIdFault) axisFaultException.detail;
+                }
+                if (axisFaultException.detail instanceof com.sforce.soap.enterprise.fault.UnexpectedErrorFault) {
+                    throw (com.sforce.soap.enterprise.fault.UnexpectedErrorFault) axisFaultException.detail;
+                }
+                if (axisFaultException.detail instanceof com.sforce.soap.enterprise.fault.LoginFault) {
+                    throw (com.sforce.soap.enterprise.fault.LoginFault) axisFaultException.detail;
+                }
+            }
+            throw axisFaultException;
         }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-    if (axisFaultException.detail != null) {
-        if (axisFaultException.detail instanceof java.rmi.RemoteException) {
-              throw (java.rmi.RemoteException) axisFaultException.detail;
-         }
-        if (axisFaultException.detail instanceof com.sforce.soap.enterprise.fault.InvalidIdFault) {
-              throw (com.sforce.soap.enterprise.fault.InvalidIdFault) axisFaultException.detail;
-         }
-        if (axisFaultException.detail instanceof com.sforce.soap.enterprise.fault.UnexpectedErrorFault) {
-              throw (com.sforce.soap.enterprise.fault.UnexpectedErrorFault) axisFaultException.detail;
-         }
-        if (axisFaultException.detail instanceof com.sforce.soap.enterprise.fault.LoginFault) {
-              throw (com.sforce.soap.enterprise.fault.LoginFault) axisFaultException.detail;
-         }
-   }
-  throw axisFaultException;
-}
     }
 
 }

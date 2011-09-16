@@ -1,21 +1,21 @@
 package com.sforce.soap.authentication;
 
 
-public class AuthenticateResult  implements java.io.Serializable {
+public class AuthenticateResult implements java.io.Serializable {
     private boolean authenticated;
 
     public AuthenticateResult() {
     }
 
     public AuthenticateResult(
-           boolean authenticated) {
-           this.authenticated = authenticated;
+            boolean authenticated) {
+        this.authenticated = authenticated;
     }
 
 
     /**
      * Gets the authenticated value for this AuthenticateResult.
-     * 
+     *
      * @return authenticated
      */
     public boolean isAuthenticated() {
@@ -25,7 +25,7 @@ public class AuthenticateResult  implements java.io.Serializable {
 
     /**
      * Sets the authenticated value for this AuthenticateResult.
-     * 
+     *
      * @param authenticated
      */
     public void setAuthenticated(boolean authenticated) {
@@ -33,6 +33,7 @@ public class AuthenticateResult  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     @Override
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof AuthenticateResult)) return false;
@@ -44,13 +45,14 @@ public class AuthenticateResult  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            this.authenticated == other.isAuthenticated();
+        _equals = true &&
+                this.authenticated == other.isAuthenticated();
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     @Override
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
@@ -65,7 +67,7 @@ public class AuthenticateResult  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(AuthenticateResult.class, true);
+            new org.apache.axis.description.TypeDesc(AuthenticateResult.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("urn:authentication.soap.sforce.com", "AuthenticateResult"));
@@ -88,24 +90,24 @@ public class AuthenticateResult  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanSerializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanDeserializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
 }
