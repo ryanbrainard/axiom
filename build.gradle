@@ -31,3 +31,7 @@ dependencies {
 	compile "net.sf.json-lib:json-lib:2.4:jdk15"
 	compile "oauth.signpost:signpost-core:1.2.1.1"
 }
+
+task createWrapper(type: Wrapper) {
+    gradleVersion = '1.0-milestone-3'
+}
