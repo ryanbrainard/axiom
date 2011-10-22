@@ -14,7 +14,7 @@ public class XmlObjectSerializerTest {
 	public void testXmlObjectToString() throws Exception {
 		XMLObject xmlObject = ((SAMLObjectBuilder<Response>) AbstractXMLObjectFactory.builderFactory.getBuilder(Response.DEFAULT_ELEMENT_NAME)).buildObject();	 
 		assertEquals(
-				"<?xml version=\"1.0\" encoding=\"UTF-8\"?><samlp:Response xmlns:samlp=\"urn:oasis:names:tc:SAML:1.0:protocol\" MajorVersion=\"1\" MinorVersion=\"1\"/>", 
+				"<?xml version=\"1.0\" encoding=\"UTF-8\"?><saml1p:Response xmlns:saml1p=\"urn:oasis:names:tc:SAML:1.0:protocol\" MajorVersion=\"1\" MinorVersion=\"1\"/>",
 				XmlObjectSerializer.xmlObjectToString(xmlObject)
 		);
 	}
