@@ -1,1 +1,1 @@
-web: mvn jetty:run -Djetty.port=$PORT
+web: gradle jettyRun -Djetty.port=$PORT
