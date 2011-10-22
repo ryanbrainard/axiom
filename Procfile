@@ -1,1 +1,1 @@
-web: ./gradlew jettyRun -Djetty.port=$PORT
+web: gradle jettyRun -Djetty.port=$PORT
