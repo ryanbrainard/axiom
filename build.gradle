@@ -1,10 +1,14 @@
-defaultTasks 'clean', 'war', 'copyJettyRunner'
+defaultTasks "stage"
 
-apply plugin: 'idea'
-apply plugin: 'war'
+apply plugin: "idea"
+apply plugin: "war"
 
-sourceCompatibility: 1.6
-version: '1.0-SNAPSHOT'
+sourceCompatibility = 1.6
+version = "1.0-SNAPSHOT"
+
+war {
+    baseName = "axiom"
+}
 
 repositories {
     mavenCentral()
@@ -34,17 +38,25 @@ dependencies {
 }
 
 task createWrapper(type: Wrapper) {
-    gradleVersion = '1.0-milestone-3'
+    gradleVersion = "1.0-milestone-3"
 }
 
-task copyJettyRunner << {
+task stageDir(type: Directory) { dir = file("build/stage") }
+task stage(dependsOn: ["clean", "test", "war", "stageDir"]) << {
+    println "Copying $war.archivePath to $stageDir.dir/axiom.war"
+    copy {
+        from war.archivePath
+        into stageDir.dir
+        rename ".*", "axiom.war"
+    }
+
     configurations.runtime.files.each { file ->
         if (file.name.matches("jetty-runner.*jar")) {
-            println "Found jetty-runner at $file.path. Copying to build dir."
+            println "Copying $file.path to $stageDir.dir/jetty-runner.jar."
             copy {
                 from file.path
-                into 'build'
-                rename '.*', 'jetty-runner.jar'
+                into stageDir.dir
+                rename ".*", "jetty-runner.jar"
             }
         }
     }
