@@ -1,1 +1,1 @@
-web: mvn jetty:run -Djetty.port=$PORT
+web: java $JAVA_OPTS -jar target/dependency/jetty-runner.jar --port $PORT target/*.war
