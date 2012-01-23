@@ -3,7 +3,7 @@ package axiom.saml.idp;
 import org.apache.log4j.Logger;
 import org.opensaml.xml.signature.SignatureConstants;
 
-import java.io.File;
+import java.net.URL;
 
 
 /**
@@ -44,7 +44,7 @@ public class IdpConfiguration {
     private String siteURL;
     private UserType userType;
 
-    private File keystoreFile;
+    private URL keystoreFile;
     private char[] keystorePassword;
     private String keystoreAlias;
     private char[] keystoreAliasPassword;
@@ -335,11 +335,11 @@ public class IdpConfiguration {
     }
 
 
-    public File getKeystoreFile() {
+    public URL getKeystoreFile() {
         return keystoreFile;
     }
 
-    public void setKeystoreFile(File keystoreFile) {
+    public void setKeystoreFile(URL keystoreFile) {
         this.keystoreFile = keystoreFile;
     }
 

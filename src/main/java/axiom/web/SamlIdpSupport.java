@@ -1,10 +1,15 @@
 package axiom.web;
 
-import axiom.saml.idp.*;
+import axiom.saml.idp.IdpConfiguration;
+import axiom.saml.idp.SamlUserIdLocation;
+import axiom.saml.idp.SamlVersion;
+import axiom.saml.idp.UserType;
 import org.apache.log4j.Logger;
 
-import java.io.File;
-import java.util.*;
+import java.net.MalformedURLException;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public abstract class SamlIdpSupport extends AxiomSupport {
 
@@ -18,9 +23,13 @@ public abstract class SamlIdpSupport extends AxiomSupport {
 
 
     public IdpConfiguration getIdpConfig() {
-        String keystoreFile = getServletContext().getRealPath("/") + getServletContext().getInitParameter("keystoreFile");
-        if (keystoreFile != null && !keystoreFile.equals("")) {
-            idpConfig.setKeystoreFile(new File(keystoreFile));
+        System.out.println("getServletContext().getRealPath(\"/\"): " + getServletContext().getRealPath("/"));
+        System.out.println("getServletContext().getInitParameter(\"keystoreFile\"): " + getServletContext().getInitParameter("keystoreFile"));
+
+        try {
+            idpConfig.setKeystoreFile(getServletContext().getResource(getServletContext().getInitParameter("keystoreFile")));
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
         }
         idpConfig.setKeystoreAlias(getServletContext().getInitParameter("keystoreAlias"));
         idpConfig.setKeystorePassword(getServletContext().getInitParameter("keystorePassword").toCharArray());

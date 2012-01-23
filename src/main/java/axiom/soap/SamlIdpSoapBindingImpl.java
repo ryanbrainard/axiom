@@ -7,7 +7,9 @@
 
 package axiom.soap;
 
-import axiom.saml.idp.*;
+import axiom.saml.idp.IdentityProvider;
+import axiom.saml.idp.IdpConfiguration;
+import axiom.saml.idp.XmlObjectSerializer;
 import org.apache.axis.MessageContext;
 import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.log4j.Logger;
@@ -19,7 +21,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
-import java.io.File;
 
 
 public class SamlIdpSoapBindingImpl implements axiom.soap.SamlIdp {
@@ -38,10 +39,7 @@ public class SamlIdpSoapBindingImpl implements axiom.soap.SamlIdp {
         ServletContext servletContext = servletConfig.getServletContext();
 
         logger.debug("configuring keystore");
-        String keystoreFile = servletContext.getInitParameter("keystoreFile");
-        if (keystoreFile != null && !keystoreFile.equals("")) {
-            idpConfig.setKeystoreFile(new File(servletContext.getRealPath("/") + keystoreFile));
-        }
+        idpConfig.setKeystoreFile(this.getClass().getResource(servletContext.getInitParameter("keystoreFile")));
         idpConfig.setKeystoreAlias(servletContext.getInitParameter("keystoreAlias"));
         idpConfig.setKeystorePassword(servletContext.getInitParameter("keystorePassword").toCharArray());
         idpConfig.setKeystoreAliasPassword(servletContext.getInitParameter("keystoreAliasPassword").toCharArray());

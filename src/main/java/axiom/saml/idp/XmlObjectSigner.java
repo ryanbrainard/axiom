@@ -15,6 +15,7 @@ import org.opensaml.xml.signature.SignatureException;
 import org.opensaml.xml.signature.Signer;
 
 import java.io.*;
+import java.net.URL;
 import java.security.*;
 import java.security.cert.*;
 import java.security.cert.X509Certificate;
@@ -44,12 +45,12 @@ public class XmlObjectSigner {
      * @param keystoreAliasPassword
      * @param credentialType
      */
-    protected XmlObjectSigner(File keystoreFile, char[] keystorePassword, String keystoreAlias, char[] keystoreAliasPassword, CredentialType credentialType) {
+    protected XmlObjectSigner(URL keystoreFile, char[] keystorePassword, String keystoreAlias, char[] keystoreAliasPassword, CredentialType credentialType) {
         logger.debug("Initializing keystore");
-        FileInputStream keystoreStream = null;
+        InputStream keystoreStream = null;
         try {
             KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
-            keystoreStream = new java.io.FileInputStream(keystoreFile);
+            keystoreStream = keystoreFile.openStream();
             keystore.load(keystoreStream, keystorePassword);
 
             logger.debug("Loading X509 certificate from keystore");

@@ -8,7 +8,8 @@ import org.opensaml.xml.schema.XSString;
 import org.opensaml.xml.signature.Signature;
 import org.opensaml.xml.signature.SignatureValidator;
 
-import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -190,12 +191,17 @@ public class IdentityProviderTest extends TestCase {
 				.getAttributeValues().get(0)).getValue();
 	}
 
-	private IdpConfiguration getDefaultIdpConfiguation() {
+	private IdpConfiguration getDefaultIdpConfiguation() throws IOException {
 		IdpConfiguration config = new IdpConfiguration();
 
-		config.setKeystoreFile(new File(this.getClass()
-				.getResource("AxiomIdpExample.keystore").getFile()));
-		assertTrue(config.getKeystoreFile().exists());
+		config.setKeystoreFile(this.getClass().getResource("AxiomIdpExample.keystore"));
+        InputStream keystoreStream = null;
+        try {
+            keystoreStream = config.getKeystoreFile().openStream();
+            assertTrue(keystoreStream.available() > 0);
+        } finally {
+            if (keystoreStream != null) keystoreStream.close();
+        }
 		config.setKeystoreAlias("axiom");
 		config.setKeystorePassword("123456".toCharArray());
 		config.setKeystoreAliasPassword("123456".toCharArray());

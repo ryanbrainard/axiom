@@ -62,7 +62,7 @@
   
   <context-param>
     <param-name>keystoreFile</param-name>
-    <param-value>/WEB-INF/config/AxiomIdpExample.keystore</param-value>
+    <param-value>WEB-INF/config/AxiomIdpExample.keystore</param-value>
   </context-param>
   <context-param>
     <param-name>keystoreAlias</param-name>
