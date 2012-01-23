@@ -42,6 +42,13 @@
         <system>Github</system>
         <url>https://github.com/rbrainard/axiom/issues</url>
     </issueManagement>
+    <repositories>
+        <repository>
+            <id>webapp-runner-repo</id>
+            <name>webapp runner repository on GitHub</name>
+            <url>http://jsimone.github.com/webapp-runner/repository/</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -148,9 +155,9 @@
             <version>1.2.1.1</version>
         </dependency>
         <dependency>
-            <groupId>org.mortbay.jetty</groupId>
-            <artifactId>jetty-runner</artifactId>
-            <version>${jetty-runner.version}</version>
+            <groupId>webapp.runner</groupId>
+            <artifactId>webapp-runner</artifactId>
+            <version>0.0.6</version>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
@@ -186,17 +193,16 @@
                 <version>2.3</version>
                 <executions>
                     <execution>
+                        <id>copy-webapp-runner</id>
                         <phase>package</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
+                        <goals><goal>copy</goal></goals>
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.mortbay.jetty</groupId>
-                                    <artifactId>jetty-runner</artifactId>
-                                    <version>${jetty-runner.version}</version>
-                                    <destFileName>jetty-runner.jar</destFileName>
+                                    <groupId>webapp.runner</groupId>
+                                    <artifactId>webapp-runner</artifactId>
+                                    <version>0.0.6</version>
+                                    <destFileName>webapp-runner.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
