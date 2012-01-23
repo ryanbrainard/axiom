@@ -57,7 +57,7 @@
 
   <context-param>
     <param-name>version</param-name>
-    <param-value>1.1-BETA</param-value> <!-- TODO: make this dynamic from pom.xml !  -->
+    <param-value>1.2-BETA</param-value> <!-- TODO: make this dynamic from pom.xml !  -->
   </context-param>
   
   <context-param>
