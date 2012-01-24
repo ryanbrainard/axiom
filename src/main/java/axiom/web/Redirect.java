@@ -1,10 +1,10 @@
 package axiom.web;
 
-public class About extends AxiomSupport {
+public class Redirect extends AxiomSupport {
 
     @Override
     public Breadcrumbable getParentPage() {
-        return new Home();
+        return new Redirect();
     }
 
 }

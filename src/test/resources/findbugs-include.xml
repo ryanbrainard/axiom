@@ -1,5 +1,0 @@
-<FindBugsFilter>
-     <Match>
-       <Package name="~axiom.*" />
-     </Match>
-</FindBugsFilter>

@@ -1,7 +1,6 @@
 package axiom.web;
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.util.ServletContextAware;
@@ -20,7 +19,6 @@ public abstract class AxiomSupport extends ActionSupport
         , ServletContextAware {
 
     @SuppressWarnings("unused")
-    private static Logger logger = Logger.getLogger(AxiomSupport.class);
 
     private HttpServletRequest servletRequest;
     private HttpServletResponse servletResponse;

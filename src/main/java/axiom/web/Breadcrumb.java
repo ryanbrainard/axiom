@@ -1,11 +1,9 @@
 package axiom.web;
 
-import org.apache.log4j.Logger;
 
 public class Breadcrumb {
 
     @SuppressWarnings("unused")
-    private static Logger logger = Logger.getLogger(Breadcrumb.class);
 
     private String title;
     private String href;
