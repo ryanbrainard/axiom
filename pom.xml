@@ -4,9 +4,9 @@
     <groupId>axiom</groupId>
     <artifactId>axiom</artifactId>
     <packaging>war</packaging>
-    <version>1.2-BETA</version>
+    <version>1.2.1-BETA</version>
     <name>Axiom</name>
-    <url>https://github.com/rbrainard/axiom</url>
+    <url>https://github.com/ryanbrainard/axiom</url>
     <description>Axiom Single Sign-On Tools</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -14,7 +14,7 @@
     </properties>
     <developers>
         <developer>
-            <id>rbrainard</id>
+            <id>ryanbrainard</id>
             <name>Ryan Brainard</name>
             <email>rbrainard@salesforce.com</email>
             <roles>
@@ -33,14 +33,14 @@
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:git://github.com/rbrainard/axiom.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:rbrainard/axiom.git</developerConnection>
-        <url>https://github.com/rbrainard/axiom</url>
+        <connection>scm:git:git://github.com/ryanbrainard/axiom.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:ryanbrainard/axiom.git</developerConnection>
+        <url>https://github.com/ryanbrainard/axiom</url>
     </scm>
     <inceptionYear>October 11, 2009</inceptionYear>
     <issueManagement>
         <system>Github</system>
-        <url>https://github.com/rbrainard/axiom/issues</url>
+        <url>https://github.com/ryanbrainard/axiom/issues</url>
     </issueManagement>
     <dependencies>
         <dependency>
