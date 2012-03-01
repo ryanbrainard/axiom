@@ -11,7 +11,7 @@ The tools include:
 ##Running Locally
 To install and run Axiom locally with Jetty Runner:
 
-    git clone git://github.com/rbrainard/axiom.git
+    git clone git://github.com/ryanbrainard/axiom.git
     cd axiom
     mvn clean install
     java $JAVA_OPTS -jar target/dependency/jetty-runner.jar target/*.war
@@ -27,7 +27,7 @@ For _Step 4: Deploy An Application_, follow these steps:
 
 1. Clone this repo:
 
-    `git clone git://github.com/rbrainard/axiom.git`
+    `git clone git://github.com/ryanbrainard/axiom.git`
 
 2. Go into the directory:
 
