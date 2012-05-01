@@ -7,7 +7,7 @@
 		
 		<script type="text/javascript" src="<s:url value="%{getText('app.scripts.base64')}"/>"></script>
 		<script type="text/javascript" src="<s:url value="%{getText('app.scripts.urlEncodeDecode')}"/>"></script>
-            <script type="text/javascript" src="<s:url value="%{getText('app.scripts.vkbeautify')}"/>"></script>
+		<script type="text/javascript" src="<s:url value="%{getText('app.scripts.vkbeautify')}"/>"></script>
 		
 		<script>
 			function init(){
@@ -32,9 +32,9 @@
 				document.getElementById("samlPoster").action = document.getElementById("recipientURL").value;
 			}
 
-                  function xmlBeautify(){
-                        document.getElementById("prettySAMLResponse").value = vkbeautify.xml(document.getElementById("rawSAMLResponse").value);
-                  }
+			function xmlBeautify(){
+				document.getElementById("prettySAMLResponse").value = vkbeautify.xml(document.getElementById("rawSAMLResponse").value);
+			}
 
 		</script>
 		
@@ -69,11 +69,11 @@
 			<s:submit value="%{getText('label.login')}"/>
 		</s:form>
 
-            <p/>
-            <h2><s:text name="Click button below to format SAML Response"/></h2>
-            <s:form>
-              <input type="button" onclick="xmlBeautify();" value="Format Response"/>         
-              <s:textarea id="prettySAMLResponse" label="A more readable SAML Response" labelposition="top" key="prettySAMLResponse" rows="12" cols="76" style="overflow: auto; font-family: monospace,courier; font-size: small;"/>
+		<p/>
+		<h2><s:text name="page.formatresponse"/></h2>
+		<s:form>
+			<input type="button" onclick="xmlBeautify();" value="<s:text name="label.saml.idp.FormatResponse"/>" />
+			<s:textarea id="prettySAMLResponse" label="%{getText('label.saml.idp.FormattedResponse')}" labelposition="top" key="prettySAMLResponse" rows="12" cols="76" style="overflow: auto; font-family: monospace,courier; font-size: small;"/>
 		</s:form>
 		
 		<s:include value="%{getText('app.includes.body_footer')}" />

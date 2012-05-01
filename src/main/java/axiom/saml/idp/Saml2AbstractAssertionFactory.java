@@ -11,7 +11,6 @@ import org.opensaml.xml.schema.impl.XSStringBuilder;
 
 import java.util.EnumSet;
 import java.util.List;
-//MAH
 import java.util.StringTokenizer;
 
 /**
@@ -34,7 +33,6 @@ public abstract class Saml2AbstractAssertionFactory extends
     private String portalId;
     private String siteURL;
     private UserType userType;
-    //MAH
     private String additionalAttributes;
 
     /**
@@ -266,17 +264,17 @@ public abstract class Saml2AbstractAssertionFactory extends
 
         }
 
-        //MAH
         if (additionalAttributes != null) {
-        	
-   	        logger.info("MAH additonalAttributes: " + additionalAttributes );
+
+        	String attribs = additionalAttributes.trim();
         	String key = "";
         	String val = "";
-        	StringTokenizer st = new StringTokenizer(additionalAttributes, "=;"); 
+        	
+        	StringTokenizer st = new StringTokenizer(attribs, "=;"); 
         	while( st.hasMoreTokens() ) { 
          	       key = st.nextToken(); 
-        	       val = st.nextToken(); 
-        	       logger.info("MAH key/value pair: " + key + "/" + val );
+        	       val = st.nextToken();
+        	       logger.debug("Key/value pair:" + "key" + "/" + val);
                    XSString additionalAttributeValue = ((XSStringBuilder) Configuration
                            .getBuilderFactory().getBuilder(XSString.TYPE_NAME))
                            .buildObject(AttributeValue.DEFAULT_ELEMENT_NAME,
@@ -286,15 +284,13 @@ public abstract class Saml2AbstractAssertionFactory extends
                    Attribute additionalAttribute = ((SAMLObjectBuilder<Attribute>) builderFactory
                            .getBuilder(Attribute.DEFAULT_ELEMENT_NAME)).buildObject();
                    additionalAttribute.setName(key);
-                   additionalAttribute
-                           .setNameFormat("urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified");
+                   additionalAttribute.setNameFormat("urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified");
                    additionalAttribute.getAttributeValues().add(additionalAttributeValue);
 
                    attributeStatement.getAttributes().add(additionalAttribute);        	       
         	} 
         }
 
-        //MAH
         if (addAttributes != null) {
             attributeStatement.getAttributes().addAll(addAttributes);
         }
@@ -381,11 +377,10 @@ public abstract class Saml2AbstractAssertionFactory extends
         this.userType = userType;
     }
 
-    //MAH
     public void setAdditionalAttributes(String additionalAttributes){
     	this.additionalAttributes = additionalAttributes;
     }
-    //MAH
+
     public String getAdditionalAttributes(){
     	return additionalAttributes;
     }
