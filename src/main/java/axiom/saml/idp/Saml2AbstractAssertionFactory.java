@@ -171,7 +171,7 @@ public abstract class Saml2AbstractAssertionFactory extends
     protected abstract Subject buildSubject();
 
     protected AttributeStatement buildAttributeStatement(
-            List<Attribute> addAttributes) throws IllegalStateException {
+            List<Attribute> basicAttributes) throws IllegalStateException {
         logger.debug("Building AttributeStatement");
         AttributeStatement attributeStatement = ((SAMLObjectBuilder<AttributeStatement>) builderFactory
                 .getBuilder(AttributeStatement.DEFAULT_ELEMENT_NAME))
@@ -264,17 +264,21 @@ public abstract class Saml2AbstractAssertionFactory extends
 
         }
 
+        if (basicAttributes != null) {
+            attributeStatement.getAttributes().addAll(basicAttributes);
+        }
+
         if (additionalAttributes != null) {
 
-        	String attribs = additionalAttributes.trim();
-        	String key = "";
-        	String val = "";
+            String attribs = additionalAttributes.trim();
+            String key = "";
+            String val = "";
         	
-        	StringTokenizer st = new StringTokenizer(attribs, "=;"); 
-        	while( st.hasMoreTokens() ) { 
-         	       key = st.nextToken(); 
-        	       val = st.nextToken();
-        	       logger.debug("Key/value pair:" + "key" + "/" + val);
+            StringTokenizer st = new StringTokenizer(attribs, "=;"); 
+            while( st.hasMoreTokens() ) { 
+                   key = st.nextToken(); 
+                   val = st.nextToken();
+                   logger.debug("Key/value pair:" + "key" + "/" + val);
                    XSString additionalAttributeValue = ((XSStringBuilder) Configuration
                            .getBuilderFactory().getBuilder(XSString.TYPE_NAME))
                            .buildObject(AttributeValue.DEFAULT_ELEMENT_NAME,
@@ -289,10 +293,6 @@ public abstract class Saml2AbstractAssertionFactory extends
 
                    attributeStatement.getAttributes().add(additionalAttribute);        	       
         	} 
-        }
-
-        if (addAttributes != null) {
-            attributeStatement.getAttributes().addAll(addAttributes);
         }
 
         logger.debug("Returning completed attributeStatement");
