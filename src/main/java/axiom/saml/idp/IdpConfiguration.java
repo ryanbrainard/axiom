@@ -43,7 +43,8 @@ public class IdpConfiguration {
     private String portalId;
     private String siteURL;
     private UserType userType;
-
+    private String additionalAttributes;
+    
     private URL keystoreFile;
     private char[] keystorePassword;
     private String keystoreAlias;
@@ -114,6 +115,7 @@ public class IdpConfiguration {
                 ((Saml2AbstractAssertionFactory) assertionFactory).setSsoStartPage(ssoStartPage);
                 ((Saml2AbstractAssertionFactory) assertionFactory).setLogoutURL(logoutURL);
                 ((Saml2AbstractAssertionFactory) assertionFactory).setUserType(userType);
+                ((Saml2AbstractAssertionFactory) assertionFactory).setAdditionalAttributes(additionalAttributes);
 
                 switch (userType) {
                     case SITE:
@@ -403,8 +405,16 @@ public class IdpConfiguration {
         return userType;
     }
 
-
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
+
+    public void setAdditionalAttributes(String additionalAttributes){
+    	this.additionalAttributes = additionalAttributes;
+    }
+
+    public String getAdditionalAttributes(){
+    	return additionalAttributes;
+    }
+
 }

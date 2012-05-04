@@ -87,6 +87,53 @@ public class IdentityProviderTest extends TestCase {
 				getFirstAttributeValuesValue((org.opensaml.saml2.core.Response) generateSamlResponse(config)));
 	}
 
+	
+	public void testAdditionalAttributes() throws Exception {
+
+		final String attribName1 = "User.City";
+		final String attribValue1 = "Weston";
+		final String attribName2 = "User.Company";
+		final String attribValue2 = "Rockwell";
+
+		final String additionalAttributes = attribName1 + "=" + attribValue1 + ";" + attribName2 + "=" + attribValue2;
+
+
+		final IdpConfiguration config = getDefaultIdpConfiguation();
+
+		config.setSamlVersion(SamlVersion._2_0);
+		config.setSamlUserIdLocation(SamlUserIdLocation.SUBJECT);
+		config.setAdditionalAttributes(additionalAttributes);
+
+		assertEquals(additionalAttributes, config.getAdditionalAttributes());
+		assertValidSamlResponse(config, generateSamlResponse(config));
+
+		final org.opensaml.saml2.core.Response saml2Response = (org.opensaml.saml2.core.Response) generateSamlResponse(config);
+		final org.opensaml.saml2.core.Assertion saml2Assertion = saml2Response
+				.getAssertions().get(0);
+		final List<org.opensaml.saml2.core.AttributeStatement> saml2AttribtuteStatements = saml2Assertion
+				.getAttributeStatements();
+
+
+		org.opensaml.saml2.core.Attribute saml2Attribute = saml2AttribtuteStatements.get(0).getAttributes().get(0);
+		List<XMLObject> saml2AttributeValues = saml2Attribute.getAttributeValues();
+
+		assertEquals(1, saml2Assertion.getAttributeStatements().size());
+		assertEquals(2, saml2AttribtuteStatements.get(0).getAttributes().size());
+		
+		//First name value pair
+		saml2Attribute = saml2AttribtuteStatements.get(0).getAttributes().get(0);		
+		assertEquals(attribName1, saml2Attribute.getName());
+		assertEquals(attribValue1, ((XSString) saml2AttributeValues.get(0)).getValue());
+
+		//Second name value pair
+		saml2Attribute = saml2AttribtuteStatements.get(0).getAttributes().get(1);
+		saml2AttributeValues = saml2Attribute.getAttributeValues();
+		assertEquals(attribName2, saml2Attribute.getName());
+		assertEquals(attribValue2, ((XSString) saml2AttributeValues.get(0)).getValue());
+
+		
+	}
+	
 	public void testPortalUser() throws Exception {
 		final UserType userType = UserType.PORTAL;
 
