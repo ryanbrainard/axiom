@@ -81,32 +81,21 @@
 		
 		<s:textfield label="%{getText('label.siteURL')}" key="idpConfig.siteURL" size="60"/>
 
-        <tr>
-          <td colspan="2" style="overflow:hidden; width:300px;">
-              <br/>
-              <h2><s:text name="page.jitinfo" /></h2>
-              <s:text name="page.additionalattributes"/>
-          </td>
-        </tr>
+    <tr>
+      <td colspan="2" style="overflow:hidden; width:300px;">
+        <br/>
+        <h2><s:text name="page.jitinfo" />
+            &nbsp;
+            <img id="jitHelpImg"
+                 src="images/help_light16.gif"
+                 style="cursor: pointer; cursor: hand;"
+                 onclick="document.getElementById('jitHelpTxt').style.display='block';
+                          document.getElementById('jitHelpImg').style.display='none';"/>
+        </h2>
 
-        <tr>
-          <td colspan="2">
-            <s:textarea label="%{getText('label.additionalAttributes')}" key="idpConfig.additionalAttributes" rows="10" style="overflow: auto; font-family: monospace,courier; font-size: small; width: 396px;"/>
-          </td>
-        </tr>
-	
-		<!--<s:checkbox label="%{getText('label.saml.idp.autoLogin')}" labelposition="left" key="autoLogin"/>-->
-	
-		<s:submit value="%{getText('label.saml.idp.samlRequestForm.submit')}"/>
-
-        <tr>
-          <td colspan="2" style="overflow:hidden; width:300px;">
-              <br/>
-              <h2><s:text name="page.sampleattributes" /></h2>
-          </td>
-        </tr>
-
-          <table border="1" style="border-collapse:collapse;">
+        <div id="jitHelpTxt" style="display: none; background-color:rgb(206,239,255); padding: 2ex; -moz-border-radius: 10px; border-radius: 10px; margin: 1ex;">
+          <s:text name="page.additionalattributes"/>
+          <table border="1" style="border-collapse:collapse; margin-top: 1ex;">
             <tr>
               <th><s:text name="page.standard" /></th>
               <th><s:text name="page.portal" /></th>
@@ -116,7 +105,18 @@
               <td style="vertical-align: top; font-family: monospace;"><s:text name="page.sampleportal"/></td>
             </tr>
           </table>
-		
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <s:textarea label="%{getText('label.additionalAttributes')}" key="idpConfig.additionalAttributes" rows="10" style="overflow: auto; font-family: monospace,courier; font-size: small; width: 396px;"/>
+      </td>
+    </tr>
+	
+		<s:submit value="%{getText('label.saml.idp.samlRequestForm.submit')}"/>
+
 	</s:form>
 <s:include value="%{getText('app.includes.body_footer')}" />
 </body>
