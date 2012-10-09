@@ -106,14 +106,14 @@
           </td>
         </tr>
 
-          <table border="1">
+          <table border="1" style="border-collapse:collapse;">
             <tr>
               <th><s:text name="page.standard" /></th>
               <th><s:text name="page.portal" /></th>
             </tr>
             <tr>
-              <td><s:text name="page.samplestandard"/></td>
-              <td><s:text name="page.sampleportal"/></td>
+              <td style="vertical-align: top; font-family: monospace;"><s:text name="page.samplestandard"/></td>
+              <td style="vertical-align: top; font-family: monospace;"><s:text name="page.sampleportal"/></td>
             </tr>
           </table>
 		
