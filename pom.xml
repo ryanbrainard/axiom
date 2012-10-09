@@ -4,7 +4,7 @@
     <groupId>axiom</groupId>
     <artifactId>axiom</artifactId>
     <packaging>war</packaging>
-    <version>1.2.1-BETA</version>
+    <version>1.3.0-BETA</version>
     <name>Axiom</name>
     <url>https://github.com/ryanbrainard/axiom</url>
     <description>Axiom Single Sign-On Tools</description>
