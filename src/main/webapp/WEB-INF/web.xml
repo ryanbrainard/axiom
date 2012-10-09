@@ -6,8 +6,8 @@
     <description>Axiom Single Sign On Tools</description>
     
     <welcome-file-list>
-    	<welcome-file>index.html</welcome-file>
- 	</welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+     </welcome-file-list>
 <!--
     <filter>
         <filter-name>2WayFilter</filter-name>

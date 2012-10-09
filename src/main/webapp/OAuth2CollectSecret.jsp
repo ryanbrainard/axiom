@@ -3,24 +3,24 @@
 
 <html>
 <head>
-	<s:include value="%{getText('app.includes.head')}" />
+    <s:include value="%{getText('app.includes.head')}" />
 
     <script>
-	    function trim(str) {
-	        if (str === undefined || str === null) {
-	            return "";
-	        }
+        function trim(str) {
+            if (str === undefined || str === null) {
+                return "";
+            }
 
             return str.replace(/^\s+|\s+$/g,"");
         }
 
-	    function buildAccessUrl() {
-	        var form = document.forms.OAuth2RequestAccessToken_action;
-	        var host = trim('<s:text name="oauthContext.host"/>');
-	        var client_id = trim('<s:text name="oauthContext.client_id"/>');
-	        var redirect_uri = trim('<s:text name="oauthContext.redirect_uri"/>');
-	        var client_secret = trim(form.OAuth2RequestAccessToken_action_oauthContext_client_secret.value);
-	        var code = trim(form.OAuth2RequestAccessToken_action_oauthContext_code.value);
+        function buildAccessUrl() {
+            var form = document.forms.OAuth2RequestAccessToken_action;
+            var host = trim('<s:text name="oauthContext.host"/>');
+            var client_id = trim('<s:text name="oauthContext.client_id"/>');
+            var redirect_uri = trim('<s:text name="oauthContext.redirect_uri"/>');
+            var client_secret = trim(form.OAuth2RequestAccessToken_action_oauthContext_client_secret.value);
+            var code = trim(form.OAuth2RequestAccessToken_action_oauthContext_code.value);
 
             var hostString = "https://" +
                              host + "/services/oauth2/token?&grant_type=authorization_code" +
@@ -30,12 +30,12 @@
                              "&redirect_uri=" + escape(redirect_uri);
 
             form.OAuth2RequestAccessToken_action_oauthContext_tokenRequestUrl.value = hostString;
-	    }
-	</script>
+        }
+    </script>
 </head>
 
 <body onload="buildAccessUrl();">
-	<s:include value="%{getText('app.includes.body_header')}" />
+    <s:include value="%{getText('app.includes.body_header')}" />
 
     <div style="float: left; width:400;">
         <s:actionerror cssStyle="color: red;"/>
@@ -61,7 +61,7 @@
 
             <s:submit value="%{getText('label.oauth.2_0.requestAccessToken')}"/>
         </s:form>
-	</div>
+    </div>
 
 
     <div style="float: right;">
@@ -71,7 +71,7 @@
     <div style="clear: both;">
     </div>
 
-	<s:include value="%{getText('app.includes.body_footer')}" />
+    <s:include value="%{getText('app.includes.body_footer')}" />
 </body>
 
 </html>

@@ -4,11 +4,11 @@
 
 <html>
 <head>
-	<s:include value="%{getText('app.includes.head')}" />
+    <s:include value="%{getText('app.includes.head')}" />
 </head>
 
 <body>
-	<s:include value="%{getText('app.includes.body_header')}" />
+    <s:include value="%{getText('app.includes.body_header')}" />
 
     <div style="width: 500px; float: left;">
         <p style="word-wrap: break-word;"><strong>Id:</strong><br/><s:text name="oauthContext.id"/></p>
@@ -35,7 +35,7 @@
     <div style="clear: both;">
     </div>
 
-	<s:include value="%{getText('app.includes.body_footer')}" />
+    <s:include value="%{getText('app.includes.body_footer')}" />
 </body>
 
 </html>

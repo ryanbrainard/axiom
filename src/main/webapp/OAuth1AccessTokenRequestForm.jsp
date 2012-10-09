@@ -3,11 +3,11 @@
 
 <html>
 <head>
-	<s:include value="%{getText('app.includes.head')}" />
+    <s:include value="%{getText('app.includes.head')}" />
 </head>
 
 <body >
-	<s:include value="%{getText('app.includes.body_header')}" />
+    <s:include value="%{getText('app.includes.body_header')}" />
 
     <div style="float: left;">
         <s:actionerror cssStyle="color: red;"/>
@@ -19,7 +19,7 @@
 
             <s:submit value="%{getText('label.oauth.1_0a.requestAccessToken')}"/>
         </s:form>
-	</div>
+    </div>
 
     <div style="float: right;">
         <img src="<s:url value="%{getText('img.oauth.1_0a.flow4')}"/>" border="0"/>
@@ -28,7 +28,7 @@
     <div style="clear: both;">
     </div>
 
-	<s:include value="%{getText('app.includes.body_footer')}" />
+    <s:include value="%{getText('app.includes.body_footer')}" />
 </body>
 
 </html>

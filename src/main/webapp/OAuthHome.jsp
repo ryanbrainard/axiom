@@ -3,16 +3,16 @@
 
 <html>
 <head>
-	<s:include value="%{getText('app.includes.head')}" />
-	<style>
-	    a {
-	        text-decoration: none;
-	    }
-	</style>
+    <s:include value="%{getText('app.includes.head')}" />
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
-	<s:include value="%{getText('app.includes.body_header')}" />
+    <s:include value="%{getText('app.includes.body_header')}" />
 
     <table width="100%">
         <tr>
@@ -33,7 +33,7 @@
         </tr>
     </table>
 
-	<s:include value="%{getText('app.includes.body_footer')}" />
+    <s:include value="%{getText('app.includes.body_footer')}" />
 </body>
 
 </html>

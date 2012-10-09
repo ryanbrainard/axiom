@@ -273,7 +273,7 @@ public abstract class Saml2AbstractAssertionFactory extends
             String attribs = additionalAttributes.trim();
             String key = "";
             String val = "";
-        	
+
             StringTokenizer st = new StringTokenizer(attribs, "=;"); 
             while( st.hasMoreTokens() ) { 
                    key = st.nextToken(); 
@@ -291,8 +291,8 @@ public abstract class Saml2AbstractAssertionFactory extends
                    additionalAttribute.setNameFormat("urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified");
                    additionalAttribute.getAttributeValues().add(additionalAttributeValue);
 
-                   attributeStatement.getAttributes().add(additionalAttribute);        	       
-        	} 
+                   attributeStatement.getAttributes().add(additionalAttribute);
+            }
         }
 
         logger.debug("Returning completed attributeStatement");
@@ -378,11 +378,11 @@ public abstract class Saml2AbstractAssertionFactory extends
     }
 
     public void setAdditionalAttributes(String additionalAttributes){
-    	this.additionalAttributes = additionalAttributes;
+        this.additionalAttributes = additionalAttributes;
     }
 
     public String getAdditionalAttributes(){
-    	return additionalAttributes;
+        return additionalAttributes;
     }
 
 }

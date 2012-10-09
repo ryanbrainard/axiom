@@ -1,84 +1,84 @@
 @CHARSET "UTF-8";
 
 *{
-	font-family: arial, verdana, sans-serif;
-	font-size: 10pt;
+    font-family: arial, verdana, sans-serif;
+    font-size: 10pt;
 }
 
 #container{
-	margin-top: 10pt;
-	margin-bottom: 10pt;
-	margin-left: auto;
-	margin-right: auto;
-	width: 850px;
-	text-align: left;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    margin-left: auto;
+    margin-right: auto;
+    width: 850px;
+    text-align: left;
 }
 
 body{
-	text-align: center;
+    text-align: center;
 }
 
 #appLogo{
-	float: left;
+    float: left;
 }
 
 #langMenu{
-	float: right;
+    float: right;
 }
 
 #langmenu a{
-	font-size: 8pt;
+    font-size: 8pt;
 }
 
 #pageIntro{
-	clear: both;
+    clear: both;
 }
 
 #navBar{
-	clear: both;
-	margin-bottom: 10pt;
+    clear: both;
+    margin-bottom: 10pt;
 }
 
 #navBar a{
-	font-size: 8pt;
-	font-weight: bold;
-	text-decoration: none;
+    font-size: 8pt;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .mainmenu, .mainmenu *{
-	font-size: 12pt;
-	list-style-type: square;
-	line-height: 2em;
-	font-stretch: expanded;
-	font-weight: bold;
-	text-decoration: none;	
+    font-size: 12pt;
+    list-style-type: square;
+    line-height: 2em;
+    font-stretch: expanded;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .mainBody{
-	margin-top: 10pt;
+    margin-top: 10pt;
 }
 
 .fineprint{
-	font-size: 8pt;
+    font-size: 8pt;
 }
 
 .footer, .footer *{
-	margin-top: 20pt;
-	font-size: 8pt;
-	text-align: center;
+    margin-top: 20pt;
+    font-size: 8pt;
+    text-align: center;
 }
 
 a{
-	color: black;
+    color: black;
 }
 
 a:hover {
-	color: red;
+    color: red;
 } 
 
 ul{
-	list-style-type: square;
-	line-height: 1.5em;
+    list-style-type: square;
+    line-height: 1.5em;
 }
 
 td label {

@@ -410,11 +410,11 @@ public class IdpConfiguration {
     }
 
     public void setAdditionalAttributes(String additionalAttributes){
-    	this.additionalAttributes = additionalAttributes;
+        this.additionalAttributes = additionalAttributes;
     }
 
     public String getAdditionalAttributes(){
-    	return additionalAttributes;
+        return additionalAttributes;
     }
 
 }
