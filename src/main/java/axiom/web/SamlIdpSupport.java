@@ -23,9 +23,6 @@ public abstract class SamlIdpSupport extends AxiomSupport {
 
 
     public IdpConfiguration getIdpConfig() {
-        System.out.println("getServletContext().getRealPath(\"/\"): " + getServletContext().getRealPath("/"));
-        System.out.println("getServletContext().getInitParameter(\"keystoreFile\"): " + getServletContext().getInitParameter("keystoreFile"));
-
         try {
             idpConfig.setKeystoreFile(getServletContext().getResource(getServletContext().getInitParameter("keystoreFile")));
         } catch (MalformedURLException e) {
