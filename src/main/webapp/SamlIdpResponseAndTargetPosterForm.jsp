@@ -37,6 +37,15 @@
 				document.getElementById("prettySAMLResponse").value = vkbeautify.xml(document.getElementById("rawSAMLResponse").value);
 			}
 
+      function validateSubmit() {
+        if (document.getElementById("recipientURL").value.indexOf("https://") != 0) {
+          alert("Recipient URL must be set and start with https://");
+          return false;
+        }
+
+        return true;
+      }
+
 		</script>
 		
 	</head>
@@ -68,7 +77,7 @@
 				<s:textfield name="RelayState" key="RelayState" label="%{getText('label.saml.idp.RelayState')}" labelposition="top" size="100"/>
 			</s:else>
 			
-			<s:submit value="%{getText('label.login')}"/>
+			<s:submit value="%{getText('label.login')}" onclick="return validateSubmit();"/>
 		</s:form>
 
 		<s:include value="%{getText('app.includes.body_footer')}" />
