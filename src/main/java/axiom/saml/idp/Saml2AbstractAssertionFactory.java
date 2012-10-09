@@ -11,6 +11,7 @@ import org.opensaml.xml.schema.impl.XSStringBuilder;
 
 import java.util.EnumSet;
 import java.util.List;
+import java.util.StringTokenizer;
 
 /**
  * Subclasses extend this class to build SAML 2.0 Assertions.
@@ -32,6 +33,7 @@ public abstract class Saml2AbstractAssertionFactory extends
     private String portalId;
     private String siteURL;
     private UserType userType;
+    private String additionalAttributes;
 
     /**
      * No-arg constructor. Should only be created from IdpConfiguration or
@@ -105,6 +107,7 @@ public abstract class Saml2AbstractAssertionFactory extends
 
         AttributeStatement attributeStatement = buildAttributeStatement();
         if (attributeStatement != null) {
+            logger.info("attributeStatement not null: ");
             assertion.getAttributeStatements().add(attributeStatement);
         } else {
             // do nothing
@@ -168,7 +171,7 @@ public abstract class Saml2AbstractAssertionFactory extends
     protected abstract Subject buildSubject();
 
     protected AttributeStatement buildAttributeStatement(
-            List<Attribute> additionalAttributes) throws IllegalStateException {
+            List<Attribute> basicAttributes) throws IllegalStateException {
         logger.debug("Building AttributeStatement");
         AttributeStatement attributeStatement = ((SAMLObjectBuilder<AttributeStatement>) builderFactory
                 .getBuilder(AttributeStatement.DEFAULT_ELEMENT_NAME))
@@ -261,8 +264,35 @@ public abstract class Saml2AbstractAssertionFactory extends
 
         }
 
+        if (basicAttributes != null) {
+            attributeStatement.getAttributes().addAll(basicAttributes);
+        }
+
         if (additionalAttributes != null) {
-            attributeStatement.getAttributes().addAll(additionalAttributes);
+
+            String attribs = additionalAttributes.trim();
+            String key = "";
+            String val = "";
+        	
+            StringTokenizer st = new StringTokenizer(attribs, "=;"); 
+            while( st.hasMoreTokens() ) { 
+                   key = st.nextToken(); 
+                   val = st.nextToken();
+                   logger.debug("Key/value pair:" + "key" + "/" + val);
+                   XSString additionalAttributeValue = ((XSStringBuilder) Configuration
+                           .getBuilderFactory().getBuilder(XSString.TYPE_NAME))
+                           .buildObject(AttributeValue.DEFAULT_ELEMENT_NAME,
+                                   XSString.TYPE_NAME);
+                   additionalAttributeValue.setValue(val);
+
+                   Attribute additionalAttribute = ((SAMLObjectBuilder<Attribute>) builderFactory
+                           .getBuilder(Attribute.DEFAULT_ELEMENT_NAME)).buildObject();
+                   additionalAttribute.setName(key);
+                   additionalAttribute.setNameFormat("urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified");
+                   additionalAttribute.getAttributeValues().add(additionalAttributeValue);
+
+                   attributeStatement.getAttributes().add(additionalAttribute);        	       
+        	} 
         }
 
         logger.debug("Returning completed attributeStatement");
@@ -345,6 +375,14 @@ public abstract class Saml2AbstractAssertionFactory extends
 
     public void setUserType(UserType userType) {
         this.userType = userType;
+    }
+
+    public void setAdditionalAttributes(String additionalAttributes){
+    	this.additionalAttributes = additionalAttributes;
+    }
+
+    public String getAdditionalAttributes(){
+    	return additionalAttributes;
     }
 
 }

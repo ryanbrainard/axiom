@@ -43,12 +43,12 @@
 			}
 		}
 		
-		
 	</script>
 </head>
 
 <body onload="evalAttribInputsVisibility(); setPortalValues();">
 	<s:include value="%{getText('app.includes.body_header')}" />
+
 
 	<s:form method="POST" action="GenerateSamlResponse.action">
 		<s:select label="%{getText('label.saml.idp.samlVersion')}" key="idpConfig.samlVersion" list="samlVersions" onchange="setPortalValues();"/>
@@ -80,10 +80,43 @@
 		<s:textfield label="%{getText('label.portalId')}" key="idpConfig.portalId" size="60"/>
 		
 		<s:textfield label="%{getText('label.siteURL')}" key="idpConfig.siteURL" size="60"/>
+
+        <tr>
+          <td colspan="2" style="overflow:hidden; width:300px;">
+              <br/>
+              <h2><s:text name="page.jitinfo" /></h2>
+              <s:text name="page.additionalattributes"/>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2">
+            <s:textarea label="%{getText('label.additionalAttributes')}" key="idpConfig.additionalAttributes" rows="10" style="overflow: auto; font-family: monospace,courier; font-size: small; width: 396px;"/>
+          </td>
+        </tr>
 	
 		<!--<s:checkbox label="%{getText('label.saml.idp.autoLogin')}" labelposition="left" key="autoLogin"/>-->
 	
 		<s:submit value="%{getText('label.saml.idp.samlRequestForm.submit')}"/>
+
+        <tr>
+          <td colspan="2" style="overflow:hidden; width:300px;">
+              <br/>
+              <h2><s:text name="page.sampleattributes" /></h2>
+          </td>
+        </tr>
+
+          <table border="1">
+            <tr>
+              <th><s:text name="page.standard" /></th>
+              <th><s:text name="page.portal" /></th>
+            </tr>
+            <tr>
+              <td><s:text name="page.samplestandard"/></td>
+              <td><s:text name="page.sampleportal"/></td>
+            </tr>
+          </table>
+		
 	</s:form>
 <s:include value="%{getText('app.includes.body_footer')}" />
 </body>
