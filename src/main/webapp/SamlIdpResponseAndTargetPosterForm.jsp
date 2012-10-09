@@ -12,6 +12,7 @@
 		<script>
 			function init(){
 				base64EncodeAssertion();
+        xmlBeautify();
 				updateFormAction();
 				autoLogin(${autoLogin});
 			}
@@ -47,8 +48,9 @@
 		</s:else>
 		
 		<s:form>			
-			<s:textarea id="rawSAMLResponse" label="%{getText('label.saml.idp.rawSAMLResponse')}" labelposition="top" key="rawSAMLResponse" rows="6" cols="76" onkeyup="base64EncodeAssertion();" onBlur="base64EncodeAssertion();" style="overflow: auto; font-family: monospace,courier; font-size: small;"/>
-		</s:form>
+			<s:textarea id="rawSAMLResponse" label="%{getText('label.saml.idp.rawSAMLResponse')}" labelposition="top" key="rawSAMLResponse" rows="6" cols="100" onkeyup="base64EncodeAssertion(); xmlBeautify();" onBlur="base64EncodeAssertion(); xmlBeautify();" style="overflow: auto; font-family: monospace,courier; font-size: small;"/>
+      <s:textarea id="prettySAMLResponse" label="%{getText('label.saml.idp.FormattedResponse')}" labelposition="top" key="prettySAMLResponse" rows="6" cols="100" style="overflow: auto; font-family: monospace,courier; font-size: small;" readonly="true"/>
+    </s:form>
 		
 		<p/>
 		
@@ -69,13 +71,6 @@
 			<s:submit value="%{getText('label.login')}"/>
 		</s:form>
 
-		<p/>
-		<h2><s:text name="page.formatresponse"/></h2>
-		<s:form>
-			<input type="button" onclick="xmlBeautify();" value="<s:text name="label.saml.idp.FormatResponse"/>" />
-			<s:textarea id="prettySAMLResponse" label="%{getText('label.saml.idp.FormattedResponse')}" labelposition="top" key="prettySAMLResponse" rows="12" cols="76" style="overflow: auto; font-family: monospace,courier; font-size: small;"/>
-		</s:form>
-		
 		<s:include value="%{getText('app.includes.body_footer')}" />
 	</body>
 </html>
