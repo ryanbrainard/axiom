@@ -57,8 +57,8 @@
 		</s:else>
 		
 		<s:form>			
-			<s:textarea id="rawSAMLResponse" label="%{getText('label.saml.idp.rawSAMLResponse')}" labelposition="top" key="rawSAMLResponse" rows="6" cols="100" onkeyup="base64EncodeAssertion(); xmlBeautify();" onBlur="base64EncodeAssertion(); xmlBeautify();" style="overflow: auto; font-family: monospace,courier; font-size: small;"/>
-      <s:textarea id="prettySAMLResponse" label="%{getText('label.saml.idp.FormattedResponse')}" labelposition="top" key="prettySAMLResponse" rows="6" cols="100" style="overflow: auto; font-family: monospace,courier; font-size: small;" readonly="true"/>
+			<s:textarea id="rawSAMLResponse" label="%{getText('label.saml.idp.rawSAMLResponse')}" labelposition="top" key="rawSAMLResponse" rows="6" cols="76" onkeyup="base64EncodeAssertion(); xmlBeautify();" onBlur="base64EncodeAssertion(); xmlBeautify();" style="overflow: auto; font-family: monospace,courier; font-size: small;"/>
+      <s:textarea id="prettySAMLResponse" label="%{getText('label.saml.idp.FormattedResponse')}" labelposition="top" key="prettySAMLResponse" rows="6" cols="76" style="overflow: auto; font-family: monospace,courier; font-size: small;" readonly="true"/>
     </s:form>
 		
 		<p/>
