@@ -39,7 +39,7 @@ public class SelfAuthenticator extends AxiomSupport {
     public String getServiceEndpoint() throws MalformedURLException {
         final URL self = new URL(getServletRequest().getRequestURL().toString());
         return self.getProtocol() + "://" + self.getHost() +
-                (self.getPort() != 80 || self.getPort() != 443 ? ":" + self.getPort() : "") +
+                (self.getPort() == -1 ? "" : ":" + self.getPort()) +
                 getServletRequest().getAttribute("javax.servlet.forward.request_uri");
     }
 
