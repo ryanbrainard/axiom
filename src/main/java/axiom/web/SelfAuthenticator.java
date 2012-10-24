@@ -2,6 +2,9 @@ package axiom.web;
 
 import org.apache.log4j.Logger;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class SelfAuthenticator extends AxiomSupport {
     private static Logger logger = Logger.getLogger(SelfAuthenticator.class);
 
@@ -33,8 +36,11 @@ public class SelfAuthenticator extends AxiomSupport {
 
     }
 
-    public String getServiceEndpoint() {
-        return getServletRequest().getRequestURL().toString();
+    public String getServiceEndpoint() throws MalformedURLException {
+        final URL self = new URL(getServletRequest().getRequestURL().toString());
+        return self.getProtocol() + "://" + self.getHost() +
+                (self.getPort() != 80 || self.getPort() != 443 ? ":" + self.getPort() : "") +
+                getServletRequest().getAttribute("javax.servlet.forward.request_uri");
     }
 
     @Override
