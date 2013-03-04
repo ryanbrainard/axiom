@@ -4,13 +4,14 @@
     <groupId>axiom</groupId>
     <artifactId>axiom</artifactId>
     <packaging>war</packaging>
-    <version>1.3.1-BETA</version>
+    <version>1.3.2-BETA</version>
     <name>Axiom</name>
     <url>https://github.com/ryanbrainard/axiom</url>
     <description>Axiom Single Sign-On Tools</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jetty-runner.version>7.4.5.v20110725</jetty-runner.version>
+        <newrelic.java-agent.newrelic-api.version>2.15.0</newrelic.java-agent.newrelic-api.version>
     </properties>
     <developers>
         <developer>
@@ -153,6 +154,12 @@
             <version>${jetty-runner.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+          <groupId>newrelic.java-agent</groupId>
+          <artifactId>newrelic-api</artifactId>
+          <version>${newrelic.java-agent.newrelic-api.version}</version>
+          <scope>runtime</scope>
+        </dependency>
     </dependencies>
     <build>
         <finalName>axiom</finalName>
@@ -197,6 +204,12 @@
                                     <artifactId>jetty-runner</artifactId>
                                     <version>${jetty-runner.version}</version>
                                     <destFileName>jetty-runner.jar</destFileName>
+                                </artifactItem>
+                              <artifactItem>
+                                    <groupId>newrelic.java-agent</groupId>
+                                    <artifactId>newrelic-api</artifactId>
+                                    <version>${newrelic.java-agent.newrelic-api.version}</version>
+                                    <destFileName>newrelic-api.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
