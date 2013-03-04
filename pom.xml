@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jetty-runner.version>7.4.5.v20110725</jetty-runner.version>
-        <com.newrelic.agent.java.newrelic-api.version>2.15.0</com.newrelic.agent.java.newrelic-api.version>
+        <newrelic.version>2.15.0</newrelic.version>
     </properties>
     <developers>
         <developer>
@@ -154,11 +154,12 @@
             <version>${jetty-runner.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-          <groupId>com.newrelic.agent.java</groupId>
-          <artifactId>newrelic-api</artifactId>
-          <version>${com.newrelic.agent.java.newrelic-api.version}</version>
-        </dependency>
+      <dependency>
+        <groupId>com.newrelic.agent.java</groupId>
+        <artifactId>newrelic-java</artifactId>
+        <version>${newrelic.version}</version>
+        <type>zip</type>
+      </dependency>
     </dependencies>
     <build>
         <finalName>axiom</finalName>
@@ -192,6 +193,7 @@
                 <version>2.3</version>
                 <executions>
                     <execution>
+                        <id>copy-deps</id>
                         <phase>package</phase>
                         <goals>
                             <goal>copy</goal>
@@ -204,15 +206,20 @@
                                     <version>${jetty-runner.version}</version>
                                     <destFileName>jetty-runner.jar</destFileName>
                                 </artifactItem>
-                              <artifactItem>
-                                    <groupId>com.newrelic.agent.java</groupId>
-                                    <artifactId>newrelic-api</artifactId>
-                                    <version>${com.newrelic.agent.java.newrelic-api.version}</version>
-                                    <destFileName>newrelic-api.jar</destFileName>
-                                </artifactItem>
                             </artifactItems>
                         </configuration>
                     </execution>
+                  <execution>
+                    <id>unpack-newrelic</id>
+                    <phase>package</phase>
+                    <goals>
+                      <goal>unpack-dependencies</goal>
+                    </goals>
+                    <configuration>
+                      <includeGroupIds>com.newrelic.agent.java</includeGroupIds>
+                      <includeArtifactIds>newrelic-java</includeArtifactIds>
+                    </configuration>
+                  </execution>
                 </executions>
             </plugin>
         </plugins>
