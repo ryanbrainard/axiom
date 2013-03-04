@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jetty-runner.version>7.4.5.v20110725</jetty-runner.version>
-        <newrelic.java-agent.newrelic-api.version>2.15.0</newrelic.java-agent.newrelic-api.version>
+        <com.newrelic.agent.java.newrelic-api.version>2.15.0</com.newrelic.agent.java.newrelic-api.version>
     </properties>
     <developers>
         <developer>
@@ -155,10 +155,9 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-          <groupId>newrelic.java-agent</groupId>
+          <groupId>com.newrelic.agent.java</groupId>
           <artifactId>newrelic-api</artifactId>
-          <version>${newrelic.java-agent.newrelic-api.version}</version>
-          <scope>runtime</scope>
+          <version>${com.newrelic.agent.java.newrelic-api.version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -206,9 +205,9 @@
                                     <destFileName>jetty-runner.jar</destFileName>
                                 </artifactItem>
                               <artifactItem>
-                                    <groupId>newrelic.java-agent</groupId>
+                                    <groupId>com.newrelic.agent.java</groupId>
                                     <artifactId>newrelic-api</artifactId>
-                                    <version>${newrelic.java-agent.newrelic-api.version}</version>
+                                    <version>${com.newrelic.agent.java.newrelic-api.version}</version>
                                     <destFileName>newrelic-api.jar</destFileName>
                                 </artifactItem>
                             </artifactItems>
