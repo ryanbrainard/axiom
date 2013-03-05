@@ -159,6 +159,7 @@
         <artifactId>newrelic-java</artifactId>
         <version>${newrelic.version}</version>
         <type>zip</type>
+        <scope>runtime</scope>
       </dependency>
     </dependencies>
     <build>
