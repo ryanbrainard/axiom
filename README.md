@@ -10,9 +10,8 @@ The tools include:
 
 ## Deployment
 
-Axiom runs natively on the [Heroku](http://heroku.com) platform.
-The canonical instance is running at <https://axiomsso.herokuapp.com>,
-but you can create your own instance if you'd like, 
+The canonical instance of Axiom is running at <https://axiomsso.herokuapp.com>,
+but you can easily create your own instance on Heroku, 
 which is helpful for forks or other experimentation:
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/ryanbrainard/axiom)
