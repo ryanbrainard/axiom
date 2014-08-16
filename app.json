@@ -1,0 +1,14 @@
+{
+    "name": "Axiom",
+    "description": "Tools for learning, testing, and troubleshooting single sign-on solutions for Salesforce.com",
+    "website": "https://github.com/ryanbrainard/axiom",
+    "repository": "https://github.com/ryanbrainard/axiom",
+    "logo": "https://raw.githubusercontent.com/ryanbrainard/axiom/master/src/main/webapp/images/axiom-logo-black-ssot-medium.png",
+    "success_url": "/Home.action",
+        "Salesforce",
+        "SSO",
+        "SAML",
+        "OAuth",
+        "DelAuth"
+    ]
+}
