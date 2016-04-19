@@ -2,7 +2,7 @@ package axiom.saml.idp;
 
 import org.apache.log4j.Logger;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 
 /**
@@ -17,7 +17,7 @@ public class IdGenerator {
     } // should not be instantiated
 
     public static String generateId() {
-        String id = "_" + Integer.toHexString(new Random().nextInt(Integer.MAX_VALUE)) + "-" + Integer.toHexString(new Random().nextInt(Integer.MAX_VALUE));
+        String id = "_" + Integer.toHexString(new SecureRandom().nextInt(Integer.MAX_VALUE)) + "-" + Integer.toHexString(new SecureRandom().nextInt(Integer.MAX_VALUE));
         logger.debug("Generated Id: " + id);
         return id;
     }
