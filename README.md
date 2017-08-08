@@ -23,6 +23,6 @@ To install and run Axiom locally with Jetty Runner:
     git clone git://github.com/ryanbrainard/axiom.git
     cd axiom
     mvn clean install
-    java $JAVA_OPTS -jar target/dependency/jetty-runner.jar target/*.war
+    java $JAVA_OPTS -cp target/dependency/jetty-runner.jar org.mortbay.jetty.runner.Runner target/*.war
 
 Then go to `http://localhost:8080` in your browser.
