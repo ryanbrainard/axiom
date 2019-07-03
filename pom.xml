@@ -10,7 +10,7 @@
     <description>Axiom Single Sign-On Tools</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jetty-runner.version>7.4.5.v20110725</jetty-runner.version>
+        <jetty-runner.version>8.1.16.v20140903</jetty-runner.version>
         <newrelic.version>2.15.0</newrelic.version>
     </properties>
     <developers>
@@ -34,14 +34,14 @@
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:git://github.com/ryanbrainard/axiom.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:ryanbrainard/axiom.git</developerConnection>
-        <url>https://github.com/ryanbrainard/axiom</url>
+        <connection>scm:git:git://github.com/mikeabackhouse/axiom.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:mikeabackhouse/axiom.git</developerConnection>
+        <url>https://github.com/mikeabackhouse/axiom</url>
     </scm>
     <inceptionYear>October 11, 2009</inceptionYear>
     <issueManagement>
         <system>Github</system>
-        <url>https://github.com/ryanbrainard/axiom/issues</url>
+        <url>https://github.com/mikeabackhouse/axiom/issues</url>
     </issueManagement>
     <dependencies>
         <dependency>
