@@ -2,7 +2,7 @@ package axiom.delauth.token;
 
 import org.apache.log4j.Logger;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 
 public class TokenGenerator {
@@ -13,7 +13,7 @@ public class TokenGenerator {
     private TokenStore tokenStore = new TokenStorePojo();
 
     public String generateToken(String username) {
-        String token = Integer.toHexString(new Random().nextInt(Integer.MAX_VALUE));
+        String token = Integer.toHexString(new SecureRandom().nextInt(Integer.MAX_VALUE));
 
         tokenStore.addToken(username, token);
 
