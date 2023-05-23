@@ -10,7 +10,7 @@
     <description>Axiom Single Sign-On Tools</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jetty-runner.version>7.4.5.v20110725</jetty-runner.version>
+        <jetty-runner.version>8.1.16.v20140903</jetty-runner.version>
         <newrelic.version>2.15.0</newrelic.version>
     </properties>
     <developers>
